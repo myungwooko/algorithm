@@ -37,9 +37,6 @@ Only string not list
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: 'list' object has no attribute 'lstrip'
-
-
-
 """
 from functools import cmp_to_key
 
