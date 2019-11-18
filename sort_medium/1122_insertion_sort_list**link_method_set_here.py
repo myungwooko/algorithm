@@ -62,7 +62,7 @@ class Solution(object):
         return result
 
     @staticmethod
-    def makingTree(nums):
+    def makingLinkedList(nums):
         if not nums:
             return nums
         result = currNode = ListNode(nums[0])
@@ -73,7 +73,7 @@ class Solution(object):
         return result
 
     @staticmethod
-    def treeToList(tree):
+    def LinkedListToList(tree):
         res = []
         cur = tree
         while cur is not None:
@@ -83,10 +83,10 @@ class Solution(object):
 
 
 s = Solution()
-input = s.makingTree([])
-input1 = s.makingTree([4, 2, 1, 3])
+input = s.makingLinkedList([])
+input1 = s.makingLinkedList([4, 2, 1, 3])
 test = s.insertionSortList(input1)
-resultList = s.treeToList(test)
+resultList = s.LinkedListToList(test)
 print(resultList)
 
 

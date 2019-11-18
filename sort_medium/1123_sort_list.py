@@ -52,7 +52,7 @@ class Solution(object):
         second = slow.next
         # cut down the first part
         slow.next = None
-        print(self.treeToList(head), self.treeToList(second))
+        print(self.LinkedListToList(head), self.LinkedListToList(second))
         l = self.sortList(head)
         r = self.sortList(second)
         return self.merge(l, r)
@@ -82,7 +82,7 @@ class Solution(object):
         return head
 
     @staticmethod
-    def makingTree(nums):
+    def makingLinkedList(nums):
         if not nums:
             return nums
         result = currNode = ListNode(nums[0])
@@ -93,7 +93,7 @@ class Solution(object):
         return result
 
     @staticmethod
-    def treeToList(tree):
+    def LinkedListToList(tree):
         res = []
         cur = tree
         while cur is not None:
@@ -103,8 +103,8 @@ class Solution(object):
 
 
 s = Solution()
-input = s.makingTree([])
-input1 = s.makingTree([4, 2, 1, 3])
+input = s.makingLinkedList([])
+input1 = s.makingLinkedList([4, 2, 1, 3])
 test = s.sortList(input1)
-resultList = s.treeToList(test)
+resultList = s.LinkedListToList(test)
 print(resultList)
