@@ -47,7 +47,7 @@ class Solution(object):
         return count
 
     # dp O(mn) space
-    # 1 세팅해놓고 => 1, 1 부터 시작한다. 해당 것의 값은 좌와 상 값의 합이다.
+    # dp 기본 1로 세팅해놓고 => (1, 1) 부터 시작한다. 해당 위치의 값은 해당 기준 좌와 상 값의 합이다.
     def uniquePaths(self, m, n):
         if not m or not n:
             return 0
