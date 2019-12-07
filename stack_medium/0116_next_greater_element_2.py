@@ -67,9 +67,6 @@ class Solution(object):
         return res
 
 
-
-
-
 nums = [3, 2, 1]
 s = Solution()
 test = s.nextGreaterElements(nums)
