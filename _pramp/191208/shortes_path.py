@@ -230,3 +230,8 @@ grid = [
 sr, sc, tr, tc = 0, 0, 2, 0
 test = shortestCellPath1(grid, sr, sc, tr, tc)
 print(test == 6)
+
+eachLT = []
+for r in range(0, 9, 3):
+    for c in range(0, 9, 3):
+        eachLT.append([r, c])
