@@ -173,6 +173,9 @@ def shortestCellPath1(grid, sr, sc, tr, tc):
     if sr == tr and sc == tc:
         return -1
     def helper(cr, cc, length, memory):
+        if res:
+            if res[0] < length:
+                return
         if cr == tr and cc == tc:
             if not res:
                 res.append(length)
