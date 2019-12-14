@@ -133,12 +133,6 @@ print(test==1)
 
 
 
-
-
-
-
-
-
 # 1인데는 다 가는데
 # 각 케이스별로 지나간데는 안가지만 recursion의 내부 영역에 포함되지 않는 새로운 영역의 것들은 다른 recursion 영역에서 간것과 상관없이 자신 영역 내에서 counting을 한다.
 # 지금 이건 memory가 각각의 recursion 영역을 보존하며 counting하고 있다. => 개인적으로 함수의 이름대로라면 이게 맞다.
@@ -222,16 +216,5 @@ def shortestCellPath1(grid, sr, sc, tr, tc):
         return res[0]
     return -1
 
-grid = [
-        [1, 1, 1, 1],
-        [0, 0, 1, 1],
-        [1, 1, 1, 1]
-        ]
-sr, sc, tr, tc = 0, 0, 2, 0
-test = shortestCellPath1(grid, sr, sc, tr, tc)
-print(test == 6)
 
-eachLT = []
-for r in range(0, 9, 3):
-    for c in range(0, 9, 3):
-        eachLT.append([r, c])
+
