@@ -35,9 +35,11 @@ class Solution(object):
             adj[u].append((v, w))
         while q:
             time, node = heapq.heappop(q)
+            #똑같이 받는것에 대해선 먼저들어간 최소의 시간의 것으로 하면된다.(축적되서 도달하게 되는 것은 시간이 당연히 더 걸린다.)
             if node not in t:
                 t[node] = time
                 for v, w in adj[node]:
+                    #line 12의 이유때문에 heap으로 넣어준다. 최소거리를 먼저 count하고 싶으므로 같은 라인에서 들어가는 것중에서도 target이 같은게 있을수 있으니까.그중에서 최소거리가 앞으로 올수있도록.
                     heapq.heappush(q, (w + time, v))
         return max(t.values()) if len(t) == N else -1
 
