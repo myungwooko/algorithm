@@ -17,7 +17,6 @@ Example 1:
 Input: times = [[2,1,1],[2,3,1],[3,4,1]], N = 4, K = 2
 Output: 2
 
-
 Note:
 N will be in the range [1, 100].
 K will be in the range [1, N].
