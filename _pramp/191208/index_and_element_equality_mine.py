@@ -32,7 +32,6 @@ def index_equals_value_search(arr):
 """
  arr = [-8,0,2,5,9]
          0,1,2,3,4
-
 lo    0 
 hi    4
 m     2
