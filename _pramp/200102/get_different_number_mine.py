@@ -5,27 +5,29 @@
 time O(NlogN), space O(1)
 """
 def get_different_number(arr):
-  arr.sort()
-  smallest = arr[0]
-  if smallest: #=> no zero
-    return 0
-  else:
-    # be careful about list out of index
-    for i in range(len(arr)-1):
-      if arr[i] + 1 != arr[i+1]:
-        return arr[i]+1
-    return arr[-1] + 1
+    arr.sort()
+    smallest = arr[0]
+    if smallest:  # => not zero
+        return 0
+    else:
+        for i in range(len(arr) - 1):
+            if arr[i] + 1 != arr[i + 1]:
+                return arr[i] + 1
+        return arr[-1] + 1
 
-def firstMissingPositive(self, nums):
-    nums.sort()
-    res = 1
-    for num in nums:
-        if num == res:
+
+def get_different_number(arr):
+    arr.sort()
+    res = 0
+    for i in arr:
+        if i == res:
             res += 1
     return res
 
-a = [0,1,2,3,4,5]
+
+a = [1, 2, 3, 4, 5]
 print(get_different_number(a))
+
 
 
 

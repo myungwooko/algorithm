@@ -84,7 +84,6 @@ def shifted_arr_search(shiftArr, num):
                 hi = mid - 1
     return -1
 
-
 shiftArr = [5, 6, 7, 8, 1, 2, 3]
 num = 2
 test = shifted_arr_search(shiftArr, num)

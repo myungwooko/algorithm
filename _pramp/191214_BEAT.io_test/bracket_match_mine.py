@@ -1,6 +1,5 @@
 import unittest
 
-
 def bracket_match(text):
     stack = []
     count = 0
