@@ -49,7 +49,7 @@ a = [0, 2, 3, 4, 5]
 print(getDifferentNumber(a))
 
 
-
+sdlkfmal
 
 
 
