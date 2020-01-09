@@ -27,27 +27,45 @@ Example 2:
 Input: m = 7, n = 3
 Output: 28
 """
+# recursion
 class Solution(object):
-    # recursion
-    def uniquePaths(self, m, n):
-        if not m or not n:
-            return 0
-        count = []
-        self.recursion(0, 0, m, n, count)
-        return sum(count)
+    #1
+    def uniquePaths(self, m: int, n: int) -> int:
+        self.ans = 0
 
-    def recursion(self, x, y, m, n, count):
+        def recursion(x, y, m, n):
+            if x == m - 1 and y == n - 1:
+                self.ans += 1
+                return
+            if x < m - 1:
+                recursion(x + 1, y, m, n)
+            if y < n - 1:
+                recursion(x, y + 1, m, n)
+            return
+
+        recursion(0, 0, m, n)
+        return self.ans
+
+    #2 => 두가지 모두 참조가 된다. 내부로 하든 클래스 메소드로 하든 클래스 내부의 것으로서 참조 가능
+    def uniquePaths(self, m: int, n: int) -> int:
+        self.ans = 0
+        self.recursion(0, 0, m, n)
+        return self.ans
+
+    def recursion(self, x, y, m, n):
         if x == m - 1 and y == n - 1:
-            count.append(1)
+            self.ans += 1
             return
         if x < m - 1:
-            self.recursion(x + 1, y, m, n, count)
+            self.recursion(x + 1, y, m, n)
         if y < n - 1:
-            self.recursion(x, y + 1, m, n, count)
-        return count
+            self.recursion(x, y + 1, m, n)
+        return
 
-    # dp O(mn) space
-    # dp 기본 1로 세팅해놓고 => (1, 1) 부터 시작한다. 해당 위치의 값은 해당 기준 좌와 상 값의 합이다.
+
+# dp O(mn) space
+# dp 기본 1로 세팅해놓고 => (1, 1) 부터 시작한다. 해당 위치의 값은 해당 기준 좌와 상 값의 합이다.
+class Solution:
     def uniquePaths(self, m, n):
         if not m or not n:
             return 0
