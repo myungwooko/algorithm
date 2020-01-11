@@ -62,7 +62,7 @@ def shifted_arr_search(shiftArr, num):
         res = binary_search(l, num)
     return res
 
-
+# the one
 def shifted_arr_search(shiftArr, num):
     if not shiftArr:
         return -1
@@ -78,6 +78,27 @@ def shifted_arr_search(shiftArr, num):
             else:
                 lo = mid + 1
         elif shiftArr[mid] <= shiftArr[hi]:
+            if shiftArr[mid] < num <= shiftArr[hi]:
+                lo = mid + 1
+            else:
+                hi = mid - 1
+    return -1
+
+def shifted_arr_search(shiftArr, num):
+    if not shiftArr:
+        return -1
+    lo, hi = 0, len(shiftArr) - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if shiftArr[mid] == num:
+            return mid
+        # pick the sorted part at between left and right
+        elif shiftArr[lo] <= shiftArr[mid]:
+            if shiftArr[lo] <= num < shiftArr[mid]:
+                hi = mid - 1
+            else:
+                lo = mid + 1
+        else:
             if shiftArr[mid] < num <= shiftArr[hi]:
                 lo = mid + 1
             else:
