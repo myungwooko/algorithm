@@ -29,7 +29,7 @@ class BinarySearchTree:
         self.root = None
 
 # using stack
-######################################################################################################################## stack but it looks not right. look at the below
+# but it looks not right. if there is possible result, it should return that. Look at the below.
     def find_largest_smaller_key(self, num):
         stack = [self.root]
 
