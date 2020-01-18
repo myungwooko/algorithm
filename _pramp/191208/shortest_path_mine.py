@@ -177,23 +177,6 @@ def shortestCellPath1(grid, sr, sc, tr, tc):
                 if length < res[0]:
                     res[0] = length
             return
-        # if cc + 1 <= columns and grid[cr][cc + 1] and (cr, cc + 1) not in memory:
-        #     memory1 = memory[:]
-        #     memory1.append((cr, cc))
-        #     helper(cr, cc + 1, length + 1, memory1)
-        # if cr + 1 <= rows and grid[cr + 1][cc] and (cr + 1, cc) not in memory:
-        #     memory2 = memory[:]
-        #     memory2.append((cr, cc))
-        #     helper(cr + 1, cc, length + 1, memory2)
-        # if cc - 1 >= 0 and grid[cr][cc - 1] and (cr, cc - 1) not in memory:
-        #     memory3 = memory[:]
-        #     memory3.append((cr, cc))
-        #     helper(cr, cc - 1, length + 1, memory3)
-        # if cr - 1 >= 0 and grid[cr - 1][cc] and (cr - 1, cc) not in memory:
-        #     memory4 = memory[:]
-        #     memory4.append((cr, cc))
-        #     helper(cr - 1, cc, length + 1, memory4)
-
         # this is better and simpler for reference than right before
         if cc + 1 <= columns and grid[cr][cc + 1] and (cr, cc + 1) not in memory:
             memory.append((cr, cc))
@@ -218,3 +201,68 @@ def shortestCellPath1(grid, sr, sc, tr, tc):
 
 
 
+
+
+
+# latest version => using seen and this problem turn to really simple!##################################################
+def shortestCellPath(grid, sr, sc, tr, tc):
+    """
+    @param grid: int[][]
+    @param sr: int
+    @param sc: int
+    @param tr: int
+    @param tc: int
+    @return: int
+    """
+    seen = set()
+    if not grid or (sr == tr and sc == tc):
+        return -1
+    result = []
+
+    def helper(y, x, count):
+        if y == tr and x == tc:
+            result.append(count)
+            return
+        seen.add((y, x))
+        if y - 1 >= 0 and ((y - 1, x) not in seen) and grid[y - 1][x]:
+            helper(y - 1, x, count + 1)
+        if y + 1 < len(grid) and ((y + 1, x) not in seen) and grid[y + 1][x]:
+            helper(y + 1, x, count + 1)
+        if x - 1 >= 0 and ((y, x - 1) not in seen) and grid[y][x - 1]:
+            helper(y, x - 1, count + 1)
+        if x + 1 < len(grid[0]) and ((y, x + 1) not in seen) and grid[y][x + 1]:
+            helper(y, x + 1, count + 1)
+        return
+
+    helper(sr, sc, 0)
+    if not result:
+        return -1
+    else:
+        return min(result)
+
+grid = [
+        [1, 1, 1, 1],
+        [0, 1, 0, 1],
+        [1, 1, 1, 1]
+        ]
+sr, sc, tr, tc = 0, 0, 2, 0
+test = shortestCellPath1(grid, sr, sc, tr, tc)
+print(test == 4)
+
+grid = [
+        [1, 1, 1, 1],
+        [0, 0, 0, 1],
+        [1, 0, 1, 1]
+        ]
+sr, sc, tr, tc = 0, 0, 2, 0
+test2 = shortestCellPath(grid, sr, sc, tr, tc)
+print(test2 == -1)
+
+grid = [
+         [0,1,0],
+         [1,0,0],
+         [1,0,1]
+        ]
+sr, sc, tr, tc = 2, 0, 1, 0
+test = shortestCellPath(grid, sr, sc, tr, tc)
+print(test==1)
