@@ -75,3 +75,4 @@ class Solution:
         #     test = test.next
         # print(result)
         return dic[head]
+
