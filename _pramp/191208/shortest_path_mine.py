@@ -41,204 +41,34 @@ All sr, sc, tr, tc are valid locations in the grid, grid[sr][sc] = grid[tr][tc] 
 [output] integer
 """
 
-# 1인데는 다 가는데
-# 어디에서고 지나온데는 어디에서고 안간다.
-# 지금 이건 memory가 모두 참조의 영향을 받고 있다. => pramp에서 통과는 된다.
+
+
 """
-This function passes pramp test cases. Considering the function's name, I think it is wrong though.
-In this case, memory is referenced by each different cases.
-let's assume
-
-grid = [
-        [1, 1, 1, 1],
-        [0, 0, 1, 1],
-        [1, 1, 1, 1]
-        ]
-sr, sc, tr, tc = 0, 0, 2, 0
-test = shortestCellPath(grid, sr, sc, tr, tc)
-print(test == 6) => False
-
-it should be 6 but this function returns 8
-let's look at another function below.
+dfs depth first search
 """
 def shortestCellPath(grid, sr, sc, tr, tc):
-    """
-    @param grid: int[][]
-    @param sr: int
-    @param sc: int
-    @param tr: int
-    @param tc: int
-    @return: int
-    """
-    res = []
-    rows = len(grid) - 1
-    columns = len(grid[0]) - 1
-    if sr == tr and sc == tc:
+    if not grid or not grid[0]:
         return -1
 
-    def helper(cr, cc, length, memory):
-        if cr == tr and cc == tc:
-            if not res:
-                res.append(length)
-            else:
-                if length < res[0]:
-                    res[0] = length
-            return
-        if cc + 1 <= columns and grid[cr][cc + 1] and (cr, cc + 1) not in memory:
-            # print(1, cr, cc, memory)
-            memory.append((cr, cc))
-            helper(cr, cc + 1, length + 1, memory)
-        if cr + 1 <= rows and grid[cr + 1][cc] and (cr + 1, cc) not in memory:
-            # print(2, cr, cc, memory)
-            memory.append((cr, cc))
-            helper(cr + 1, cc, length + 1, memory)
-        if cc - 1 >= 0 and grid[cr][cc - 1] and (cr, cc - 1) not in memory:
-            memory.append((cr, cc))
-            helper(cr, cc - 1, length + 1, memory)
-        if cr - 1 >= 0 and grid[cr - 1][cc] and (cr - 1, cc) not in memory:
-            memory.append((cr, cc))
-            helper(cr - 1, cc, length + 1, memory)
+    results = []
+    m = len(grid)
+    n = len(grid[0])
 
-    helper(sr, sc, 0, [])
-    if res:
-        return res[0]
-    return -1
-
-grid = [
-        [1, 1, 1, 1],
-        [0, 0, 0, 1],
-        [1, 1, 1, 1]
-        ]
-sr, sc, tr, tc = 0, 0, 2, 0
-test = shortestCellPath(grid, sr, sc, tr, tc)
-print(test == 8)
-
-grid = [
-        [1, 1, 1, 1],
-        [0, 0, 0, 1],
-        [1, 0, 1, 1]
-        ]
-sr, sc, tr, tc = 0, 0, 2, 0
-test2 = shortestCellPath(grid, sr, sc, tr, tc)
-print(test2 == -1)
-
-grid = [
-         [0,1,0],
-         [1,0,0],
-         [1,0,1]
-        ]
-sr, sc, tr, tc = 2, 0, 1, 0
-test = shortestCellPath(grid, sr, sc, tr, tc)
-print(test==1)
-
-
-
-# 1인데는 다 가는데
-# 각 케이스별로 지나간데는 안가지만 recursion의 내부 영역에 포함되지 않는 새로운 영역의 것들은 다른 recursion 영역에서 간것과 상관없이 자신 영역 내에서 counting을 한다.
-# 지금 이건 memory가 각각의 recursion 영역을 보존하며 counting하고 있다. => 개인적으로 함수의 이름대로라면 이게 맞다.
-"""
-Considering the function's name, I think this is right.
-In this case, memory is not referenced by each different cases.
-let's assume
-
-grid = [
-        [1, 1, 1, 1],
-        [0, 0, 1, 1],
-        [1, 1, 1, 1]
-        ]
-sr, sc, tr, tc = 0, 0, 2, 0
-test = shortestCellPath1(grid, sr, sc, tr, tc)
-print(test == 6) => True
-
-it return the shortestCellPath
-"""
-def shortestCellPath1(grid, sr, sc, tr, tc):
-    """
-    @param grid: int[][]
-    @param sr: int
-    @param sc: int
-    @param tr: int
-    @param tc: int
-    @return: int
-    """
-    res = []
-    rows = len(grid) - 1
-    columns = len(grid[0]) - 1
-    if sr == tr and sc == tc:
-        return -1
-    def helper(cr, cc, length, memory):
-        if res:
-            if res[0] < length:
-                return
-        if cr == tr and cc == tc:
-            if not res:
-                res.append(length)
-            else:
-                if length < res[0]:
-                    res[0] = length
-            return
-        # this is better and simpler for reference than right before
-        if cc + 1 <= columns and grid[cr][cc + 1] and (cr, cc + 1) not in memory:
-            memory.append((cr, cc))
-            helper(cr, cc + 1, length + 1, memory + [(cr, cc)])
-        if cr + 1 <= rows and grid[cr + 1][cc] and (cr + 1, cc) not in memory:
-            memory2 = memory[:]
-            memory2.append((cr, cc))
-            helper(cr + 1, cc, length + 1, memory + [(cr, cc)])
-        if cc - 1 >= 0 and grid[cr][cc - 1] and (cr, cc - 1) not in memory:
-            memory3 = memory[:]
-            memory3.append((cr, cc))
-            helper(cr, cc - 1, length + 1, memory + [(cr, cc)])
-        if cr - 1 >= 0 and grid[cr - 1][cc] and (cr - 1, cc) not in memory:
-            memory4 = memory[:]
-            memory4.append((cr, cc))
-            helper(cr - 1, cc, length + 1, memory + [(cr, cc)])
-
-    helper(sr, sc, 0, [])
-    if res:
-        return res[0]
-    return -1
-
-
-
-
-
-# dfs depth first search
-# latest version of dfs => using seen and this problem turn to really simple!##################################################
-def shortestCellPath(grid, sr, sc, tr, tc):
-    """
-    @param grid: int[][]
-    @param sr: int
-    @param sc: int
-    @param tr: int
-    @param tc: int
-    @return: int
-    """
-    seen = set()
-    if not grid or (sr == tr and sc == tc):
-        return -1
-    result = []
-
-    def helper(y, x, count):
-        if y == tr and x == tc:
-            result.append(count)
-            return
-        seen.add((y, x))
-        if y - 1 >= 0 and ((y - 1, x) not in seen) and grid[y - 1][x]:
-            helper(y - 1, x, count + 1)
-        if y + 1 < len(grid) and ((y + 1, x) not in seen) and grid[y + 1][x]:
-            helper(y + 1, x, count + 1)
-        if x - 1 >= 0 and ((y, x - 1) not in seen) and grid[y][x - 1]:
-            helper(y, x - 1, count + 1)
-        if x + 1 < len(grid[0]) and ((y, x + 1) not in seen) and grid[y][x + 1]:
-            helper(y, x + 1, count + 1)
+    def helper(x, y, count, seen):
+        if x == tr and y == tc:
+            results.append(count)
+        candidates = [(x - 1, y), (x, y + 1), (x + 1, y), (x, y - 1)]
+        for x1, y1 in candidates:
+            if 0 <= x1 < m and 0 <= y1 < n and grid[x1][y1] and (x1, y1) not in seen:
+                helper(x1, y1, count + 1, seen + [(x1, y1)])
+                # <= personally seen has not to be referenced by all cases, each case has to keep doing this with their level's
+                # seen
         return
 
-    helper(sr, sc, 0)
-    if not result:
+    helper(sr, sc, 0, [])
+    if not results:
         return -1
-    else:
-        return min(result)
+    return min(results)
 
 grid = [
         [1, 1, 1, 1],
@@ -246,7 +76,7 @@ grid = [
         [1, 1, 1, 1]
         ]
 sr, sc, tr, tc = 0, 0, 2, 0
-test = shortestCellPath1(grid, sr, sc, tr, tc)
+test = shortestCellPath(grid, sr, sc, tr, tc)
 print(test == 4)
 
 grid = [
@@ -269,20 +99,53 @@ print(test==1)
 
 
 
-"""bfs breadth first search ###########################################################################################  lastest of latest / clear understanding of dfs/bfs
-   time O(R*C), space O(R*C)"""
+"""
+bfs breadth first search
+time O(R*C), space O(R*C)
+bfs breadth first search
+"""
 def shortestCellPath(grid, sr, sc, tr, tc):
+    if not grid or not grid[0]:
+        return -1
     m = len(grid)
     n = len(grid[0])
-    seen = set()
-    queue = [(sr, sc, 0)]
-    seen.add((sr, sc))
+    queue = [(sr, sc, 0, [])]
     while queue:
-        x1, y1, count = queue.pop(0)
-        if x1 == tr and y1 == tc:
-            return count
-        for x1, y1 in [(x1 - 1, y1), (x1, y1 + 1), (x1 + 1, y1), (x1, y1 - 1)]:
+        x, y, depth, seen = queue.pop(0)
+        if x == tr and y == tc:
+            return depth
+        candidates = [(x - 1, y), (x, y + 1), (x + 1, y), (x, y - 1)]
+        for x1, y1 in candidates:
             if 0 <= x1 < m and 0 <= y1 < n and grid[x1][y1] and (x1, y1) not in seen:
-                queue.append((x1, y1, count + 1))
-                seen.add((x1, y1))
+                queue.append((x1, y1, depth + 1, seen + [(x1, y1)]))
+                # <= personally seen has not to be referenced by all cases, each case has to keep doing this with their level's
+                # seen
     return -1
+
+
+grid = [
+        [1, 1, 1, 1],
+        [0, 1, 0, 1],
+        [1, 1, 1, 1]
+        ]
+sr, sc, tr, tc = 0, 0, 2, 0
+test = shortestCellPath(grid, sr, sc, tr, tc)
+print(test == 4)
+
+grid = [
+        [1, 1, 1, 1],
+        [0, 0, 0, 1],
+        [1, 0, 1, 1]
+        ]
+sr, sc, tr, tc = 0, 0, 2, 0
+test2 = shortestCellPath(grid, sr, sc, tr, tc)
+print(test2 == -1)
+
+grid = [
+         [0,1,0],
+         [1,0,0],
+         [1,0,1]
+        ]
+sr, sc, tr, tc = 2, 0, 1, 0
+test = shortestCellPath(grid, sr, sc, tr, tc)
+print(test==1)

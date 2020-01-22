@@ -62,9 +62,7 @@ lap time: 1:45:48
 #             count += 1
 #         if count == 0:
 #             return
-
-
-class Solution(object):
+class Solution:
     def numIslands(self, grid):
         """
         :type grid: List[List[str]]
@@ -83,21 +81,15 @@ class Solution(object):
 
     def dfs(self, i, j):
         self.seen.add((i, j))
-        count = 0
-        if i - 1 >= 0 and (i-1, j) not in self.seen and self.grid[i - 1][j] == '1':
+        if i - 1 >= 0 and (i - 1, j) not in self.seen and self.grid[i - 1][j] == '1':
             self.dfs(i - 1, j)
-            count += 1
-        if i + 1 < len(self.grid) and (i+1, j) not in self.seen and self.grid[i + 1][j] == '1':
+        if i + 1 < len(self.grid) and (i + 1, j) not in self.seen and self.grid[i + 1][j] == '1':
             self.dfs(i + 1, j)
-            count += 1
-        if j - 1 >= 0 and (i, j-1) not in self.seen and self.grid[i][j - 1] == '1':
+        if j - 1 >= 0 and (i, j - 1) not in self.seen and self.grid[i][j - 1] == '1':
             self.dfs(i, j - 1)
-            count += 1
-        if j + 1 < len(self.grid[0]) and (i, j+1) not in self.seen and self.grid[i][j + 1] == '1':
+        if j + 1 < len(self.grid[0]) and (i, j + 1) not in self.seen and self.grid[i][j + 1] == '1':
             self.dfs(i, j + 1)
-            count += 1
-        if count == 0:
-            return
+        return
 
 
 s = Solution()

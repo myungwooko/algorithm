@@ -46,7 +46,6 @@ class LRUCache:
             self.db.move_to_end(key)
             return self.db[key]
         return -1
-        return self.db[key]
 
     def put(self, key, value):
         self.db[key] = value
