@@ -132,3 +132,4 @@ p = ["mobile","mouse","moneypot","monitor","mousepad"]
 word = "mouse"
 test = s.suggestedProducts(p, word)
 print(test==[["mobile","moneypot","monitor"],["mobile","moneypot","monitor"],["mouse","mousepad"],["mouse","mousepad"],["mouse","mousepad"]])
+
