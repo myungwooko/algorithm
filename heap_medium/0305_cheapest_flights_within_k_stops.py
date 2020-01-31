@@ -111,7 +111,7 @@ Their test case should be added in. The testcases for the contest did not cover 
 The fix makes the solution not really a Dijkstra that it is losing some property that Dijkstra has to use a priority queue. Instead, it falls into a BFS like solution.
 But since I effectively adapt it from Dijkstra, I decide to remain the original code in the bottom for anyone who is interested in the changes.
 
-This is basically an implementation for the Dijkstra algorithm based on the description in the book "Cracking the coding interview", page 634. Its description is really clear.
+This is basically an implementation for the Dijkstra algorithm based on the description in the book "Cracking the coding _interview", page 634. Its description is really clear.
 The only thing that is "adapted" is highlighted in the code # this two lines are important below.
 
 Using vanila Dijkstra can help us figure out the shortest weighted path from the src to dst.

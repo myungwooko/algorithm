@@ -135,3 +135,30 @@ print(133, test2=="weloveio")
 
 
 
+
+"""
+Feedback
+
+The candidate understands CS fundamentals and I certainly see potential in the candidate. To continue practicing, 
+the candidate can continue working with these algorithmic patterns:
+
+DFS/BFS
+greedy
+sliding window
+divide and conquer
+recursion
+dynamic programming.
+
+A popular site to practice algorithms is leetcode.com. To ensure practice conditions close to the _interview setting, I encourage
+1. Code in a notepad
+2. Setup a timer 
+3. Talk during a practice
+4. Create some psychological pressure, e.g. ask somebody to watch you during practice, record yourself on a video, etc.
+
+To review topics of system design, the candidate can start from:
+- https://github.com/donnemartin/system-design-primer
+- https://github.com/checkcheckzz/system-design-_interview
+
+"""
+
+

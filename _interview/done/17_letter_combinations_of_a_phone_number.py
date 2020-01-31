@@ -29,25 +29,6 @@ Although the above answer is in lexicographical order, your answer could be in a
 res+char를 argument(인수)로서 넣는것은 선언하는 것과 아무런 상관이 없는 것. 그냥 그값을 넣는 것일뿐이다. 그러므로 이 경우에 참조되는 값은 아무런 영향을
 받지 않는다.  
 """
-
-def letterCombinations(digits):
-    if not digits:
-        return []
-    dic = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
-    result = []
-
-    def helper(digits, idx, res):
-        if len(res) == len(digits):
-            result.append(res)
-            return
-        for char in dic[digits[idx]]:
-            res += char
-            helper(digits, idx + 1, res)
-
-    helper(digits, 0, "")
-    return result
-
-
 def letterCombinations(digits):
     if not digits:
         return []
