@@ -51,24 +51,26 @@ class TreeNode(object):
         self.right = None
 
 
-class Solution(object):
-    # iteratively
-    def kthSmallest(self, root, k):
-        """
-        :type root: TreeNode
-        :type k: int
-        :rtype: int
-        """
+class Solution:
+    # Time complexity : O(N)
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        def helper(node):
+            return helper(node.left) + [node.val] + helper(node.right) if node else []
+
+        return helper(root)[k - 1]
+
+    # Time complexity : O(H + k), where H is a tree height.
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
         stack = []
         while True:
             while root:
                 stack.append(root)
                 root = root.left
-            node = stack.pop()
+            root = stack.pop()
             k -= 1
-            if k == 0:
-                return node.val
-            root = node.right
+            if not k:
+                return root.val
+            root = root.right
 
 
 node2 = TreeNode(2)
