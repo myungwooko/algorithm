@@ -33,104 +33,52 @@ cache.get(4);       // returns 4
 """
 import collections
 
+
 class LFUCache:
 
     def __init__(self, capacity):
         """
         :type capacity: int
-        """
-        self.k = capacity
-        self.cacheFreq = collections.defaultdict(collections.OrderedDict)
-        self.cacheKey = {}
-        self.leastFreq = 1
-
-    def _evict(self):
-        key, _ = self.cacheFreq[self.leastFreq].popitem(last=False)
-        del self.cacheKey[key]
-
-    def _update(self, key, new_v=None):
-        freq, v = self.cacheKey[key]['freq'], self.cacheKey[key]['value']
-        del self.cacheFreq[freq][key]
-        if not self.cacheFreq[self.leastFreq]:
-            self.leastFreq += 1
-        self.cacheKey[key] = {'freq': freq + 1, 'value': new_v or v}
-        self.cacheFreq[freq + 1][key] = new_v or v
-
-    def get(self, key):
-        """
-        :type key: int
-        :rtype: int
-        """
-        if key not in self.cacheKey:
-            return -1
-        self._update(key)
-        return self.cacheKey[key]['value']
-
-    def put(self, key, value):
-        """
-        :type key: int
-        :type value: int
-        :rtype: void
-        """
-        if key in self.cacheKey:
-            self._update(key, value)
-            return
-        self.cacheKey[key] = {'freq': 1, 'value': value}
-        self.cacheFreq[1][key] = value
-        if len(self.cacheKey) > self.k:
-            self._evict()
-        self.leastFreq = 1
-
-
-# 위 내용 참고
-class LFUCache:
-    def __init__(self, capacity):
-        """
-        :type capacity: int
-
-        *Data structure:
-        self.cacheKey  => {key1: {freq: frequency, val: value}...}
-        self.cacheFreq => {freq1: [(key, val), ...]...}
-
-        *Algorithm
-        simply,
-        => key를 통해 해당 frequency를 알수 있다.그것을 통해 cacheFreq에서도 freq 증가 시킬것 시키고 least에 대한 것도 확인 후 정리 진행.
-        => 길이가 꽉 찼을때 leastFreq, cacheFreq를 통해 삭제 대상의 key를 얻을수 있다. 그것을 통해 cacheKey 정리,
-           확인 후 leastFreq도 정리.
-
-        결국 양방향에서 서로에 대한 정보를 적절히 가지고 있는 것으로 문제 해결.
         """
         self.capacity = capacity
         self.cacheKey = {}
         self.cacheFreq = collections.defaultdict(collections.OrderedDict)
         self.leastFreq = 1
 
-    def get(self, key):
-        if key in self.cacheKey:
-            freq, val = self.cacheKey[key]["freq"], self.cacheKey[key]["val"]
-            self.cacheKey[key]["freq"] = freq + 1
-            del self.cacheFreq[freq][key]
-            self.cacheFreq[freq + 1][key] = val
-            if not self.cacheFreq[self.leastFreq]:
-                self.leastFreq += 1
-            return val
-        return -1
+    def _evict(self):
+        key, val = self.cacheFreq[self.leastFreq].popitem(last=False)
+        del self.cacheKey[key]
+        # 어차피 조회할 freq들은 모두 set 되어있고(그러므로 get, update는 문제 없고)
+        # 남은건 무언가가 새로 들어오는 것 뿐인데 그러면 그때 put에서 self.leastFreq = 1해주면 그걸로 만사형통. 모든게 해결
 
-    def put(self, key, val):
+    # concerning update or get
+    def _update(self, key, n_val=None):
+        val, freq = self.cacheKey[key]["val"], self.cacheKey[key]["freq"]
+        del self.cacheFreq[freq][key]
+        if not self.cacheFreq[self.leastFreq]:
+            self.leastFreq += 1
+        self.cacheFreq[freq + 1][key] = n_val or val
+        self.cacheKey[key] = {"val": n_val or val, "freq": freq + 1}
+
+    def get(self, key):
+        if key not in self.cacheKey:
+            return -1
+        self._update(key)
+        return self.cacheKey[key]["val"]
+
+    def put(self, key, value):
         if not self.capacity:
             return
-        if self.capacity == len(self.cacheKey) and key not in self.cacheKey:
-            outKey, outVal = self.cacheFreq[self.leastFreq].popitem(last=False)
-            del self.cacheKey[outKey]
         if key in self.cacheKey:
-            freq = self.cacheKey[key]["freq"]
-            self.cacheKey[key]["freq"] = freq + 1
-            self.cacheKey[key]["val"] = val
-            del self.cacheFreq[freq][key]
-            self.cacheFreq[freq + 1][key] = val
-            if not self.cacheFreq[self.leastFreq]:
-                self.leastFreq += 1
-        else:
-            self.cacheKey[key] = {"freq": 1, "val": val}
-            self.leastFreq = 1
-            self.cacheFreq[self.leastFreq][key] = val
+            self._update(key, value)
+            return
+        if self.capacity == len(self.cacheKey):
+            self._evict()
+        self.leastFreq = 1
+        self.cacheKey[key] = {"val": value, "freq": self.leastFreq}
+        self.cacheFreq[self.leastFreq][key] = value
+        return
+
+
+
+
