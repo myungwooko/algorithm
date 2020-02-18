@@ -52,16 +52,17 @@ print(test)
 substring 자체를 구하는 
 """
 class Solution:
-    def lengthOfLongestSubstring(self, s):
+    def lengthOfLongestSubstring(self, s: str) -> int:
         if len(s) <= 1:
-            return 1
-        d = {s[1]: 1}
-        sub = s[1]
+            return len(s)
+        d = {s[0]: 1}
+        sub = s[0]
         for i in range(1, len(s)):
             if s[i] in sub:
                 d[sub] = len(sub)
-                index = sub.find(s[i])
-                sub = sub[index+1:] + s[i]
+                idx = sub.find(s[i])
+                #앞의 것은 카운트 했으니 오히려 앞의 중복 요소를 제외하고 현재것(중복기준 뒤)의 기준으로 기본 가장 긴것을 만들어주는 과정. 그리고 거기서 부터 진행
+                sub = sub[idx+1:] + s[i]
             else:
                 sub += s[i]
                 if i == len(s) - 1:
