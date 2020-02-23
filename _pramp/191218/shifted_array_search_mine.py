@@ -92,8 +92,7 @@ def shifted_arr_search(shiftArr, num):
         mid = (lo + hi) // 2
         if shiftArr[mid] == num:
             return mid
-        # pick the sorted part at between left and right
-        elif shiftArr[lo] <= shiftArr[mid]:
+        elif shiftArr[lo] < shiftArr[mid]:
             if shiftArr[lo] <= num < shiftArr[mid]:
                 hi = mid - 1
             else:

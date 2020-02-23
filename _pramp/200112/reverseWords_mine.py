@@ -46,6 +46,20 @@ def arrMirror(arr, start, end):
     return arr
 
 
+def reverseWords(s):
+    rev = s[::-1]
+    for i in range(len(rev)):
+        if i == 0 or (i > 0 and not rev[i-1].isalpha()):
+            start = i
+        elif i == len(rev) - 1 or not rev[i+1].isalpha():
+            end = i
+            while start < end:
+                rev[start], rev[end] = rev[end], rev[start]
+                start += 1
+                end -= 1
+    return rev
+
+
 arr = [ 'p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
         'm', 'a', 'k', 'e', 's', '  ',
         'p', 'r', 'a', 'c', 't', 'i', 'c', 'e' ]

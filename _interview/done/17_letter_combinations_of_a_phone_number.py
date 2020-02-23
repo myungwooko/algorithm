@@ -34,21 +34,16 @@ def letterCombinations(digits):
         return []
     dic = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
     result = []
-
-    def helper(digits, idx, res):
+    def helper(idx, res):
         if len(res) == len(digits):
             result.append(res)
             return
         for char in dic[digits[idx]]:
-            helper(digits, idx + 1, res + char)
-
-    helper(digits, 0, "")
+            helper(idx + 1, res + char)
+    helper(0, "")
     return result
 
-
 num = "23"
-# Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
-
-
+# letterCombinations("23") == ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
 test = letterCombinations(num)
-print(test)
+print(test==["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"])

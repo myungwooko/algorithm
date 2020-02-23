@@ -1,3 +1,25 @@
+"""
+Array of Array Products
+Given an array of integers arr, you’re asked to calculate for each index i the product of all integers except the integer at that index (i.e. except arr[i]). Implement a function arrayOfArrayProducts that takes an array of integers and returns an array of the products.
+
+Solve without using division and analyze your solution’s time and space complexities.
+
+Examples:
+
+input:  arr = [8, 10, 2]
+output: [20, 16, 80] # by calculating: [10*2, 8*2, 8*10]
+
+input:  arr = [2, 7, 3, 4]
+output: [84, 24, 56, 42] # by calculating: [7*3*4, 2*3*4, 2*7*4, 2*7*3]
+Constraints:
+
+[time limit] 5000ms
+
+[input] array.integer arr
+
+0 ≤ arr.length ≤ 20
+[output] array.integer
+"""
 def array_of_array_products_brute(arr):
     res = []
     for i in range(len(arr)):
@@ -98,9 +120,47 @@ def array_of_array_product(arr):
         arr[i] = accRight[i]*accLeft[i]
     return arr
 
+
+
+def array_of_array_product(arr):
+    if not arr or len(arr) == 1:
+        return []
+    l = [1]
+    r = [1]
+    for i in range(len(arr)-1):
+        l_multiplier = arr[i]
+        r_multiplier = arr[-(i+1)]
+        l_turn = l[-1] * l_multiplier
+        r_turn =  r[-1] * r_multiplier
+        l.append(l_turn)
+        r.append(r_turn)
+    r = r[::-1]
+
+    result = []
+    for i in range(len(l)):
+        result.append(l[i] * r[i])
+
+    return result
+
 arr = [2, 7, 3, 4]
+"""
+=>
+   1 7x3x4x1  1x2 3x4x1, 1x2x7 4x1, 1x2x7x3 1
+   l     r      l   r     l     r    l      r
+
+=> We need to make 
+l = [1, 1x2, 1x2x7, 1x2x7x3]
+r = [1, 1x4, 1x4x3, 1x4x3x7]
+
+=> then reverse r
+=> and then just multiply it
+"""
 test = array_of_array_products(arr)
 print(test)
+
+
+
+
 
 
 

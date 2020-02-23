@@ -81,3 +81,34 @@ class Solution:
                     r -= 1
         return res
 
+S = Solution()
+nums = [-1, 0, 1, 2, -1, -4]
+test = S.threeSum(nums)
+print(test)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

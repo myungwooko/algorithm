@@ -102,7 +102,7 @@ print(test1 == "dcba")
 
 s2 = "(oi(love)ew)"
 test2 = reverseInside(s2)
-print(test2=="weloveio")
+print(11, test2=="weloveio")
 
 
 
@@ -132,8 +132,6 @@ print(129, test1 == "dcba")
 s2 = "(oi(love)ew)"
 test2 = bracketReverse(s2)
 print(133, test2=="weloveio")
-
-
 
 
 """

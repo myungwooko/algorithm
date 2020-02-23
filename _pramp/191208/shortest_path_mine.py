@@ -41,8 +41,6 @@ All sr, sc, tr, tc are valid locations in the grid, grid[sr][sc] = grid[tr][tc] 
 [output] integer
 """
 
-
-
 """
 dfs depth first search
 """
@@ -70,6 +68,7 @@ def shortestCellPath(grid, sr, sc, tr, tc):
         return -1
     return min(results)
 
+
 grid = [
         [1, 1, 1, 1],
         [0, 1, 0, 1],
@@ -96,7 +95,6 @@ grid = [
 sr, sc, tr, tc = 2, 0, 1, 0
 test = shortestCellPath(grid, sr, sc, tr, tc)
 print(test==1)
-
 
 
 """

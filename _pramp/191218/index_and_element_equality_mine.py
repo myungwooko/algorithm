@@ -1,4 +1,5 @@
-#basically from some point, if value is greater than its index it's not possible to find matching one.
+# Just a information, basically from some point, if value is greater than its index it's not possible to find matching one.
+# if arr's every element is not repeated and arr is sorted in order of ascending
 
 
 # O(N)
@@ -14,20 +15,65 @@ def index_equals_value_search(arr):
 
 # O(logN)
 def index_equals_value_search(arr):
-  res = []
-  lo, hi = 0, len(arr) - 1
-  while lo <= hi:
-    m = (lo + hi) // 2
-    if arr[m] >= m:
-      if arr[m] == m:
-        res.append(m)
-      hi = m - 1
-    else:
-      lo = m + 1
-  if res:
-    return res[-1]
-  else:
+    lo, hi = 0, len(arr) - 1
+    candidates = []
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if arr[mid] >= mid:
+            if mid == arr[mid]:
+                candidates.append(mid)
+            hi = mid - 1
+        else:
+            lo = mid + 1
+
+    if candidates:
+        return candidates[-1]
     return -1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 """
  arr = [-8,0,2,5,9]
@@ -38,4 +84,11 @@ hi    4
 m     2
 a[m]  2 
 """
+
+
+
+
+
+
+
 

@@ -29,17 +29,18 @@ class Solution:
             seen = set()
             seen.add(s[i])
             for j in range(i+1, len(s)):
-                if j > len(s) - 1:
-                    break
                 if s[j] not in seen:
                     seen.add(s[j])
                 else:
+                    # j-1 => because this turn is repeated turn and we want to check non repeated arrange valid one
                     if result[1] - result[0] < (j-1) - i:
                         result = (i, j-1)
                     break
         if result[0] == result[1]:
             return result[0]
         return result
+
+
 
 S = Solution()
 test1 = S.lengthOfLongestSubstring("abcabcbb")
@@ -50,5 +51,25 @@ test3 = S.lengthOfLongestSubstring("pwwkew")
 print(test3 == (2, 4))
 test4 = S.lengthOfLongestSubstring("b")
 print(test4 == 0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -37,19 +37,13 @@ list x in li => O(n), Average
 """
 def getDifferentNumber(arr):
    n = len(arr)
-   collection = set()
+   numbers = set()
    for i in range(n):
-       collection.add(arr[i])
+       numbers.add(arr[i])
 
    for i in range(n):
-       if i not in collection:
+       if i not in numbers:
            return i
 
-a = [0, 2, 3, 4, 5]
+a = [7, 0, 2, 3, 4, 5]
 print(getDifferentNumber(a))
-
-
-
-
-
-

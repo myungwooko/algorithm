@@ -1,5 +1,5 @@
-#basically from some point, if value is greater than its index it's not possible to find matching one.
-
+"""Let us find the smallest element that the element itself and the index is same"""
+#basically from some point, if value is greater than its index it's not possible to find matching one from that point.
 
 # O(N)
 def index_equals_value_search(arr):
@@ -14,19 +14,18 @@ def index_equals_value_search(arr):
 
 # O(logN)
 def index_equals_value_search(arr):
-  res = []
-  lo, hi = 0, len(arr) - 1
-  while lo <= hi:
-    m = (lo + hi) // 2
-    if arr[m] >= m:
-      if arr[m] == m:
-        res.append(m)
-      hi = m - 1 
-    else:
-      lo = m + 1 
-  if res:
-    return res[-1]
-  else:
+    res = []
+    lo, hi = 0, len(arr)-1
+    while lo <= hi:
+        mid = (lo+hi) // 2
+        if arr[mid] >= mid:
+            if arr[mid] == mid:
+                res.append(mid)
+            hi = mid - 1
+        else:
+            lo = mid + 1
+    if res:
+        return res[-1]
     return -1
 
 """
@@ -38,4 +37,6 @@ m     2
 a[m]  2 
 """
 
-
+input = [-8,0,2,5,9]
+test = index_equals_value_search(input)
+print(test)
