@@ -10,12 +10,11 @@ Examples:
 
 source = "bit", target = "dog"
 words = ["but", "put", "big", "pot", "pog", "dog", "lot"]
-
 output: 5
 explanation: bit -> but -> put -> pot -> pog -> dog has 5 transitions.
+
 source = "no", target = "go"
 words = ["to"]
-
 output: -1
 Constraints:
 
@@ -29,41 +28,42 @@ Constraints:
 [output] array.integer
 """
 def shortestWordEditPath(source, target, words):
-    """
-    @param source: str
-    @param target: str
-    @param words: str[]
-    @return: int
-    """
     results = []
     if len(source) != len(target):
         return -1
+    results = []
 
-    def helper(word, seen, count):
-        if word == target: # is 보단 ==
+    def helper(curr, seen, count):
+        if curr == target:
             results.append(count)
+            return
+
         candidates = []
-        for i in range(len(words)):
-            wordComp = words[i]
-            cc = 0
-            for j in range(len(word)):
-                if word[j] != wordComp[j]:
-                    cc += 1
-            if cc == 1:
-                candidates.append(words[i])
+        for word in words:
+            if len(curr) != len(word):
+                continue
+
+            diff = 0
+            for i in range(len(curr)):
+                if curr[i] != word[i]:
+                    diff += 1
+
+            if diff == 1:
+                candidates.append(word)
+
         if not candidates:
             return
 
-        for k in candidates:
-            if k in seen:
+        for candi in candidates:
+            if candi in seen:
                 continue
-            helper(k, seen + [word], count + 1) ############################ """recursion에서 reference를 끊기 위해 새로 생성되는 새로운 주소값을 넣기 위해서 이렇게 해준다."""
-        return -1
-    helper(source, [], 0)                      ###########################   그래서 set이 아닌 list를 썼다. set은 add로 넣게 되면 같은 주소값 같은 set 오브젝트를 참조하니까.
+            helper(candi, seen + [curr], count+1)  # recursion에서 reference를 끊기 위해 새로 생성되는 새로운 주소값을 넣기 위해서 이렇게 해준다.
+        return
+
+    helper(source, [], 0) # 그래서 set이 아닌 list를 썼다. set은 add로 넣게 되면 같은 주소값 같은 set 오브젝트를 참조하니까.
     if results:
         return min(results)
-    else:
-        return -1
+    return -1
 
 
 source = "hit"
