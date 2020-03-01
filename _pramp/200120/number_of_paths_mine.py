@@ -4,8 +4,6 @@ You’re testing a new driverless car that is located at the Southwest (bottom-l
 to get to the opposite, Northeast (top-right), corner of the grid. Given n, the size of the grid’s axes, write a function
 numOfPathsToDest that returns the number of the possible paths the driverless car can take.
 
-altthe car may move only in the white squares
-
 For convenience, let’s represent every square in the grid as a pair (i,j). The first coordinate in the pair denotes the east-to-west axis,
 and the second coordinate denotes the south-to-north axis. The initial state of the car is (0,0), and the destination is (n-1,n-1).
 
@@ -65,20 +63,17 @@ b까지의 경로는 a까지의 경로 + d까지의 경로
 아래의 문제에선 조건이 하나 더있다. y(column) >= x(row) 여야만 한다.
 각각의 문제의 조건을 잘 확인할 것.
 """
+# Eventually the picture is picture as a abstraction for making understanding well.
+# We can implement it as we are comfortable, keeping that basic concept.
 def num_of_paths_to_dest(n):
-    if n == 1:
-        return 1
     dp = [[0]*n for _ in range(n)]
     dp[0] = [1]*n
-    #for i in range(n): => 사실상 0부터 할 필요는 없으므로
-    #  for j in range(n):
-    for i in range(1, n):
-        for j in range(1, n):
-            if i > j:
-                continue
-            dp[i][j] = dp[i-1][j] + dp[i][j-1]
+    for i in range(1, len(dp)):
+        for j in range(len(dp[0])):
+            if j >= i:
+                dp[i][j] = dp[i-1][j] + dp[i][j-1]
     return dp[-1][-1]
 
-
-test = num_of_paths_to_dest(3)
+test = num_of_paths_to_dest(4)
 print(test)
+

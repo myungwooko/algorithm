@@ -59,6 +59,7 @@ class Solution:
             glo = max(glo, loc)
         return glo
 
+
 s = Solution()
 p = [7,1,5,3,6,4]
 p = [2,10,1,3,4,25]

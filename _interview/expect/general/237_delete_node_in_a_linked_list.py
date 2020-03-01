@@ -42,3 +42,42 @@ class Solution(object):
         """
         node.val = node.next.val
         node.next = node.next.next
+
+
+def shortestCellPath(grid, sr, sc, tr, tc):
+    if not grid or not grid[0]:
+        return -1
+    m = len(grid)
+    n = len(grid[0])
+
+    queue = [(sr, sc, 0, [])]
+    while queue:
+        r, c, count, seen = queue.pop(0)
+        if r == tr and c == tc:
+            return count
+        candidates = [(r - 1, c), (r, c + 1), (r + 1, c), (r, c - 1)]
+        for r1, c1 in candidates:
+            if 0 <= r1 < m and 0 <= c1 < n and grid[r1][c1] and (r1, c1) not in seen:
+                queue.append((r1, c1, count + 1, seen + [(r1, c1)]))
+
+    return -1
+
+
+grid = [[1, 1, 1, 1], [0, 0, 0, 1], [1, 1, 1, 1]]
+sr = 0
+sc = 0
+tr = 2
+tc = 0
+
+test = shortestCellPath(grid, sr, sc, tr, tc)
+print(test==8)
+
+
+
+
+
+
+
+
+
+

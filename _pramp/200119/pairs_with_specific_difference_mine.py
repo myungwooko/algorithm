@@ -37,16 +37,21 @@ def find_pairs_with_given_difference(arr, k):
             if arr[i] - arr[j] == k:
                 pairs.append([arr[i], arr[j]])
 
-    result = sorted(pairs, key=lambda x: dic[x[1]])
+    result = sorted(pairs, key=lambda x: arr.index(x[1]))
 
     return result
 
 
 """
+key point
+* Why its approach is different with Two sum => x, y's different order can be possibly pair even though reverse order can't be.
+
    x-y = k 
 => y = x-k
-1. first for loop => dict with dict[x-k] = x * 다음 for loop에서 순서대로 돌면서 y로서 존재한다면 바로 key로서 조회할수 있도록.
-   결론적으론 dic[y] = x
+1. first for loop => dict with dict[x-k] = x 
+다음 for loop에서 순서대로 돌면서 y로서 존재한다면 바로 key로서 조회할수 있도록.
+=> 결론적으론 dic[y] = x
+
 2. second for loop => 자신을 y로서 조회 vlaue가 해당 연산으로서의 x로서 존재 하는 것이므로. pair = [dict[key], key]
 *순서대로 돌면서 접근하므로 y에 대한 index순서로서의 pairs를 자연적으로 갖게 된다.
 Time O(N), Space O(2N) => O(N)
@@ -54,11 +59,11 @@ Time O(N), Space O(2N) => O(N)
 
 
 def find_pairs_with_given_difference(arr, k):
-    dic = {}
-    for i in range(len(arr)):
-        dic[arr[i] - k] = arr[i]
     pairs = []
-    for j in range(len(arr)):
-        if arr[j] in dic:
-            pairs.append([dic[arr[j]], arr[j]])
+    hashMap = {}
+    for num in arr:
+        hashMap[num - k] = num
+    for num in arr:
+        if num in hashMap:
+            pairs.append([hashMap[num], num])
     return pairs
