@@ -91,7 +91,7 @@ class Solution(object):
         lexTickets = sorted(tickets)
         idMap = collections.defaultdict(list)
         for i, (d, a) in enumerate(lexTickets):
-            idMapTickets[d].append(i)
+            idMap[d].append(i)
 
         queue = [["JFK", [], []]]
         while queue:
@@ -99,7 +99,7 @@ class Solution(object):
             if len(path) == n:
                 return path + [f]
 
-            for i in idMapTickets[f]:
+            for i in idMap[f]:
                 if i not in seen:
                     queue.append([lexTickets[i][1], path + [f], seen + [i]])
 
