@@ -107,5 +107,3 @@ test2 = S.longestStrChain(words2)
 print(1, test1)
 print(2, test2)
 
-
-
