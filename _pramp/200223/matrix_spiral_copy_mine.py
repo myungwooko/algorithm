@@ -86,6 +86,9 @@ def spiral_copy(matrix):
                 count += 1
                 seen.add((r, c))
                 c += 1
+            # if it is a case of length or a case of seen, any case has to do this kind of calculation
+            # because when we couldn't get into while loop, that means that (r, c) is not valid.
+            # and we deliver valid r and c to next helper function with direction.
             c -= 1
             helper("down", r+1, c, result, count)
         elif direction == "down":
