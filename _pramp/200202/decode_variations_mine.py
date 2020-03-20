@@ -19,9 +19,8 @@ explanation: There are 3 messages that encode to '1262': 'AZB', 'ABFB', and 'LFB
 def decodeVariations(S):
     result = []
     charMap = {}
-    for i in range(65, 65+26):
-        asciiChr = chr(i)
-        charMap[str(i-64)] = asciiChr
+    for i in range(65, 91):
+        charMap[str(i-64)] = chr(i)
 
     def helper(s, acc):
         if s == "" and acc:
@@ -39,3 +38,35 @@ def decodeVariations(S):
 
 test = decodeVariations("1262")
 print(test)
+
+
+
+
+def decodeVariations(S):
+    result = []
+    asciiMap = {}
+    for i in range(65, 91):
+        asciiMap[i-64] = chr(i)
+
+    print(1, asciiMap)
+
+    def helper(s, path):
+        if not s and path:
+            result.append(path)
+            return
+
+        curr = ""
+        for i, n in enumerate(s):
+            curr += n
+            if curr in asciiMap:
+                helper(s[i+1:], path + asciiMap[curr])
+
+    helper(S, "")
+    print(1, result)
+    return len(result)
+
+
+
+test = decodeVariations("1262")
+print(test)
+

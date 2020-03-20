@@ -13,6 +13,7 @@ def index_equals_value_search(arr):
     return -1
 
 # O(logN)
+# if you find the one you need to check if the smaller one exist or not
 def index_equals_value_search(arr):
     res = []
     lo, hi = 0, len(arr)-1
@@ -40,3 +41,43 @@ a[m]  2
 input = [-8,0,2,5,9]
 test = index_equals_value_search(input)
 print(test)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

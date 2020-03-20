@@ -35,9 +35,9 @@ input:  inputMatrix  =
 right => down => left => up
 [1,2,3,4,5,10,15,20,10,15,20,19,18,17,16,11,6,7,8,9,14,13,12]
 """
-# Time complexit mxn => O(mn)? => No
+# Time complexity mxn => O(mn)? => No
 # => Because delete Item time complexity     => O(n)
-# => Because pop intermediat item of index k => O(k)
+# => Because poping intermediate item of index k => O(k)
 # It's time complexity greater than O(mn)
 def spiral_copy(inputMatrix):
     if not inputMatrix:
@@ -68,3 +68,56 @@ def spiral_copy(inputMatrix):
     helper(inputMatrix, "right", result)
     return result
 
+# No deletion => Using seen!
+# Because of the deletion is too expensive
+# improved by using seen
+def spiral_copy(matrix):
+    if not matrix:
+        return []
+    seen = set()
+    count = 0
+    result = []
+    def helper(direction, r, c, result, count):
+        if count == len(matrix)*len(matrix[0]) or r < 0 or r >= len(matrix) or c < 0 or c >= len(matrix[0]):
+            return
+        if direction == "right":
+            while c < len(matrix[0]) and (r, c) not in seen:
+                result.append(matrix[r][c])
+                count += 1
+                seen.add((r, c))
+                c += 1
+            c -= 1
+            helper("down", r+1, c, result, count)
+        elif direction == "down":
+            while r < len(matrix) and (r, c) not in seen:
+                result.append(matrix[r][c])
+                count += 1
+                seen.add((r, c))
+                r += 1
+            r -= 1
+            helper("left", r, c-1, result, count)
+        elif direction == "left":
+            while c >= 0 and (r, c) not in seen:
+                result.append(matrix[r][c])
+                count += 1
+                seen.add((r, c))
+                c -= 1
+            c += 1
+            helper("up", r-1, c, result, count)
+        elif direction == "up":
+            while r >= 0 and (r, c) not in seen:
+                result.append(matrix[r][c])
+                count += 1
+                seen.add((r, c))
+                r -= 1
+            r += 1
+            helper("right", r, c+1, result, count)
+    helper("right", 0, 0, result, count)
+    return result
+
+
+input = [[6, 7, 8, 9, 10],
+         [11, 12, 13, 14, 15],
+         [16, 17, 18, 19, 20]]
+test = spiral_copy(input)
+print(test)

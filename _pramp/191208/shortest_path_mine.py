@@ -115,35 +115,35 @@ def shortestCellPath(grid, sr, sc, tr, tc):
         candidates = [(x - 1, y), (x, y + 1), (x + 1, y), (x, y - 1)]
         for x1, y1 in candidates:
             if 0 <= x1 < m and 0 <= y1 < n and grid[x1][y1] and (x1, y1) not in seen:
-                queue.append((x1, y1, depth + 1, seen + [(x1, y1)]))
+                queue.append((x1, y1, depth + 1, seen + [(x, y)]))
                 # <= personally seen has not to be referenced by all cases, each case has to keep doing this with their level's
                 # seen
     return -1
 
 
 grid = [
-        [1, 1, 1, 1],
-        [0, 1, 0, 1],
-        [1, 1, 1, 1]
-        ]
+    [1, 1, 1, 1],
+    [0, 1, 0, 1],
+    [1, 1, 1, 1]
+]
 sr, sc, tr, tc = 0, 0, 2, 0
 test = shortestCellPath(grid, sr, sc, tr, tc)
 print(test == 4)
 
 grid = [
-        [1, 1, 1, 1],
-        [0, 0, 0, 1],
-        [1, 0, 1, 1]
-        ]
+    [1, 1, 1, 1],
+    [0, 0, 0, 1],
+    [1, 0, 1, 1]
+]
 sr, sc, tr, tc = 0, 0, 2, 0
 test2 = shortestCellPath(grid, sr, sc, tr, tc)
 print(test2 == -1)
 
 grid = [
-         [0,1,0],
-         [1,0,0],
-         [1,0,1]
-        ]
+    [0, 1, 0],
+    [1, 0, 0],
+    [1, 0, 1]
+]
 sr, sc, tr, tc = 2, 0, 1, 0
 test = shortestCellPath(grid, sr, sc, tr, tc)
-print(test==1)
+print(test == 1)
