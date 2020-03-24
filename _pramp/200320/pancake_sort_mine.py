@@ -17,12 +17,16 @@ def flip(arr, k):
 
 # Time complexity  O(n) x O(n) = o(n^2) helper function use O(n), and we call it n times.
 # Space complexity O(1)
+"""
+a space complexity of O(1) means that the space required by the algorithm to process data is constant; it does not grow 
+with the size of the data on which the algorithm is operating. Using only variable means O(1) 
+"""
 def pancake_sort(arr):
     def helper(arr, length):
         if not length:
             return
 
-        big = max(arr[:length])
+        big = max(arr[:length]) #need to exclude the finished one
         k = arr.index(big)
         flip(arr, k)
         flip(arr, length-1)
