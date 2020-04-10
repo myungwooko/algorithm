@@ -1,6 +1,9 @@
 '''
-Our profanity filter is responsible for blocking users’ messages that contain sensitive text. Recently, one of our clients has been complaining about users sending permutations of sensitive texts, and would like to block the permutations as well.
-    Implement an algorithm that will find all permutations of string s in string t. Return the results as a list of pairs, where each pair represents the start and end index of the permutation found.
+Our profanity filter is responsible for blocking users’ messages that contain sensitive text. Recently,
+one of our clients has been complaining about users sending permutations of sensitive texts, and would like to block the permutations as well.
+
+Implement an algorithm that will find all permutations of string s in string t.
+Return the results as a list of pairs, where each pair represents the start and end index of the permutation found.
 
 Example:
 Input

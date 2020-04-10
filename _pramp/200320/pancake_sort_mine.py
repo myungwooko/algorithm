@@ -39,8 +39,6 @@ a = [2, 3, 41, 23, 4, 6]
 print(pancake_sort(a))
 
 
-
-
 # Peer's without additional information of Pancake sort
 def flip(arr, k):
     '''
@@ -56,7 +54,8 @@ def flip(arr, k):
         end -= 1
     return arr
 
-# Time O(n), Space O(1)
+# Time O(n^2) including counting flip's time complexity
+# Space O(1)
 def pancake_sort(arr):
     # find the smallest elem at iteration k
     start = 0
@@ -73,22 +72,28 @@ arr = [1, 5, 4, 3, 2]
 print(pancake_sort(arr))
 
 
-
-# exercise
-# take k and change is k-1 for calculating is right => because first k means number of element
+"""
+The reason for doing (s_idx+1 and k-1) two steps,
+even though when two steps are done that will be equal to doing nothing, 
+is the condition said flip's k is for first k element
+"""
 def flip(arr, k):
-  l, r = 0, k-1
-  while l < r:
-    arr[l], arr[r] = arr[r], arr[l]
-    l += 1
-    r -= 1
-  return arr
+    l, r = 0, k-1
+    while l < r:
+        arr[l], arr[r] = arr[r], arr[l]
+        l += 1
+        r -= 1
+    return arr
+
 
 def pancake_sort(arr):
-  for i in range(len(arr)):
-    sub = arr[i:]
-    s_idx = sub.index(min(sub))
-    ordered = flip(sub, s_idx+1)
-    arr[i:] = ordered
-  return arr
+    for i in range(len(arr)):
+        sub = arr[i:]
+        s_idx = sub.index(min(sub))
+        ordered = flip(sub, s_idx+1)
+        arr[i:] = ordered
+    return arr
+
+arr = [1, 5, 4, 3, 2]
+print(pancake_sort(arr))
 

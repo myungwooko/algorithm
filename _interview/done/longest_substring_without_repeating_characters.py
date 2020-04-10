@@ -24,24 +24,29 @@ Explanation: The answer is "wke", with the length of 3.
 
 """
 length 구하는 것
+=> 생각해보니 dic를 만들필요없이 그냥 list나 res string에 넣으면 될 것 같다. 
 """
+# Because of find Time O(n^2)
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def lengthOfLongestSubstring(self, s):
         if len(s) <= 1:
             return len(s)
-        map = {s[0]: 1}
+
+        dic = {s[0]: 1}
         sub = s[0]
-        for i, v in enumerate(s[1:]):
-            if v in sub:
-                map[sub] = len(sub)
-                index = sub.find(v)
-                #앞의 것은 카운트 했으니 오히려 앞의 중복 요소를 제외하고 현재것(중복기준 뒤)의 기준으로 기본 가장 긴것을 만들어주는 과정. 그리고 거기서 부터 진행
-                sub = sub[index + 1:] + v
+
+        for i in range(1, len(s)):
+            if s[i] in sub:
+                idx = sub.index(s[i])
+                dic[sub] = len(sub)
+                # 앞의 것은 카운트 했으니 오히려 앞의 중복 요소를 제외하고 현재것(중복기준 뒤)의 기준으로 기본 가장 긴것을 만들어주는 과정. 그리고 거기서 부터 진행
+                sub = sub[idx+1:] + s[i]
             else:
-                sub += v
-                if i is len(s[1:])-1:
-                    map[sub] = len(sub)
-        return max(map.values())
+                sub += s[i]
+                if i == len(s)-1:
+                    dic[sub] = len(sub)
+        return max(dic.values())
+
 
 S = Solution()
 s = "abcabcbb"
@@ -76,7 +81,48 @@ class Solution:
                     result = k
         return result
 
-S = Solution()
-s = "abcabcbb"
-test = S.lengthOfLongestSubstring(s)
-print(test)
+    # 굳이 dict를 사용할 필요는 없어 보인다. length를 구하는 것도 마찬가지로 보인다. <================================================================= 이런식으로 전부 가능!
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(s) <= 1:
+            return len(s)
+
+        sub = s[0]
+        res = ""
+        for i in range(1, len(s)):
+            if s[i] in sub:
+                if not res or len(res) < len(sub):
+                    res = sub
+                idx = sub.find(s[i])
+                #앞의 것은 카운트 했으니 오히려 앞의 중복 요소를 제외하고 현재것(중복기준 뒤)의 기준으로 기본 가장 긴것을 만들어주는 과정. 그리고 거기서 부터 진행
+                sub = sub[idx+1:] + s[i]
+            else:
+                sub += s[i]
+                if i == len(s) - 1:
+                    if not res or len(res) < len(sub):
+                        res = sub
+        return res
+
+
+    # def lengthOfLongestSubstring(self, s):
+    #     if len(s) <= 1:
+    #         return len(s)
+    #
+    #     dic = {s[0]: 1}
+    #     sub = s[0]
+    #
+    #     for i in range(1, len(s)):
+    #         if s[i] in sub:
+    #             idx = sub.index(s[i])
+    #             dic[sub] = len(sub)
+    #             # 앞의 것은 카운트 했으니 오히려 앞의 중복 요소를 제외하고 현재것(중복기준 뒤)의 기준으로 기본 가장 긴것을 만들어주는 과정. 그리고 거기서 부터 진행
+    #             sub = sub[idx+1:] + s[i]
+    #         else:
+    #             sub += s[i]
+    #             if i == len(s)-1:
+    #                 dic[sub] = len(sub)
+    #
+    #     res = [(k, v) for k, v in dic.items()]
+    #     res.sort(key= lambda x: (-x[1], x[0]))
+    #     print(res)
+    #     return res[0][0]
+

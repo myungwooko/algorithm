@@ -41,6 +41,11 @@ class Solution:
         return result
 
 
+
+
+
+
+
 S = Solution()
 test1 = S.lengthOfLongestSubstring("abcabcbb")
 print(test1, test1 == (0, 2))
@@ -50,6 +55,7 @@ test3 = S.lengthOfLongestSubstring("pwwkew")
 print(test3 == (2, 4))
 test4 = S.lengthOfLongestSubstring("b")
 print(test4 == 0)
+
 
 
 

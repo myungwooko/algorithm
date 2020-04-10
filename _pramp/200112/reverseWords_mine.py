@@ -25,44 +25,48 @@ Constraints:
 [output] array.character
 
 """
-def reverseWords(arr):
-    if not arr:
-        return arr
+def reverse_words(arr):
     rev = arr[::-1]
     start = 0
-    for i in range(len(rev)):
-        if i == len(rev) - 1 or rev[i+1] == "  ":
-            rev = arrMirror(rev, start, i)
-            if i < len(rev) - 1:
-                start = i + 2
-    return rev
+    for i in range(len(arr)):
+        if rev[i] == " " or i == len(rev) - 1:
+            if i == len(rev) - 1:
+                end = i
+            else:
+                end = i - 1
 
-def arrMirror(arr, start, end):
-    l, r = start, end
-    while l < r:
-        arr[l], arr[r] = arr[r], arr[l]
-        l += 1
-        r -= 1
-    return arr
-
-
-def reverseWords(s):
-    rev = s[::-1]
-    for i in range(len(rev)):
-        if i == 0 or (i > 0 and not rev[i-1].isalpha()):
-            start = i
-        elif i == len(rev) - 1 or not rev[i+1].isalpha():
-            end = i
             while start < end:
                 rev[start], rev[end] = rev[end], rev[start]
                 start += 1
                 end -= 1
+
+            if i == len(rev) - 1:
+                return rev
+
+            start = i + 1
+            while start < len(rev) and rev[start] == " ":
+                start += 1
+
     return rev
 
+#
+# def reverse_words(s):
+#     rev = s[::-1]
+#     for i in range(len(rev)):
+#         if i == 0 or (i > 0 and not rev[i-1].isalpha()):
+#             start = i
+#         elif i == len(rev) - 1 or not rev[i+1].isalpha():
+#             end = i
+#             while start < end:
+#                 rev[start], rev[end] = rev[end], rev[start]
+#                 start += 1
+#                 end -= 1
+#     return rev
 
-arr = [ 'p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
-        'm', 'a', 'k', 'e', 's', '  ',
+
+arr = [ 'p', 'e', 'r', 'f', 'e', 'c', 't', ' ',
+        'm', 'a', 'k', 'e', 's', ' ',
         'p', 'r', 'a', 'c', 't', 'i', 'c', 'e' ]
 
-test = reverseWords(arr)
+test = reverse_words(arr)
 print(test)

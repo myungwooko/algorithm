@@ -65,6 +65,26 @@ def shortestWordEditPath(source, target, words):
         return min(results)
     return -1
 
+# queue
+# Time: O(N*M) / N is length of word and M is length of a word(source or target)
+def shortestWordEditPath(source, target, words):
+    queue = [(source, [])]
+
+    while queue:
+        curr, seen = queue.pop(0)
+        if curr == target:
+            return len(seen)
+
+        for word in words:
+            idx = count = 0
+            while idx < len(word):
+                if word[idx] != curr[idx]:
+                    count += 1
+                idx += 1
+            if word not in seen and count == 1:
+                queue.append((word, seen + [word]))
+
+    return -1
 
 source = "hit"
 target = "cog"

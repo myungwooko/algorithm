@@ -29,26 +29,6 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
-    def find_largest_smaller_key(self, num):
-        if not self.root:
-            return -1
-        self.biggest = -1
-
-        def helper(node):
-            if not node:
-                return
-
-            if num <= node.key:
-                helper(node.left)
-            else:
-                #작을때만 저장해주므로
-                self.biggest = node.key
-                helper(node.right)
-            return
-        helper(self.root)
-        return self.biggest
-
-    #option 2 different style
     """
     - if the value is bigger than num => go left
     - if the value is smaller than num => go right
@@ -58,28 +38,20 @@ class BinarySearchTree:
       we need to go parent, if parent satisfies smaller than num(because it also can be bigger than num) => return that node's val.
     """
     def find_largest_smaller_key(self, num):
-        if not self.root:
-            return -1
+        self.biggest = -1
 
-        root = self.root
-        while True:
-            prev = root.key
-            if root.key >= num:
-                if root.left:
-                    root = root.left
-                else:
-                    if root.parent and root.parent.key < root.key:
-                        root = root.parent
+        def helper(node):
+            if node.key >= num:
+                if node.left:
+                    return helper(node.left)
+                return self.biggest
             else:
-                if root.right and root.right.key < num:
-                    root = root.right
-            if prev == root.key:
-                break
+                self.biggest = node.key
+                if node.right:
+                    return helper(node.right)
+                return self.biggest
 
-        if root.key < num:
-            return root.key
-        return -1
-
+        return helper(self.root)
 
     def insert(self, key):
         # 1) If tree is empty, create the root
@@ -125,42 +97,9 @@ bst.insert(12);
 bst.insert(11);
 bst.insert(14);
 
-result = bst.find_largest_smaller_key(26)
+result = bst.find_largest_smaller_key(5)
 
 print("Largest smaller number is %d " % (result))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
