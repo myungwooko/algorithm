@@ -40,8 +40,6 @@ test = decodeVariations("1262")
 print(test)
 
 
-
-
 def decodeVariations(S):
     result = []
     asciiMap = {}

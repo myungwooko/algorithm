@@ -12,12 +12,12 @@
 def is_match(text, pattern):
     def helper(l, r):
 
-        # text done
+        # text done_with_pramp
         if l >= len(text):
             if r >= len(pattern):
                 return True
             else:
-                # pattern not done
+                # pattern not done_with_pramp
                 # case of char* we can eliminate and then can do only next
                 if r + 1 < len(pattern) and pattern[r + 1] == "*":
                     return helper(l, r + 2)
@@ -26,7 +26,7 @@ def is_match(text, pattern):
                     return False
 
 
-        # pattern done and text not done
+        # pattern done_with_pramp and text not done_with_pramp
         elif r >= len(pattern) and l < len(text):
             return False
 

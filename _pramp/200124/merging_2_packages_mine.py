@@ -22,32 +22,23 @@ Constraints:
 
 [output] array.integer
 """
-
-# time O(N), space O(N)
+# Time O(N), Space O(N)
 def get_indices_of_item_wights(arr, limit):
     hashMap = {}
-    pair = []
     for i, v in enumerate(arr):
       if v not in hashMap:
         hashMap[limit-v] = i
       else:
-        pair = [i, hashMap[v]]
-    return pair
+        return [i, hashMap[v]]
+    return []
 
-
-def get_indices_of_item_wights(arr, limit):
-    hashMap = {}
-    pairs = []
-    for i in range(len(arr)):
-        if arr[i] not in hashMap:
-            hashMap[limit-arr[i]] = i
-        else:
-            pairs.append([i, hashMap[arr[i]]])
-    return pairs
-
-
+"""
 arr = [4, 6, 10, 15, 16]
 lim = 21
 
 test = get_indices_of_item_wights(arr, lim)
 print(test)
+
+"""
+
+

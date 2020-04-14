@@ -15,7 +15,7 @@ We may rotate the i-th domino, so that A[i] and B[i] swap values.
 
 Return the minimum number of rotations so that all the values in A are the same, or all the values in B are the same.
 
-If it cannot be done, return -1.
+If it cannot be done_with_pramp, return -1.
 
 
 
