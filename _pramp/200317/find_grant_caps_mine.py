@@ -1,23 +1,122 @@
+"""
+Award Budget Cuts
+The awards committee of your alma mater (i.e. your college/university) asked for your assistance with a budget allocation
+ problem they’re facing. Originally, the committee planned to give N research grants this year.
+ However, due to spending cutbacks, the budget was reduced to newBudget dollars and now they need to reallocate the grants.
+ The committee made a decision that they’d like to impact as few grant recipients as possible by applying a maximum cap on all grants.
+ Every grant initially planned to be higher than cap will now be exactly cap dollars. Grants less or equal to cap, obviously, won’t be impacted.
+
+Given an array grantsArray of the original grants and the reduced budget newBudget, write a function findGrantsCap that
+finds in the most efficient manner a cap such that the least number of recipients is impacted
+and that the new budget constraint is met (i.e. sum of the N reallocated grants equals to newBudget).
+
+Analyze the time and space complexities of your solution.
+
+Example:
+
+input:  grantsArray = [2, 100, 50, 120, 1000], newBudget = 190
+
+output: 47 # and given this cap the new grants array would be
+           # [2, 47, 47, 47, 47]. Notice that the sum of the
+           # new grants is indeed 190
+Constraints:
+
+[time limit] 5000ms
+
+[input] array.double grantsArray
+
+0 ≤ grantsArray.length ≤ 20
+0 ≤ grantsArray[i]
+[input] double newBudget
+
+[output] double
+"""
+"""
+
+maximum cap on all grants
+Every grant initially planned to be higher than cap
+Grants less or equal to cap, obviously, won’t be impacted.
+
+
+ex1)
+grantsArray = [8,7,2,5,9], newBudget = 20
+              [2,5,7,8,9]
+
+              20 - 2 => 18/4 => cap 4.5
+
+- roughCap => 20/5  => 4.0
+- one(2) can be excluded because it is definitely not impacted by cutting budget
+- rough2Cap => so 20/4 => 5.0
+- one(5) can be excluded because it is definitely not impacted by cutting budget
+- 20/3 => 6.66666666
+- cap => 5 cap
+
+
+ex2)
+grantsArray = [8,7,2,5,9], newBudget = 4
+
+4/5 => 0.8
+=> 0.8
+
+
+ex3)
+grantsArray = [8,7,2,5,9], newBudget = 30
+30/5 => 6.0 => 2,5
+30 - (2+5) => 23
+23/3 => cap 7.6
+23-7 => 16
+16/2 => 8.0
+[8, 7, 2, 5, 8]
+
+
+[8,7,2,5,9] 20
+
+[2,5,7,8,9] 20 
+20/5 => 4
+
+2
+
+available = 20 -2 = 18 / 4 = 4.5
+
+
+
+Binary search
+https://leetcode.com/problems/koko-eating-bananas/
+
+"""
 def find_grants_cap(grantsArray, newBudget):
     def helper(lis, budget):
         beforeLen = len(lis)
-        #Because at Python2 3/2 => 1
+        # Because at Python2 3/2 => 1
         ave = float(budget) / len(lis)
         for i, v in enumerate(lis):
             if v <= ave:
                 e = lis.pop(i)
                 budget -= e
         if len(lis) == beforeLen or not lis:
-          if ave == int(ave):
-            return int(ave)
-          return ave
+            if ave == int(ave):
+                return int(ave)
+            return ave
         return helper(lis, budget)
+
     return helper(grantsArray, newBudget)
 
 
-grantsArray = [2, 100, 50, 120, 1000]
-newBudget = 190
-#output: 47
+# Time complexity O(n)
+# Space complexity O(n)
+def find_grants_cap(grantsArray, newBudget):
+    def helper(rest_budget, rest_admins):
+        n = len(rest_admins)
+        ave = rest_budget / float(n)
+        next_admins = []
+        for cost in rest_admins:
+            if cost > ave:
+                next_admins.append(cost)
+            else:
+                rest_budget -= cost
+        if n == len(next_admins):
+            return ave
+        return helper(rest_budget, next_admins)
 
-test = find_grants_cap(grantsArray, newBudget)
-print(test)
+    return helper(newBudget, grantsArray)
+
