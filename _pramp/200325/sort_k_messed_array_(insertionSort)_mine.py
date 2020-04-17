@@ -1,26 +1,3 @@
-# Ans says from 1 to n is basic condition and used heap's efficiency for extraction => if there is k element => log(k)
-
-# mine Time: O(Nk), Space: O(N)
-def sort_k_messed_array(arr, k):
-    sub = []
-    i = 0
-    while i < len(arr):
-        if sub and sub[-1] > arr[i]:
-            if len(sub) < k:
-                start = 0
-            else:
-                start = len(sub) - k
-            for sub_idx in range(start, len(sub)):
-                if sub[sub_idx] >= arr[i]:
-                    sub.insert(sub_idx, arr[i])
-                    # for "for loop"
-                    break
-        else:
-            sub.append(arr[i])
-        i += 1
-    return sub
-
-
 # 이경우 k는 Time complexity를 위해 줬다고 생각? 어쨌든 그만큼에 못간다는 걸 나타내준거니까.
 # insertionSort Time: O(Nk), Space: O(1)
 def sort_k_messed_array(arr, k):
@@ -42,6 +19,23 @@ def sort_k_messed_array(arr, k):
         arr[j + 1] = key
     return arr
 
+
+# Time O(NK) <- condition gave us already
+# Space O(1)
+def sort_k_messed_array(arr, k):
+    idx = 1
+    while idx < len(arr):
+        while idx - 1 >= 0 and arr[idx] < arr[idx - 1]:
+            arr[idx], arr[idx - 1] = arr[idx - 1], arr[idx]
+            idx -= 1
+        idx += 1
+    return arr
+
+
+arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9]
+k = 2
+test = sort_k_messed_array(arr, k)
+print(test)
 
 test = sort_k_messed_array([1,2,4,3,5,7,6], 1)
 print(test)

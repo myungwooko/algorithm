@@ -25,6 +25,8 @@ pow(0.25, 2) = 1/2
 Our purpose is looking for the root(* value is decimal point => binary search with decimal point - no problem)
 """
 
+# Time complexity O(logN)
+# Space complexity O(1)
 def root(x, n):
     if x == 0: return 0
     # anyway it is not 0 but we use it as we want to search maximum arrange
@@ -56,3 +58,24 @@ def root(x, n):
         approx_root = float(upper_bound + lower_bound) / 2
 
     return approx_root
+
+
+# simply we implement root()
+# it has to be a function that has difference at most smaller than 0.001
+def root(x, n):
+    lower_bound, upper_bound = 0, max(1, x)
+    approx_root = (lower_bound + upper_bound) / float(2)
+
+    while approx_root - lower_bound >= 0.001:
+        if pow(approx_root, n) < x:
+            lower_bound = approx_root
+        elif pow(approx_root, n) > x:
+            upper_bound = approx_root
+        else:
+            break
+        approx_root = (lower_bound + upper_bound) / float(2)
+
+    return approx_root
+
+
+
