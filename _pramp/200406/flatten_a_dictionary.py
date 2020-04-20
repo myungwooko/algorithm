@@ -4,30 +4,6 @@
 - inner level's dictionary's key has to be concatenated by dot with outer level's key
 - empty key -> skip
 """
-
-def flatten_dictionary1(dictionary):
-    d = dictionary
-    res = {}
-
-    def helper(value, path):
-        if type(value) != dict:
-            res[path] = value
-            return
-
-        for k, v in value.items():
-            if k == "":
-                helper(v, path)
-            elif path == "":
-                helper(v, k)
-            else:
-                helper(v, path + "." + k)
-
-    for k, v in d.items():
-        helper(v, k)
-
-    return res
-
-
 # Time O(n) * n=numbers of all of keys , Space O(1)
 def flatten_dictionary(dictionary):
     d = dictionary
@@ -55,4 +31,33 @@ def flatten_dictionary(dictionary):
             del d[k]
         # not dict case just is remained as it was\
     return d
+
+
+# Time: o(N) n is number of all keys
+# Space: O(m) m is number of last level values
+# didn't use O(1) becuase changing original input is not good habit, as I heard.
+def flatten_dictionary(dictionary):
+    res = {}
+
+    def helper(path, value):
+        if type(value) != dict:
+            res[path] = value
+            return
+
+        for k, v in value.items():
+            if not path:
+                helper(k, v)
+            elif not k:
+                helper(path, v)
+            else:
+                helper(path + "." + k, v)
+
+    for k, v, in dictionary.items():
+        if type(v) is not dict:
+            res[k] = v
+        else:
+            helper(k, v)
+
+    return res
+
 

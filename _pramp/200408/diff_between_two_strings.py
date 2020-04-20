@@ -91,23 +91,3 @@ path = [A, B, +"D"]
                                                                        add everything from target = source.length + target.length
 """
 
-
-def array_of_array_products(arr):
-    # divide left and right => for cumulated value
-    if len(arr) <= 1:
-        return []
-
-    left = right = [1]
-    print("line 63", left, right)
-    for i in range(len(arr) - 1):
-        left.append(left[-1] * arr[i])
-
-    for j in range(len(arr) - 1, 1):
-        right.insert(0, right[-1] * arr[j])
-
-    print(left, right)
-
-    return left
-
-input = [2,2]
-print(array_of_array_products(input))
