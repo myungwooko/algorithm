@@ -74,7 +74,7 @@ print(pancake_sort(arr))
 
 """
 The reason for doing (s_idx+1 and k-1) two steps,
-even though when two steps are done_with_pramp that will be equal to doing nothing, 
+even though when two steps are _pramp_added_with_done that will be equal to doing nothing, 
 is the condition said flip's k is for first k element
 """
 def flip(arr, k):

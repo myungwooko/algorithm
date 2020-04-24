@@ -44,29 +44,22 @@ All sr, sc, tr, tc are valid locations in the grid, grid[sr][sc] = grid[tr][tc] 
 """
 dfs depth first search
 """
+#DFS, Time: 거의 recursve와 같이 중복이 많은 과정을 다 하는 느낌으로 이해
 def shortestCellPath(grid, sr, sc, tr, tc):
-    if not grid or not grid[0]:
-        return -1
-
-    results = []
-    m = len(grid)
-    n = len(grid[0])
-
-    def helper(x, y, count, seen):
-        if x == tr and y == tc:
-            results.append(count)
-        candidates = [(x - 1, y), (x, y + 1), (x + 1, y), (x, y - 1)]
-        for x1, y1 in candidates:
-            if 0 <= x1 < m and 0 <= y1 < n and grid[x1][y1] and (x1, y1) not in seen:
-                helper(x1, y1, count + 1, seen + [(x1, y1)])
-                # <= personally seen has not to be referenced by all cases, each case has to keep doing this with their level's
-                # seen
+  m = len(grid)
+  n = len(grid[0])
+  res = [-1]
+  def helper(r, c, seen, count):
+    if r == tr and c == tc:
+      if res[0] == -1 or count < res[0]:
+        res[0] = count
         return
-
-    helper(sr, sc, 0, [])
-    if not results:
-        return -1
-    return min(results)
+    candidates = [(r+1, c), (r-1, c), (r, c+1), (r, c-1)]
+    for r1, c1 in candidates:
+      if 0 <= r1 < m and 0 <= c1 < n and grid[r1][c1] and (r1, c1) not in seen:
+        helper(r1, c1, seen + [(r1, c1)], count+1)
+  helper(sr, sc, [], 0)
+  return res[0]
 
 
 grid = [
@@ -102,22 +95,21 @@ bfs breadth first search
 time O(R*C), space O(R*C)
 bfs breadth first search
 """
+# BFS, Time: 다해보려고 하지만 찾으면 바로 return으로 better than DFS 이게 맞는듯?!
 def shortestCellPath(grid, sr, sc, tr, tc):
-    if not grid or not grid[0]:
-        return -1
     m = len(grid)
     n = len(grid[0])
-    queue = [(sr, sc, 0, [])]
+    queue = [(sr, sc, [], 0)]
+
     while queue:
-        x, y, depth, seen = queue.pop(0)
-        if x == tr and y == tc:
-            return depth
-        candidates = [(x - 1, y), (x, y + 1), (x + 1, y), (x, y - 1)]
-        for x1, y1 in candidates:
-            if 0 <= x1 < m and 0 <= y1 < n and grid[x1][y1] and (x1, y1) not in seen:
-                queue.append((x1, y1, depth + 1, seen + [(x, y)]))
-                # <= personally seen has not to be referenced by all cases, each case has to keep doing this with their level's
-                # seen
+        r, c, seen, count = queue.pop(0)
+        if r == tr and c == tc:
+            return count
+        candidates = [(r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)]
+        for r1, c1 in candidates:
+            if 0 <= r1 < m and 0 <= c1 < n and grid[r1][c1] and (r1, c1) not in seen:
+                queue.append((r1, c1, seen + [(r1, c1)], count + 1))
+
     return -1
 
 

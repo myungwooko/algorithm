@@ -1,28 +1,27 @@
 import unittest
 
 def bracket_match(text):
-    stack = []
-    count = 0
-
-    for i in text:
-        if i == "(":
-            stack.append(i)
+    only_right = 0
+    left = []
+    for c in text:
+        if c == "(":
+            left.append(c)
         else:
-            if stack:
-                stack.pop()
+            if left:
+                left.pop()
             else:
-                count += 1
-    return count + len(stack)
+                only_right += 1
+    return len(left) + only_right
+
 
 """
-Expected = 2
+Actual = 4
+Expected = 0
 
-  "(("      
-    ^ 
-stack = [(,(]
-count = 0
-
-2
+  "(((((((((((((("      
+     ^ 
+stack = [(
+count = 2
 """
 
 class TestSolution(unittest.TestCase):

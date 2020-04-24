@@ -9,25 +9,38 @@
           in that case (l, r + 2)
   return False
 """
+"""
+# if r >= len(pattern) - 1:
+  return True
+# if same character or character and "." => pass
+# if a character and "*"
+    # previous character is same => l should move to termination of that char idx
+    # else:
+        if "previous index of text" and after of "*" of pattern has to be same:
+          in that case (l, r + 2)
+  return False
+"""
+
+
 def is_match(text, pattern):
     def helper(l, r):
 
-        # text done_with_pramp
-        if l >= len(text):
-            if r >= len(pattern):
+        # == can be replaced with >= but there will be no more increment after ==
+        # == is more concise
+        if l == len(text):
+            if r == len(pattern):
                 return True
             else:
-                # pattern not done_with_pramp
                 # case of char* we can eliminate and then can do only next
                 if r + 1 < len(pattern) and pattern[r + 1] == "*":
                     return helper(l, r + 2)
-                # otherwise(not char* case)
+                # otherwise(=not char* case)
                 else:
                     return False
 
 
         # pattern done_with_pramp and text not done_with_pramp
-        elif r >= len(pattern) and l < len(text):
+        elif r == len(pattern) and l < len(text):
             return False
 
 
@@ -63,3 +76,30 @@ def is_match(text, pattern):
             return False
 
     return helper(0, 0)
+
+
+def is_match(text, pattern):
+    def helper(i, j):
+        if i == len(text):
+            if j == len(pattern):
+                return True
+            else:
+                if j + 1 < len(pattern) and pattern[j + 1] == "*":
+                    return helper(i, j + 2)
+                else:
+                    return False
+        elif j == len(pattern) and i < len(text):
+            return False
+        elif j + 1 < len(pattern) and pattern[j + 1] == "*":
+            if text[i] == pattern[j] or pattern[j] == ".":
+                return helper(i + 1, j) or helper(i, j + 2)
+            else:
+                return helper(i, j + 2)
+        elif text[i] == pattern[j] or pattern[j] == ".":
+            return helper(i + 1, j + 1)
+        else:
+            return False
+
+    return helper(0, 0)
+
+

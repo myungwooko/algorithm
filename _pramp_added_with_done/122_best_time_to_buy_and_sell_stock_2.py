@@ -26,7 +26,7 @@ Example 3:
 
 Input: [7,6,4,3,1]
 Output: 0
-Explanation: In this case, no transaction is _pramp_check_with, i.e. max profit = 0.
+Explanation: In this case, no transaction is _pramp_added_with_done, i.e. max profit = 0.
 Accepted
 
 -처음의 문제 파악이 정말 중요하다.

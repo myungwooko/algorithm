@@ -18,7 +18,7 @@ Example 2:
 
 Input: [7,6,4,3,1]
 Output: 0
-Explanation: In this case, no transaction is _pramp_check_with, i.e. max profit = 0.
+Explanation: In this case, no transaction is _pramp_added_with_done, i.e. max profit = 0.
 """
 class Solution:
     def maxProfit(self, prices) -> int:
