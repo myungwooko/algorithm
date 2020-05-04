@@ -22,15 +22,17 @@ Constraints:
 
 [output] array.integer
 """
-# Time O(N), Space O(N)
+# Time complexity: O(n)
+# Space complexity: O(n)
 def get_indices_of_item_wights(arr, limit):
-    hashMap = {}
-    for i, v in enumerate(arr):
-      if v not in hashMap:
-        hashMap[limit-v] = i
-      else:
-        return [i, hashMap[v]]
+    map1 = {}
+    for i in range(len(arr)):
+        if arr[i] not in map1:
+            map1[limit - arr[i]] = i
+        else:
+            return [i, map1[arr[i]]]
     return []
+
 
 """
 arr = [4, 6, 10, 15, 16]
@@ -40,5 +42,6 @@ test = get_indices_of_item_wights(arr, lim)
 print(test)
 
 """
+
 
 

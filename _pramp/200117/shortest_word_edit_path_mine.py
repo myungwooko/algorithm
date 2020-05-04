@@ -65,8 +65,10 @@ def shortestWordEditPath(source, target, words):
         return min(results)
     return -1
 
+
 # queue
-# Time: O(N*M) / N is length of word and M is length of a word(source or target)
+# Time: O(N*M) / N is length of words and M is length of a word(source or target)
+# => 이것은 결국 최대 모든 node(여기서 node는 queue에 대한 모든 가능한 element를 말함 *(source, seen, count))
 def shortestWordEditPath(source, target, words):
     queue = [(source, [])]
 
@@ -83,7 +85,23 @@ def shortestWordEditPath(source, target, words):
                 idx += 1
             if word not in seen and count == 1:
                 queue.append((word, seen + [word]))
+    return -1
 
+
+def shortestWordEditPath(source, target, words):
+    queue = [(source, [], 0)]
+    while queue:
+        curr, seen, count = queue.pop(0)
+        if curr == target:
+            return count
+        for word in words:
+            diff = 0
+            if word not in seen and word != curr:
+                for i in range(len(word)):
+                    if curr[i] != word[i]:
+                        diff += 1
+                if diff == 1:
+                    queue.append((word, seen + [curr], count + 1))
     return -1
 
 source = "hit"

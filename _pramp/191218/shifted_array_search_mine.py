@@ -84,25 +84,22 @@ def shifted_arr_search(shiftArr, num):
                 hi = mid - 1
     return -1
 
+
 def shifted_arr_search(shiftArr, num):
-    if not shiftArr:
-        return -1
-    lo, hi = 0, len(shiftArr) - 1
-    while lo <= hi:
-        mid = (lo + hi) // 2
+    l, r = 0, len(shiftArr) - 1
+    while l <= r:
+        mid = (l + r) // 2
         if shiftArr[mid] == num:
             return mid
-        elif shiftArr[lo] < shiftArr[mid]:
-            if shiftArr[lo] <= num < shiftArr[mid]:
-                hi = mid - 1
+        elif shiftArr[l] < shiftArr[mid]:
+            if shiftArr[l] <= num < shiftArr[mid]:
+                r = mid - 1
             else:
-                lo = mid + 1
+                l = mid + 1
         else:
-            if shiftArr[mid] < num <= shiftArr[hi]:
-                lo = mid + 1
-            else:
-                hi = mid - 1
+            l = mid + 1
     return -1
+
 
 shiftArr = [5, 6, 7, 8, 1, 2, 3]
 num = 2
