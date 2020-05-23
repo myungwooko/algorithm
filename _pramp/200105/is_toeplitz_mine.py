@@ -26,39 +26,62 @@ Constraints:
 0 ≤ arr[i][j] ≤ 20
 [output] boolean
 """
+
+
+# Time: O((m-1)*(n-1))
+# Space: O(1)
 def isToeplitz(arr):
-    maxRow = len(arr)
-    maxCol = len(arr[0])
-
-    def nextChecker(r, c):
-        if (r + 1 == maxRow or c + 1 == maxCol):
-            return True
-        if arr[r][c] == arr[r + 1][c + 1]:
-            return nextChecker(r + 1, c + 1)
-        else:
-            return False
-
-    for c in range(len(arr[0]) - 1):
-        if not nextChecker(0, c):
-            return False
-
-    for r in range(len(arr) - 1):
-        if not nextChecker(r, 0):
-            return False
-    return True
-
-def isToeplitz(matrix):
-    if not matrix or not matrix[0]:
+  for i in range(len(arr)-1):
+    for j in range(len(arr[0])-1):
+      if arr[i][j] != arr[i+1][j+1]:
         return False
-    for i in range(len(matrix)-1):
-        for j in range(len(matrix[0]) - 1):
-            if matrix[i][j] != matrix[i+1][j+1]:
-                return False
-    return True
+  return True
 
 
-arr = [[1, 2, 3, 4],
-       [5, 1, 2, 3],
-       [6, 5, 1, 2]]
+def isToeplitz(arr):
+  for i in range(len(arr)-1):
+    for j in range(len(arr[0])-1):
+      r = i + 1
+      c = j + 1
+      while r < len(arr) and c < len(arr[0]):
+        if arr[r][c] != arr[i][j]:
+          return False
+        r += 1
+        c += 1
+  return True
+
+
+arr =[[1,2,3,4],
+      [5,1,2,3],
+      [6,5,1,2]]
 
 print(isToeplitz(arr))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

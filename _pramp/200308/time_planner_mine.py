@@ -1,3 +1,49 @@
+"""
+Time Planner
+Implement a function meetingPlanner that given the availability, slotsA and slotsB, of two people and a meeting duration dur,
+returns the earliest time slot that works for both of them and is of duration dur. If there is no common time slot that satisfies the duration requirement,
+return an empty array.
+
+Time is given in a Unix format called Epoch, which is a nonnegative integer holding the number of seconds that have elapsed since 00:00:00 UTC,
+Thursday, 1 January 1970.
+
+Each person’s availability is represented by an array of pairs. Each pair is an epoch array of size two.
+The first epoch in a pair represents the start time of a slot. The second epoch is the end time of that slot.
+The input variable dur is a positive integer that represents the duration of a meeting in seconds.
+The output is also a pair represented by an epoch array of size two.
+
+In your implementation assume that the time slots in a person’s availability are disjointed,
+i.e, time slots in a person’s availability don’t overlap. Further assume that the slots are sorted by slots’ start time.
+
+Implement an efficient solution and analyze its time and space complexities.
+
+Examples:
+
+input:  slotsA = [[10, 50], [60, 120], [140, 210]]
+        slotsB = [[0, 15], [60, 70]]
+        dur = 8
+output: [60, 68]
+
+input:  slotsA = [[10, 50], [60, 120], [140, 210]]
+        slotsB = [[0, 15], [60, 70]]
+        dur = 12
+output: [] # since there is no common slot whose duration is 12
+Constraints:
+
+[time limit] 5000ms
+
+[input] array.array.integer slotsA
+
+1 ≤ slotsA.length ≤ 100
+slotsA[i].length = 2
+[input] array.array.integer slotsB
+
+1 ≤ slotsB.length ≤ 100
+slotsB[i].length = 2
+[input] integer
+
+[output] array.integer
+"""
 # Time O(NM)
 def meeting_planner(slotsA, slotsB, dur):
     for i, s1 in enumerate(slotsA):
@@ -33,7 +79,14 @@ def meeting_planner(slotsA, slotsB, dur):
         if start < end and end - start >= dur:
             return [start, start + dur]
 
-        # Bc smaller's next has more possibility to have smaller start
+        # 작으면 해당 슬롯에서 다음것으로 넘겼을때 그 다음것의 끝나는 시간이 범위 안에 들어가는 것일수도 있고
+        # 거기서 또 해당 범위를 찾을수도 있는 거니까 그런식으로 하나씩 넘겨준다.
+        # 이것은 O(n+m)이고 O(n*m)보다 훨씬낫다.
+
+        # after checking the range is exist,
+        # when one time block's ending time is smaller than other's ending time
+        # we can make comparison with its next one.
+        # That make time complexity O(n+m) and this is better than O(n*m)
         if slotsA[a][1] < slotsA[b][1]:
             a += 1
         else:
@@ -42,5 +95,40 @@ def meeting_planner(slotsA, slotsB, dur):
     return []
 
 
+# Time O(n*m) where n is length of slotsA and m is length of slotsB
+# Space O(1)
+def meeting_planner(slotsA, slotsB, dur):
+    for s1, e1 in slotsA:
+        for s2, e2 in slotsB:
+            start = max(s1, s2)
+            end = min(e1, e2)
+            if start < end and end - start >= dur:
+                return [start, start + dur]
+    return []
 
 
+# Time complexity: O(n+m), n is for length of slotsA and m is for length of slotsB
+# Space complexity: O(1)
+def meeting_planner(slotsA, slotsB, dur):
+    a = b = 0
+    while a < len(slotsA) and b < len(slotsB):
+        start = max(slotsA[a][0], slotsB[b][0])
+        end = min(slotsA[a][1], slotsB[b][1])
+
+        if end - start >= dur:
+            return [start, start + dur]
+
+        if slotsA[a][1] < slotsB[b][1]:
+            a += 1
+        else:
+            b += 1
+
+    return []
+
+
+slotsA = [[10, 50], [60, 120], [140, 210]]
+slotsB = [[0, 15], [60, 70]]
+dur = 8
+#output: [60, 68]
+test = meeting_planner(slotsA, slotsB, dur)
+print(test)

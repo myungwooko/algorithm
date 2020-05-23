@@ -34,57 +34,6 @@ def get_pivot(shiftArr):
     return pivot
 
 
-def binary_search(array, target):
-    l = 0
-    r = len(array) - 1
-    while l <= r:
-        m = (l + r) // 2
-        if array[m] == target:
-            return m
-        elif array[m] > target:
-            r = m - 1
-        else:
-            l = m + 1
-    return -1
-
-
-def shifted_arr_search(shiftArr, num):
-    pivot = get_pivot(shiftArr)
-    l = shiftArr[:pivot + 1]
-    # r's index start from pivot+1
-    r = shiftArr[pivot + 1:]
-    flag = False
-    if not (l[0] <= num <= l[len(l) - 1]):
-        flag = True
-    if flag:
-        res = binary_search(r, num) + len(l)
-    else:
-        res = binary_search(l, num)
-    return res
-
-# the one
-def shifted_arr_search(shiftArr, num):
-    if not shiftArr:
-        return -1
-    lo, hi = 0, len(shiftArr) - 1
-    while lo <= hi:
-        mid = (lo + hi) // 2
-        if shiftArr[mid] == num:
-            return mid
-        # pick the sorted part at between left and right
-        if shiftArr[lo] <= shiftArr[mid]:
-            if shiftArr[lo] <= num < shiftArr[mid]:
-                hi = mid - 1
-            else:
-                lo = mid + 1
-        elif shiftArr[mid] <= shiftArr[hi]:
-            if shiftArr[mid] < num <= shiftArr[hi]:
-                lo = mid + 1
-            else:
-                hi = mid - 1
-    return -1
-
-
 def shifted_arr_search(shiftArr, num):
     l, r = 0, len(shiftArr) - 1
     while l <= r:
@@ -101,6 +50,25 @@ def shifted_arr_search(shiftArr, num):
     return -1
 
 
+# more simple
+# Time: O(logn)
+# Space: O(1)
+def shifted_arr_search(shiftArr, num):
+    l, r = 0, len(shiftArr) - 1
+    while l <= r:
+        mid = (l + r) // 2
+        if shiftArr[mid] == num:
+            return mid
+
+        if shiftArr[l] < shiftArr[mid]:
+            if shiftArr[l] <= num < shiftArr[mid]:
+                r = mid - 1
+                continue
+        l = mid + 1
+
+    return -1
+
+
 shiftArr = [5, 6, 7, 8, 1, 2, 3]
 num = 2
 test = shifted_arr_search(shiftArr, num)
@@ -111,12 +79,10 @@ num = 0
 test2 = shifted_arr_search(shiftArr, num)
 print(test2==0)
 
-
-
 """
 1. shiftArr = [9, 12, 17, 2, 4, 5], num = 2
                ^                ^         
-                    ^                   ^
+                                       
 2. shiftArr = [2, 4, 5 ,9 ,12 ,17], num = 2
 
 

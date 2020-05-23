@@ -57,8 +57,6 @@ Multiple Pointers
 variables l and r
 
 """
-
-
 def reverse_words(arr):
     rev = arr[::-1]
 
@@ -86,44 +84,28 @@ def reverse_words(arr):
     return rev
 
 
+# Time: O(n)
+# Space: O(1)
 def reverse_words(arr):
-    rev = arr[::-1]
+    arr = arr[::-1]
 
-    l = 0
-    for i in range(len(rev)):
-        if rev[i] == " " or i == len(rev) - 1:
-            if i == len(rev) - 1:
-                r = i
-            else:
-                r = i - 1
+    for i in range(len(arr)):
+        if arr[i] == " ":
+            continue
 
+        if i == 0 or arr[i - 1] == " ":
+            l = i
+            # For one character, there is no need for exchanging
+            continue
+
+        if (i + 1 < len(arr) and arr[i + 1] == " ") or i == len(arr) - 1:
+            r = i
             while l < r:
-                rev[l], rev[r] = rev[r], rev[l]
+                arr[l], arr[r] = arr[r], arr[l]
                 l += 1
                 r -= 1
 
-            if i == len(rev) - 1:
-                break
-
-            l = i + 1
-            while l < len(rev) and not rev[l]:
-                l += 1
-
-    return rev
-
-
-# def reverse_words(s):
-#     rev = s[::-1]
-#     for i in range(len(rev)):
-#         if i == 0 or (i > 0 and not rev[i-1].isalpha()):
-#             start = i
-#         elif i == len(rev) - 1 or not rev[i+1].isalpha():
-#             end = i
-#             while start < end:
-#                 rev[start], rev[end] = rev[end], rev[start]
-#                 start += 1
-#                 end -= 1
-#     return rev
+    return arr
 
 
 arr = [ 'p', 'e', 'r', 'f', 'e', 'c', 't', ' ',

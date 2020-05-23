@@ -84,6 +84,59 @@ Binary search
 https://leetcode.com/problems/koko-eating-bananas/
 
 """
+"""
+
+maximum cap on all grants
+Every grant initially planned to be higher than cap
+Grants less or equal to cap, obviously, won’t be impacted.
+
+
+ex1)
+grantsArray = [8,7,2,5,9], newBudget = 20
+              [2,5,7,8,9]
+
+              20 - 2 => 18/4 => cap 4.5
+
+- roughCap => 20/5  => 4.0
+- one(2) can be excluded because it is definitely not impacted by cutting budget
+- rough2Cap => so 20/4 => 5.0
+- one(5) can be excluded because it is definitely not impacted by cutting budget
+- 20/3 => 6.66666666
+- cap => 5 cap
+
+
+ex2)
+grantsArray = [8,7,2,5,9], newBudget = 4
+
+4/5 => 0.8
+=> 0.8
+
+
+ex3)
+grantsArray = [8,7,2,5,9], newBudget = 30
+30/5 => 6.0 => 2,5
+30 - (2+5) => 23
+23/3 => cap 7.6
+23-7 => 16
+16/2 => 8.0
+[8, 7, 2, 5, 8]
+
+
+[8,7,2,5,9] 20
+
+[2,5,7,8,9] 20 
+20/5 => 4
+
+2
+
+available = 20 -2 = 18 / 4 = 4.5
+
+
+
+Binary search
+https://leetcode.com/problems/koko-eating-bananas/
+
+"""
 def find_grants_cap(grantsArray, newBudget):
     def helper(lis, budget):
         beforeLen = len(lis)
@@ -102,21 +155,19 @@ def find_grants_cap(grantsArray, newBudget):
     return helper(grantsArray, newBudget)
 
 
-# Time complexity O(n)
-# Space complexity O(n)
+# Time complexity: O(n) n is number of calling the helper function. But actually exponential bc call stack.
+# Space complexity: O(n) making nextB's sum
 def find_grants_cap(grantsArray, newBudget):
-    def helper(rest_budget, rest_admins):
-        n = len(rest_admins)
-        ave = rest_budget / float(n)
-        next_admins = []
-        for cost in rest_admins:
-            if cost > ave:
-                next_admins.append(cost)
+    def helper(arr, budget):
+        cap = budget / float(len(arr))
+        nextB = []
+        for e in arr:
+            if e <= cap:
+                budget -= e
             else:
-                rest_budget -= cost
-        if n == len(next_admins):
-            return ave
-        return helper(rest_budget, next_admins)
+                nextB.append(e)
+        if len(arr) == len(nextB):
+            return cap
+        return helper(nextB, budget)
 
-    return helper(newBudget, grantsArray)
-
+    return helper(grantsArray, newBudget)

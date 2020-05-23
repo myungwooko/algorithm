@@ -88,21 +88,25 @@ def shortestWordEditPath(source, target, words):
     return -1
 
 
+# BFS
+# Time: O(n*m*k) n is for queue's possible input, m is lengh of word, k is number of characters for a word
+# Space O(n)
 def shortestWordEditPath(source, target, words):
-    queue = [(source, [], 0)]
+    queue = [(source, [],  0)]
     while queue:
         curr, seen, count = queue.pop(0)
         if curr == target:
             return count
         for word in words:
-            diff = 0
-            if word not in seen and word != curr:
-                for i in range(len(word)):
-                    if curr[i] != word[i]:
-                        diff += 1
-                if diff == 1:
-                    queue.append((word, seen + [curr], count + 1))
+            if word not in seen:
+                cc = 0
+            for i in range(len(word)):
+                if word[i] != curr[i]:
+                    cc += 1
+            if cc == 1:
+                queue.append((word, seen + [curr], count+1))
     return -1
+
 
 source = "hit"
 target = "cog"

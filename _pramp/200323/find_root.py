@@ -78,4 +78,21 @@ def root(x, n):
     return approx_root
 
 
+# Simply,
+# concept of nth root = nth_root^n => x
+def root(x, n):
+    lower, upper = 0, x
+    approx_root = (lower + upper) / float(2)
+
+    while approx_root - lower >= 0.001:
+        calced = pow(approx_root, n)
+        if calced > x:
+            upper = approx_root
+        elif calced < x:
+            lower = approx_root
+        else:
+            break
+        approx_root = (lower + upper) / float(2)
+    return approx_root
+
 

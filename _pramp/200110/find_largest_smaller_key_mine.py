@@ -37,21 +37,22 @@ class BinarySearchTree:
     - but if it has to go left,  but there is no left  => that means node value is bigger than the num
       we need to go parent, if parent satisfies smaller than num(because it also can be bigger than num) => return that node's val.
     """
+    # Time: O(logn)
+    # Space: O(1)
     def find_largest_smaller_key(self, num):
         self.biggest = -1
 
         def helper(node):
-            if node.key >= num:
-                if node.left:
-                    return helper(node.left)
-                return self.biggest
-            else:
+            if node.key < num:
                 self.biggest = node.key
                 if node.right:
-                    return helper(node.right)
-                return self.biggest
+                    helper(node.right)
+            elif node.key >= num:
+                if node.left:
+                    helper(node.left)
 
-        return helper(self.root)
+        helper(self.root)
+        return self.biggest
 
     def insert(self, key):
         # 1) If tree is empty, create the root

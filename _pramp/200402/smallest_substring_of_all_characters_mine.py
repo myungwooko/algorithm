@@ -1,4 +1,29 @@
 """
+Smallest Substring of All Characters
+Given an array of unique characters arr and a string str,
+Implement a function getShortestUniqueSubstring that finds the smallest substring of str containing all the characters in arr.
+Return "" (empty string) if such a substring doesn’t exist.
+
+Come up with an asymptotically optimal solution and analyze the time and space complexities.
+
+Example:
+
+input:  arr = ['x','y','z'], str = "xyyzyzyx"
+
+output: "zyx"
+Constraints:
+
+[time limit] 5000ms
+
+[input] array.character arr
+
+1 ≤ arr.length ≤ 30
+[input] string str
+
+1 ≤ str.length ≤ 500
+[output] string
+"""
+"""
 Brute force
 - Time complexity => O(n^2*m*k) => n is length of str, m is length of arr, k is temp acc's length
 => in here, k will definitely always small than str we can eliminate it
@@ -23,7 +48,6 @@ def get_shortest_unique_substring(arr, str):
                     print(1, res)
                     break
     return res
-
 
 
 """
@@ -69,8 +93,6 @@ def get_shortest_unique_substring(arr, str):
     return res
 
 
-
-
 """
 I got it!
 - Using l, r
@@ -88,7 +110,8 @@ I got it!
 """
 
 
-# Time complexity O(N+M) <= in the case, we don't know what is the greater one for N and M we can write exactly what it is
+# Time complexity O(N+M) <= in the case,
+#                        we don't know what is the greater one for N and M we can write exactly what it is
 # Space complexity O(N) N is length of arr
 def get_shortest_unique_substring(arr, str):
     l = 0
@@ -127,3 +150,45 @@ def get_shortest_unique_substring(arr, str):
 
     return res
 
+
+# it is exactly for counting valid for arr chars
+# Time Complexity: O(n+m): n is for length of str, m is for length of arr
+# inside of loop of str, when unique_count stisfies len(arr), it does process of making it smaller as possible but this   thing happens sometimes and minor so it looks doen't need to be added the total time complexity.
+# Space Complexity: O(m): m is for length of arr because we made map_count
+def get_shortest_unique_substring(arr, str):
+    res = ""
+    unique_count = 0
+    map_c = {}
+    l = 0
+
+    for c in arr:
+        map_c[c] = 0
+
+    for r in range(len(str)):
+        curr = str[r]
+        if curr not in map_c:
+            continue
+
+        if map_c[curr] == 0:
+            unique_count += 1
+
+        map_c[curr] += 1
+
+        while unique_count == len(arr):
+            temp = str[l:r + 1]
+
+            if len(temp) == len(arr):
+                return temp
+
+            if not res or len(temp) < len(res):
+                res = temp
+
+            head_char = str[l]
+            if head_char in map_c:
+                map_c[str[l]] -= 1
+                if map_c[str[l]] == 0:
+                    unique_count -= 1
+
+            l += 1
+
+    return res

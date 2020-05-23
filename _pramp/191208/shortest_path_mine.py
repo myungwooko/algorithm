@@ -44,22 +44,54 @@ All sr, sc, tr, tc are valid locations in the grid, grid[sr][sc] = grid[tr][tc] 
 """
 dfs depth first search
 """
-#DFS, Time: 거의 recursve와 같이 중복이 많은 과정을 다 하는 느낌으로 이해
+
+
+# DFS
+# Time complexity O(n*m), but exponentially
+# Space complexity O(n*m) for seen
 def shortestCellPath(grid, sr, sc, tr, tc):
-  m = len(grid)
-  n = len(grid[0])
-  res = [-1]
-  def helper(r, c, seen, count):
-    if r == tr and c == tc:
-      if res[0] == -1 or count < res[0]:
-        res[0] = count
-        return
-    candidates = [(r+1, c), (r-1, c), (r, c+1), (r, c-1)]
-    for r1, c1 in candidates:
-      if 0 <= r1 < m and 0 <= c1 < n and grid[r1][c1] and (r1, c1) not in seen:
-        helper(r1, c1, seen + [(r1, c1)], count+1)
-  helper(sr, sc, [], 0)
-  return res[0]
+    if not grid or not grid[0]:
+        return -1
+
+    res = [-1]
+    m = len(grid)
+    n = len(grid[0])
+
+    def helper(r, c, seen, count):
+        if r == tr and c == tc:
+            if res[0] == -1 or res[0] > count:
+                res[0] = count
+            return
+
+        candidates = [(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)]
+        for r1, c1 in candidates:
+            if 0 <= r1 < m and 0 <= c1 < n and grid[r1][c1] and (r1, c1) not in seen:
+                helper(r1, c1, seen + [(r1, c1)], count + 1)
+
+    helper(sr, sc, [(sr, sc)], 0)
+
+    return res[0]
+
+
+# BFS
+# Time: O(n*m)
+# Space: O(n*m)
+def shortestCellPath(grid, sr, sc, tr, tc):
+    if not grid or not grid[0]:
+        return -1
+    m = len(grid)
+    n = len(grid[0])
+    queue = [(sr, sc, [(sr, sc)], 0)]
+    while queue:
+        r, c, seen, count = queue.pop(0)
+        if r == tr and c == tc:
+            return count
+        candidates = [(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)]
+        for r1, c1 in candidates:
+            if 0 <= r1 < m and 0 <= c1 < n and (r1, c1) not in seen and grid[r1][c1]:
+                queue.append((r1, c1, seen + [(r1, c1)], count + 1))
+
+    return -1
 
 
 grid = [
