@@ -78,21 +78,24 @@ def root(x, n):
     return approx_root
 
 
-# Simply,
-# concept of nth root = nth_root^n => x
+# Time complexity: O(logn)
+# Space complexity: O(1)
 def root(x, n):
-    lower, upper = 0, x
-    approx_root = (lower + upper) / float(2)
+    max_bound = x
+    # can't be zero though
+    min_bound = 0
+    approx_root = (max_bound + min_bound) / float(2)
 
-    while approx_root - lower >= 0.001:
-        calced = pow(approx_root, n)
-        if calced > x:
-            upper = approx_root
-        elif calced < x:
-            lower = approx_root
+    while approx_root >= min_bound + 0.001:
+        curr = pow(approx_root, n)
+        if curr == x:
+            return approx_root
+        elif curr > x:
+            max_bound = approx_root
         else:
-            break
-        approx_root = (lower + upper) / float(2)
+            min_bound = approx_root
+        approx_root = (max_bound + min_bound) / float(2)
     return approx_root
+
 
 

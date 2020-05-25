@@ -30,6 +30,13 @@ Brute force
 => So Time complexity: O(n^2*m)
 => Space complexity: O(m), m is length of arr because we made elements set 
 """
+"""
+Brute force
+- Time complexity => O(n^2*m*k) => n is length of str, m is length of arr, k is temp acc's length
+=> in here, k will definitely always small than str we can eliminate it
+=> So Time complexity: O(n^2*m)
+=> Space complexity: O(m), m is length of arr because we made elements set 
+"""
 
 
 def get_shortest_unique_substring(arr, str):
@@ -151,44 +158,39 @@ def get_shortest_unique_substring(arr, str):
     return res
 
 
-# it is exactly for counting valid for arr chars
-# Time Complexity: O(n+m): n is for length of str, m is for length of arr
-# inside of loop of str, when unique_count stisfies len(arr), it does process of making it smaller as possible but this   thing happens sometimes and minor so it looks doen't need to be added the total time complexity.
-# Space Complexity: O(m): m is for length of arr because we made map_count
+# Time complexity: O(n) n is lenght of str, basically, length of arr will be equal or smaller than length of str.
+# if len(arr) > len(str) is possible, the time complexity can be O(n+m), and m is length of arr.
+# Space complexity: O(m) m is length of arr
 def get_shortest_unique_substring(arr, str):
-    res = ""
-    unique_count = 0
-    map_c = {}
     l = 0
-
+    res = ""
+    arr = set(arr)
+    unique_map = {}
     for c in arr:
-        map_c[c] = 0
+        unique_map[c] = 0
+    unique_count = 0
 
     for r in range(len(str)):
         curr = str[r]
-        if curr not in map_c:
+        if curr not in arr:
             continue
 
-        if map_c[curr] == 0:
+        if unique_map[curr] == 0:
             unique_count += 1
+        unique_map[curr] += 1
 
-        map_c[curr] += 1
+        while unique_count >= len(arr):
+            tmp = str[l:r + 1]
+            if not res or len(tmp) < res:
+                res = tmp
 
-        while unique_count == len(arr):
-            temp = str[l:r + 1]
-
-            if len(temp) == len(arr):
-                return temp
-
-            if not res or len(temp) < len(res):
-                res = temp
-
-            head_char = str[l]
-            if head_char in map_c:
-                map_c[str[l]] -= 1
-                if map_c[str[l]] == 0:
+            head_char = tmp[0]
+            if head_char in unique_map:
+                unique_map[head_char] -= 1
+                if unique_map[head_char] == 0:
                     unique_count -= 1
 
             l += 1
 
     return res
+

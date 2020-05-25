@@ -1,3 +1,27 @@
+"""
+BST Successor Search
+In a Binary Search Tree (BST), an Inorder Successor of a node is defined as the node with the smallest key greater than
+the key of the input node (see examples below). Given a node inputNode in a BST, you’re asked to write a function
+findInOrderSuccessor that returns the Inorder Successor of inputNode. If inputNode has no Inorder Successor, return null.
+
+Explain your solution and analyze its time and space complexities.
+
+altIn this diagram, the inorder successor of 9 is 11 and the inorder successor of 14 is 20.
+
+Example:
+
+In the diagram above, for inputNode whose key = 11
+
+Your function would return:
+
+The Inorder Successor node whose key = 12
+
+Constraints:
+
+[time limit] 5000ms
+[input] Node inputNode
+[output] Node
+"""
 #########################################################
 # CODE INSTRUCTIONS:                                    #
 # 1) The method findInOrderSuccessor you're asked      #
@@ -29,24 +53,20 @@ class BinarySearchTree:
     def find_in_order_successor(self, inputNode):
         if not self.root:
             return
-
-        self.biggest = None
+        self.smallest = None
 
         def helper(node):
-            if not node.left and node.right:
-                return
-
-            if node.key > inputNode.key:
-                if self.biggest == None or node.key < self.biggest.key:
-                    self.biggest = node
-                if node.left:
-                    helper(node.left)
-            else:
+            if node.key <= inputNode.key:
                 if node.right:
                     helper(node.right)
+                return
+            else:
+                self.smallest = node
+                if node.left:
+                    helper(node.left)
 
         helper(self.root)
-        return self.biggest
+        return self.smallest
 
     # Given a binary search tree and a number, inserts a
     # new node with the given number in the correct place
@@ -115,7 +135,7 @@ bst.insert(11);
 bst.insert(14);
 
 # Get a reference to the node whose key is 9
-test = bst.getNodeByKey(12)
+test = bst.getNodeByKey(9)
 
 # Find the in order successor of test
 succ = bst.find_in_order_successor(test)
@@ -126,3 +146,4 @@ if succ is not None:
           % (test.key, succ.key))
 else:
     print("\nInorder Successor doesn't exist")
+
