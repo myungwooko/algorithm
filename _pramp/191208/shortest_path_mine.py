@@ -41,21 +41,14 @@ All sr, sc, tr, tc are valid locations in the grid, grid[sr][sc] = grid[tr][tc] 
 [output] integer
 """
 
-"""
-dfs depth first search
-"""
-
 
 # DFS
-# Time complexity O(n*m), but exponentially
-# Space complexity O(n*m) for seen
+# Time Complexity: O(m*n), but exponentail
+# Space Compleixty: O(n) for seen
 def shortestCellPath(grid, sr, sc, tr, tc):
-    if not grid or not grid[0]:
-        return -1
-
-    res = [-1]
     m = len(grid)
     n = len(grid[0])
+    res = [-1]
 
     def helper(r, c, seen, count):
         if r == tr and c == tc:
@@ -63,76 +56,21 @@ def shortestCellPath(grid, sr, sc, tr, tc):
                 res[0] = count
             return
 
-        candidates = [(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)]
+        candidates = [(r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)]
         for r1, c1 in candidates:
             if 0 <= r1 < m and 0 <= c1 < n and grid[r1][c1] and (r1, c1) not in seen:
                 helper(r1, c1, seen + [(r1, c1)], count + 1)
 
     helper(sr, sc, [(sr, sc)], 0)
-
     return res[0]
 
 
 # BFS
-# Time: O(n*m)
-# Space: O(n*m)
+# Time Complexity: O(m*n) <= but when it meets return right away and not exponential => way better
+# Space Compexity: O(m*n) for seen
 def shortestCellPath(grid, sr, sc, tr, tc):
-    if not grid or not grid[0]:
-        return -1
-    m = len(grid)
-    n = len(grid[0])
+    m, n = len(grid), len(grid[0])
     queue = [(sr, sc, [(sr, sc)], 0)]
-    while queue:
-        r, c, seen, count = queue.pop(0)
-        if r == tr and c == tc:
-            return count
-        candidates = [(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)]
-        for r1, c1 in candidates:
-            if 0 <= r1 < m and 0 <= c1 < n and (r1, c1) not in seen and grid[r1][c1]:
-                queue.append((r1, c1, seen + [(r1, c1)], count + 1))
-
-    return -1
-
-
-grid = [
-        [1, 1, 1, 1],
-        [0, 1, 0, 1],
-        [1, 1, 1, 1]
-        ]
-sr, sc, tr, tc = 0, 0, 2, 0
-test = shortestCellPath(grid, sr, sc, tr, tc)
-print(test == 4)
-
-grid = [
-        [1, 1, 1, 1],
-        [0, 0, 0, 1],
-        [1, 0, 1, 1]
-        ]
-sr, sc, tr, tc = 0, 0, 2, 0
-test2 = shortestCellPath(grid, sr, sc, tr, tc)
-print(test2 == -1)
-
-grid = [
-         [0,1,0],
-         [1,0,0],
-         [1,0,1]
-        ]
-sr, sc, tr, tc = 2, 0, 1, 0
-test = shortestCellPath(grid, sr, sc, tr, tc)
-print(test==1)
-
-
-"""
-bfs breadth first search
-time O(R*C), space O(R*C)
-bfs breadth first search
-"""
-# BFS, Time: 다해보려고 하지만 찾으면 바로 return으로 better than DFS 이게 맞는듯?!
-def shortestCellPath(grid, sr, sc, tr, tc):
-    m = len(grid)
-    n = len(grid[0])
-    queue = [(sr, sc, [], 0)]
-
     while queue:
         r, c, seen, count = queue.pop(0)
         if r == tr and c == tc:
@@ -145,29 +83,10 @@ def shortestCellPath(grid, sr, sc, tr, tc):
     return -1
 
 
-grid = [
-    [1, 1, 1, 1],
-    [0, 1, 0, 1],
-    [1, 1, 1, 1]
-]
-sr, sc, tr, tc = 0, 0, 2, 0
+grid = [[1, 1, 1, 1], [0, 0, 0, 1], [1, 1, 1, 1]]
+sr = 0
+sc = 0
+tr = 2
+tc = 0
 test = shortestCellPath(grid, sr, sc, tr, tc)
-print(test == 4)
-
-grid = [
-    [1, 1, 1, 1],
-    [0, 0, 0, 1],
-    [1, 0, 1, 1]
-]
-sr, sc, tr, tc = 0, 0, 2, 0
-test2 = shortestCellPath(grid, sr, sc, tr, tc)
-print(test2 == -1)
-
-grid = [
-    [0, 1, 0],
-    [1, 0, 0],
-    [1, 0, 1]
-]
-sr, sc, tr, tc = 2, 0, 1, 0
-test = shortestCellPath(grid, sr, sc, tr, tc)
-print(test == 1)
+print(test)
