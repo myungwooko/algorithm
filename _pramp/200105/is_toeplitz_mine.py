@@ -26,14 +26,12 @@ Constraints:
 0 ≤ arr[i][j] ≤ 20
 [output] boolean
 """
-
-
-# Time: O((m-1)*(n-1))
-# Space: O(1)
+# Time Complexity: O((m-1)*(n-1)), m is for length of arr and n is length of arr[0]
+# Space Complexity: O(1)
 def isToeplitz(arr):
-  for i in range(len(arr)-1):
-    for j in range(len(arr[0])-1):
-      if arr[i][j] != arr[i+1][j+1]:
+  for r in range(len(arr)-1):
+    for c in range(len(arr[0])-1):
+      if arr[r][c] != arr[r+1][c+1]:
         return False
   return True
 
@@ -56,32 +54,4 @@ arr =[[1,2,3,4],
       [6,5,1,2]]
 
 print(isToeplitz(arr))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
