@@ -73,9 +73,9 @@ def get_different_number(arr):
     for i in range(n):
         tmp = arr[i]
         while tmp < n and arr[tmp] != tmp:
-            arr[tmp], tmp = tmp, arr[tmp]
-        # tmp, arr[tmp] = arr[tmp], doesn't work 
-        # simply, 이런경우 indexing하는 것에 할당을 먼저 해준다는 개념으로 그것을 왼쪽으로서 먼저 위치 시키는 것으로 해결 위와 같이.
+            arr[tmp], tmp = tmp, arr[tmp] # <========  work
+            # tmp, arr[tmp] = arr[tmp]      <========  doesn't work
+            # simply, 이런경우 indexing하는 것에 할당을 먼저 해준다는 개념으로 그것을 왼쪽으로서 먼저 위치 시키는 것으로서 해결. 위와 같이.
 
     for i in range(n):
         if i != arr[i]:
