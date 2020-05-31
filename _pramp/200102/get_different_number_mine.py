@@ -66,8 +66,6 @@ def get_different_number(arr):
 # 그렇게 만들고 두번째 for loop에서 0부터 차례대로 체크하여 없으면 그것을 return
 # 다 돌면 마지막에 len(arr) => 추가 index를 return
 """
-
-
 def get_different_number(arr):
     n = len(arr)
     for i in range(n):

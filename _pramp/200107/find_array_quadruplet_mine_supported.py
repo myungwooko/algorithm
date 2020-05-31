@@ -35,24 +35,24 @@ Constraints:
 # Time: O(n^3)
 # Space: O(1)
 def find_array_quadruplet(arr, s):
-    arr.sort()
-    for i in range(len(arr) - 3):
-        for j in range(i + 1, len(arr) - 2):
-            l, r = j + 1, len(arr) - 1
-            while l < r:
-                quad = [arr[i], arr[j], arr[l], arr[r]]
-                sumQ = sum(quad)
-                if sumQ == s:
-                    return quad
-                elif sumQ < s:
-                    l += 1
-                else:
-                    r -= 1
-    return []
+  arr.sort()
+  for i in range(len(arr)-3):
+    for j in range(i+1, len(arr)-2):
+      l, r = j+1, len(arr)-1
+      while l < r:
+        quad = [arr[i], arr[j], arr[l], arr[r]]
+        if sum(quad) == s:
+          return quad
+        elif sum(quad) < s:
+          l += 1
+        else:
+          r -= 1
+  return []
 
 
 # This is not about only return first one, return every possible combination
 # When you want to skip same pick you can pass like this
+# Time, Space is as same as the one
 def find_array_quadruplet(arr, s):
     arr.sort()
     result = []
