@@ -27,85 +27,53 @@ Constraints:
 1 ≤ words.length ≤ 20
 [output] array.integer
 """
-def shortestWordEditPath(source, target, words):
-    results = []
-    if len(source) != len(target):
-        return -1
-    results = []
-
-    def helper(curr, seen, count):
-        if curr == target:
-            results.append(count)
-            return
-
-        candidates = []
-        for word in words:
-            if len(curr) != len(word):
-                continue
-
-            diff = 0
-            for i in range(len(curr)):
-                if curr[i] != word[i]:
-                    diff += 1
-
-            if diff == 1:
-                candidates.append(word)
-
-        if not candidates:
-            return
-
-        for candi in candidates:
-            if candi in seen:
-                continue
-            helper(candi, seen + [curr], count+1)  # recursion에서 reference를 끊기 위해 새로 생성되는 새로운 주소값을 넣기 위해서 이렇게 해준다.
-        return
-
-    helper(source, [], 0) # 그래서 set이 아닌 list를 썼다. set은 add로 넣게 되면 같은 주소값 같은 set 오브젝트를 참조하니까.
-    if results:
-        return min(results)
-    return -1
-
-
-# queue
-# Time: O(N*M) / N is length of words and M is length of a word(source or target)
-# => 이것은 결국 최대 모든 node(여기서 node는 queue에 대한 모든 가능한 element를 말함 *(source, seen, count))
-def shortestWordEditPath(source, target, words):
-    queue = [(source, [])]
-
-    while queue:
-        curr, seen = queue.pop(0)
-        if curr == target:
-            return len(seen)
-
-        for word in words:
-            idx = count = 0
-            while idx < len(word):
-                if word[idx] != curr[idx]:
-                    count += 1
-                idx += 1
-            if word not in seen and count == 1:
-                queue.append((word, seen + [word]))
-    return -1
 
 
 # BFS
-# Time: O(n*m*k) n is for queue's possible input, m is lengh of word, k is number of characters for a word
-# Space O(n)
+# Time Complexity:
+#       O(n^2*k) n is total number of all possible elements of queue and which is also length of words, k is length of a word
+# Space Complexity: O(n) for queue, n is as same as Time Complexity's
 def shortestWordEditPath(source, target, words):
-    queue = [(source, [],  0)]
+    queue = [(source, [source], 0)]
     while queue:
-        curr, seen, count = queue.pop(0)
-        if curr == target:
+        current, seen, count = queue.pop(0)
+        if current == target:
             return count
+
         for word in words:
             if word not in seen:
-                cc = 0
-            for i in range(len(word)):
-                if word[i] != curr[i]:
-                    cc += 1
-            if cc == 1:
-                queue.append((word, seen + [curr], count+1))
+                diff_char = 0
+                for i in range(len(word)):
+                    if word[i] != current[i]:
+                        diff_char += 1
+                if diff_char == 1:
+                    queue.append((word, seen + [current], count + 1))
+
     return -1
+
+
+# DFS
+# Time Complexity: O(n^2*k), but exponential
+# Space Complexity: O(n) for res
+def shortestWordEditPath(source, target, words):
+    res = []
+
+    def helper(current, seen, count):
+        if current == target:
+            res.append(count)
+            return
+
+        for word in words:
+            if word not in seen:
+                diff_char = 0
+                for i in range(len(word)):
+                    if word[i] != current[i]:
+                        diff_char += 1
+                if diff_char == 1:
+                    helper(word, seen + [current], count + 1)
+
+    helper(source, [source], 0)
+    return min(res) if res else -1
 
 
 source = "hit"
