@@ -35,32 +35,6 @@ input:  inputMatrix  =
 right => down => left => up
 [1,2,3,4,5,10,15,20,10,15,20,19,18,17,16,11,6,7,8,9,14,13,12]
 """
-"""
-Just using direction and each direction has their own logic
-
-input:  inputMatrix  = 
-[
- [6,    7,   8,  9,   10],
- [11,  12,  13,  14,  15],
- [16,  17,  18,  19,  20] 
-]
-
-right => down => left => up
-[1,2,3,4,5,10,15,20,10,15,20,19,18,17,16,11,6,7,8,9,14,13,12]
-"""
-"""
-Just using direction and each direction has their own logic
-
-input:  inputMatrix  = 
-[
- [6,    7,   8,  9,   10],
- [11,  12,  13,  14,  15],
- [16,  17,  18,  19,  20] 
-]
-
-right => down => left => up
-[1,2,3,4,5,10,15,20,10,15,20,19,18,17,16,11,6,7,8,9,14,13,12]
-"""
 
 
 # Time complexit mxn => O(mn)? => No
@@ -188,51 +162,40 @@ def spiral_copy(matrix):
 # Time complexity: O(n*m), n for length of matrix, m for length of matrix[0]
 # Space complexity: O(n*m) for res
 def spiral_copy(matrix):
-    the_up = 0
-    the_left = 0
-    the_down = len(matrix) - 1
-    the_right = len(matrix[0]) - 1
-    res = []
+    number_of_all_values = len(matrix[0]) * len(matrix)
+    top = 0
+    left = 0
+    bottom = len(matrix) - 1
+    right = len(matrix[0]) - 1
+    spiral = []
 
     if len(matrix) <= 1:
         return matrix[0] if matrix[0] else matrix
 
-    # To comapre with fixed value-(len(matrix)*len(matrix[0])
-    while len(res) < len(matrix) * len(matrix[0]):
+    while len(spiral) < number_of_all_values:
 
-        for c in range(the_left, the_right + 1):
-            res.append(matrix[the_up][c])
-        the_up += 1
+        for i in range(left, right + 1):
+            curr = matrix[top][i]
+            spiral.append(curr)
 
-        # middle checker
-        if len(res) >= len(matrix) * len(matrix[0]):
-            return res
+        top += 1
 
-        for r in range(the_up, the_down + 1):
-            res.append(matrix[r][the_right])
-        the_right -= 1
+        for i in range(top, bottom + 1):
+            curr = matrix[i][right]
+            spiral.append(curr)
 
-        # middle checker
-        if len(res) >= len(matrix) * len(matrix[0]):
-            return res
+        right -= 1
 
-        for c in range(the_right, the_left - 1, -1):
-            res.append(matrix[the_down][c])
-        the_down -= 1
+        for i in range(right, left - 1, -1):
+            curr = matrix[bottom][i]
+            spiral.append(curr)
 
-        # middle checker
-        if len(res) >= len(matrix) * len(matrix[0]):
-            return res
+        bottom -= 1
 
-        for r in range(the_down, the_up - 1, -1):
-            res.append(matrix[r][the_left])
-        the_left += 1
+        for i in range(bottom, top - 1, -1):
+            curr = matrix[i][left]
+            spiral.append(curr)
 
-    return res
+        left += 1
 
-
-input = [[6, 7, 8, 9, 10],
-         [11, 12, 13, 14, 15],
-         [16, 17, 18, 19, 20]]
-test = spiral_copy(input)
-print(test)
+    return spiral
