@@ -78,24 +78,25 @@ def root(x, n):
     return approx_root
 
 
-# Time complexity: O(logn)
-# Space complexity: O(1)
+# Time Complexity: O(logn)
+# Space Complexity: O(1)
 def root(x, n):
-    max_bound = x
     # can't be zero though
     min_bound = 0
-    approx_root = (max_bound + min_bound) / float(2)
-
-    while approx_root >= min_bound + 0.001:
-        curr = pow(approx_root, n)
-        if curr == x:
+    max_bound = x
+    approx_root = (min_bound + max_bound) / float(2)
+    while approx_root - min_bound > 0.001:
+        powered = pow(approx_root, n)
+        if powered == x:
             return approx_root
-        elif curr > x:
+        elif powered > x:
             max_bound = approx_root
         else:
             min_bound = approx_root
         approx_root = (max_bound + min_bound) / float(2)
+
     return approx_root
+
 
 
 
