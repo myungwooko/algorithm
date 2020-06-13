@@ -43,44 +43,44 @@ Explanation's (i, j) referring (col, row) => So, that can be translated to => (i
 # Then we will go to every point we can(by the constrint >=j) and then we will add up its (i-1) and (j-1)
 # Then we can just simply return the last one
 """
-
-
 def num_of_paths_to_dest(n):
-    if n == 1:
-        return 1
+  if n == 1:
+    return 1
 
-    dp = [[0] * n for _ in range(n)]
-    dp[0] = [1] * n
-    dp[0][0] = 0
+  dp = [[0]*n for _ in range(n)]
+  dp[0] = [1]*n
+  dp[0][0] = 0
 
-    for row in range(n):
-        for col in range(n):
-            if row > 0 and col > 0 and col >= row:
-                dp[row][col] = dp[row][col - 1] + dp[row - 1][col]
+  for row in range(n):
+    for col in range(n):
+      if row > 0 and col > 0 and col >= row:
+        dp[row][col] = dp[row][col-1] + dp[row-1][col]
 
-    return dp[-1][-1]
+  return dp[-1][-1]
 
 
-# rule:
-# 1 - column >= row
-# 2 - nodiagonal
 """
  0 1 1 1 
  0 1 2 3 
  0 0 2 5
  0 0 0 5 
 """
+# (column,row)
+# rule 1: column >= row
+# rule 2: it cannot cross the diagonal border
 
-
-# Time complexity: O(n^2)
-# Space complexity: O(n^2)
+# Time Complexity: O((n-1^2))
+# Space Complexity: O(n^2)
 def num_of_paths_to_dest(n):
-    dp = [[0] * n for i in range(n)]
-    dp[0] = [1] * n
+  dp = [[0]*n for _ in range(n)]
+  dp[0] = [1]*n
 
-    for r in range(1, n):
-        for c in range(1, n):
-            if c >= r:
-                dp[r][c] = dp[r - 1][c] + dp[r][c - 1]
+  for row in range(1, n):
+    for column in range(1, n):
+      if column >= row:
+        dp[row][column] = dp[row-1][column] + dp[row][column-1]
 
-    return dp[-1][-1]
+  return dp[-1][-1]
+
+test = num_of_paths_to_dest(4)
+print(test)

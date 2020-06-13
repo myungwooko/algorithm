@@ -46,13 +46,13 @@ def sort_k_messed_array(arr, k):
 # Time complexity: O(n*k) => n is lenght of arr, k is k of the arguments
 # Space complexity: O(1)
 def sort_k_messed_array(arr, k):
-    for i in range(1, len(arr)):
-        if arr[i] < arr[i - 1]:
-            k = i
-            while k > 0 and arr[k] < arr[k - 1]:
-                arr[k], arr[k - 1] = arr[k - 1], arr[k]
-                k -= 1
-    return arr
+  for i in range(1, len(arr)):
+    if arr[i] < arr[i-1]:
+      curr = i
+      while curr > 0 and arr[curr-1] > arr[curr]:
+        arr[curr], arr[curr-1] = arr[curr-1], arr[curr]
+        curr -= 1
+  return arr
 
 
 arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9]
