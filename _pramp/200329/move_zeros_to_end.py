@@ -21,30 +21,24 @@ Constraints:
              !
           !
 """
-# Brute force
+"""
+# [1, 10, 0, 2, 8, 3, 0, 0, 6, 4, 0, 5, 7, 0]
+             !
+          !
+"""
+
+
+# Time complexity: O(n)
+# Space complexity: O(1)
 def moveZerosToEnd(arr):
-  for i in range(len(arr)):
-    if arr[i] == 0:
-      for j in range(i+1, len(arr)):
-        if arr[j] != 0:
-          arr[i], arr[j] = arr[j], arr[i]
-          break
-  return arr
+    write = idx = 0
+    while idx < len(arr):
+        if arr[idx]:
+          arr[write], arr[idx] = arr[idx], arr[write]
+          write += 1
+        idx += 1
+    return arr
 
 
-# Time Complexity: O(n)
-# Space Complexity: O(1)
-def moveZerosToEnd(arr):
-  write = 0
-  for i in range(len(arr)):
-    if arr[i] != 0:
-      arr[write], arr[i] = arr[i], arr[write]
-      write += 1
-  return arr
-
-
-input = [1, 10, 0, 2, 8, 3, 0, 0, 6, 4, 0, 5, 7, 0]
-     #                                ^
-
-test = moveZerosToEnd(input)
-print(test)
+test = [1, 10, 0, 2, 8, 3, 0, 0, 6, 4, 0, 5, 7, 0]
+print(moveZerosToEnd(test) == [1, 10, 2, 8, 3, 6, 4, 5, 7, 0, 0, 0, 0, 0])

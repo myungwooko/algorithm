@@ -1,41 +1,9 @@
 """
-Smallest Substring of All Characters
-Given an array of unique characters arr and a string str,
-Implement a function getShortestUniqueSubstring that finds the smallest substring of str containing all the characters in arr.
-Return "" (empty string) if such a substring doesn’t exist.
-
-Come up with an asymptotically optimal solution and analyze the time and space complexities.
-
-Example:
-
-input:  arr = ['x','y','z'], str = "xyyzyzyx"
-
-output: "zyx"
-Constraints:
-
-[time limit] 5000ms
-
-[input] array.character arr
-
-1 ≤ arr.length ≤ 30
-[input] string str
-
-1 ≤ str.length ≤ 500
-[output] string
-"""
-"""
 Brute force
 - Time complexity => O(n^2*m*k) => n is length of str, m is length of arr, k is temp acc's length
 => in here, k will definitely always small than str we can eliminate it
 => So Time complexity: O(n^2*m)
-=> Space complexity: O(m), m is length of arr because we made elements set 
-"""
-"""
-Brute force
-- Time complexity => O(n^2*m*k) => n is length of str, m is length of arr, k is temp acc's length
-=> in here, k will definitely always small than str we can eliminate it
-=> So Time complexity: O(n^2*m)
-=> Space complexity: O(m), m is length of arr because we made elements set 
+=> Space complexity: O(m), m is length of arr because we made elements set
 """
 
 
@@ -117,8 +85,8 @@ I got it!
 """
 
 
-# Time complexity O(N+M) <= in the case,
-#                        we don't know what is the greater one for N and M we can write exactly what it is
+# Time complexity O(N+M) <= in the case, we don't know what is the greater one for N and M we can write exactly what
+# it is
 # Space complexity O(N) N is length of arr
 def get_shortest_unique_substring(arr, str):
     l = 0
@@ -158,39 +126,42 @@ def get_shortest_unique_substring(arr, str):
     return res
 
 
-# Time complexity: O(n) n is lenght of str, basically, length of arr will be equal or smaller than length of str.
-# if len(arr) > len(str) is possible, the time complexity can be O(n+m), and m is length of arr.
-# Space complexity: O(m) m is length of arr
+# Time complexity: O(n) n is for length of str
+# Space complexity: O(m) m is for length of arr
 def get_shortest_unique_substring(arr, str):
     l = 0
     res = ""
-    arr = set(arr)
-    unique_map = {}
-    for c in arr:
-        unique_map[c] = 0
-    unique_count = 0
+    set_arr = set(arr)
+    arr_char_counter = dict()
+    for i in arr:
+        arr_char_counter[i] = 0
+    unique_counter = 0
 
     for r in range(len(str)):
-        curr = str[r]
-        if curr not in arr:
+        if str[r] not in set_arr:
             continue
 
-        if unique_map[curr] == 0:
-            unique_count += 1
-        unique_map[curr] += 1
+        char = str[r]
+        if arr_char_counter[char] == 0:
+            unique_counter += 1
+        arr_char_counter[char] += 1
 
-        while unique_count >= len(arr):
+        while unique_counter >= len(arr):
             tmp = str[l:r + 1]
-            if not res or len(tmp) < res:
+            if not res or len(tmp) < len(res):
                 res = tmp
 
-            head_char = tmp[0]
-            if head_char in unique_map:
-                unique_map[head_char] -= 1
-                if unique_map[head_char] == 0:
-                    unique_count -= 1
-
+            head_char = tmp[0]  # str[l]
+            if head_char in arr_char_counter:
+                arr_char_counter[head_char] -= 1
+                if arr_char_counter[head_char] == 0:
+                    unique_counter -= 1
             l += 1
 
     return res
 
+
+arr = ['x','y','z']
+str = "xyyzyzyx"
+test = get_shortest_unique_substring(arr, str)
+print(test)
