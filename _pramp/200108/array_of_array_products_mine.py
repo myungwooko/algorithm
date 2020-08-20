@@ -25,6 +25,7 @@ Constraints:
 # Brute force
 # Time O(n^2)
 # Space O(n)
+# keyword = 축적값
 def array_of_array_products(arr):
     res = []
     if len(arr) <= 1:
@@ -87,62 +88,27 @@ r = [1, 1x4, 1x4x3, 1x4x3x7]
 => then reverse r
 => and then just multiply it
 """
-# Time O(n), Space O(n)
+
+
+# Time complexity: O(n)
+# Space complexity: O(n)
 def array_of_array_products(arr):
-    # divide left and right => for cumulated value
     if len(arr) <= 1:
         return []
 
-    left = [1]
-    right = [1]
+    left_acc = [1]
+    right_acc = [1]
 
-    # left part for each index
-    for i in range(len(arr) - 1):
-        left.append(left[-1] * arr[i])
+    for i in range(0, len(arr) - 1):
+        tmp = left_acc[-1] * arr[i]
+        left_acc.append(tmp)
 
-    # right part for each index
-    for j in range(len(arr) - 1, 0, -1):
-        right.insert(0, right[0] * arr[j])
+    for i in range(len(arr) - 1, 0, -1):
+        tmp = right_acc[0] * arr[i]
+        right_acc.insert(0, tmp)
 
-    # product for each index
-    for i in range(len(left)):
-        left[i] *= right[i]
+    # result to left
+    for i in range(len(arr)):
+        left_acc[i] *= right_acc[i]
 
-    return left
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return left_acc
