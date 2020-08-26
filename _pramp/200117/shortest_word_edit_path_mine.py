@@ -31,24 +31,22 @@ Constraints:
 
 # BFS
 # Time Complexity:
-#       O(n^2*k) n is total number of all possible elements of queue and which is also length of words, k is length of a word
+# O(n^2*k) n is total number of all possible elements of queue and which is also length of words, k is length of a word
 # Space Complexity: O(n) for queue, n is as same as Time Complexity's
 def shortestWordEditPath(source, target, words):
     queue = [(source, [source], 0)]
     while queue:
-        current, seen, count = queue.pop(0)
-        if current == target:
+        curr, seen, count = queue.pop(0)
+        if curr == target:
             return count
-
         for word in words:
             if word not in seen:
-                diff_char = 0
+                diff = 0
                 for i in range(len(word)):
-                    if word[i] != current[i]:
-                        diff_char += 1
-                if diff_char == 1:
-                    queue.append((word, seen + [current], count + 1))
-
+                    if curr[i] != word[i]:
+                        diff += 1
+                if diff == 1:
+                    queue.append([word, seen + [word], count + 1])
     return -1
 
 

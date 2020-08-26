@@ -50,21 +50,21 @@ twoSum just return when it found the pair satisfies the condition
 but this problem need to return all of pairs
 one element can be x in a pair and can be y in another pair
 """
-
-
-# Formula: y = x - k
-# Time Complexity: O(n), n is length of arr
-# Space Complexity: O(n)
+# y = x - k
+# Time complexity: O(n)
+# Space complexity: O(n)
 def find_pairs_with_given_difference(arr, k):
-    x_minus_k_and_x_map = {}
-    result = []
-
+    mapper = {}
     for x in arr:
-        x_minus_k_and_x_map[x - k] = x
+        y = x - k
+        mapper[y] = x
 
+    res = []
     for y in arr:
-        if y in x_minus_k_and_x_map:
-            result.append([x_minus_k_and_x_map[y], y])
+        if y in mapper:
+            x = mapper[y]
+            res.append([x, y])
 
-    return result
+    return res
+
 
