@@ -39,12 +39,12 @@ def get_indices_of_item_wights(arr, limit):
 # Time complexity: O(n)
 # Space complexity: O(n)
 def get_indices_of_item_wights(arr, limit):
-    map1 = {}
-    for i, v in enumerate(arr):
-        if v not in map1:
-            map1[limit - v] = i
+    mapper = {}
+    for i, curr in enumerate(arr):
+        if curr not in mapper:
+            mapper[limit - curr] = i
         else:
-            return [i, map1[v]]
+            return [i, mapper[curr]]
     return []
 
 
@@ -56,7 +56,3 @@ test = get_indices_of_item_wights(arr, lim)
 print(test)
 
 """
-
-
-
-
