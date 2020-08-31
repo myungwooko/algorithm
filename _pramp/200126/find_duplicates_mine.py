@@ -63,6 +63,27 @@ time = O(m+n) space = O(m+n)
 loop (while i < len(arr1) and j < arr2)
 
 """
+"""
+sorted
+[1,2,3,4,5]
+[3,4,5]
+
+ M ≈ N - the array lengths are approximately the same M ≫ N - 
+ arr2 is much bigger than arr1.
+
+time = O(MN), space = O(M+N)
+
+go thru both at once
+time = O(m+n) space = O(m+n)
+
+
+[1,2,3,4,5], [4,5,6,7]
+ i           j
+
+
+loop (while i < len(arr1) and j < arr2)
+
+"""
 # Time complexity: O(n+m)
 # Space complexity: O(min(n, m))
 def find_duplicates(arr1, arr2):
@@ -80,5 +101,20 @@ def find_duplicates(arr1, arr2):
     return result
 
 
-
-
+# Time complexity: O(n+m)
+# Space compexity: O(min(n, m))
+def find_duplicates(arr1, arr2):
+    left_idx = right_idx = 0
+    res = []
+    while left_idx < len(arr1) and right_idx < len(arr2):
+        left = arr1[left_idx]
+        right = arr2[right_idx]
+        if left < right:
+            left_idx += 1
+        elif left > right:
+            right_idx += 1
+        else:
+            res.append(left)
+            left_idx += 1
+            right_idx += 1
+    return res
