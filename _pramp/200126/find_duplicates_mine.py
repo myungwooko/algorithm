@@ -118,3 +118,4 @@ def find_duplicates(arr1, arr2):
             left_idx += 1
             right_idx += 1
     return res
+
