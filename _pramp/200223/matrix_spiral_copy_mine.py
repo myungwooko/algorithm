@@ -35,6 +35,19 @@ input:  inputMatrix  =
 right => down => left => up
 [1,2,3,4,5,10,15,20,10,15,20,19,18,17,16,11,6,7,8,9,14,13,12]
 """
+"""
+Just using direction and each direction has their own logic
+
+input:  inputMatrix  = 
+[
+ [6,    7,   8,  9,   10],
+ [11,  12,  13,  14,  15],
+ [16,  17,  18,  19,  20] 
+]
+
+right => down => left => up
+[1,2,3,4,5,10,15,20,10,15,20,19,18,17,16,11,6,7,8,9,14,13,12]
+"""
 
 
 # Time complexit mxn => O(mn)? => No
@@ -193,6 +206,52 @@ def spiral_copy(matrix):
         bottom -= 1
 
         for i in range(bottom, top - 1, -1):
+            curr = matrix[i][left]
+            spiral.append(curr)
+
+        left += 1
+
+    return spiral
+
+
+# Time complexity: O(n*m)
+# Space complexity: O(n*m)
+def spiral_copy(matrix):
+    up = 0
+    right = len(matrix[0]) - 1
+    down = len(matrix) - 1
+    left = 0
+    spiral = []
+    total = len(matrix[0]) * len(matrix)
+
+    while len(spiral) < total:
+        for i in range(left, right + 1):
+            curr = matrix[up][i]
+            spiral.append(curr)
+        up += 1
+
+        if len(spiral) == total:
+            break
+
+        for i in range(up, down + 1):
+            curr = matrix[i][right]
+            spiral.append(curr)
+
+        if len(spiral) == total:
+            break
+
+        right -= 1
+
+        for i in range(right, left - 1, -1):
+            curr = matrix[down][i]
+            spiral.append(curr)
+
+        if len(spiral) == total:
+            break
+
+        down -= 1
+
+        for i in range(down, up - 1, -1):
             curr = matrix[i][left]
             spiral.append(curr)
 
