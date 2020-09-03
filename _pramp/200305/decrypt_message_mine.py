@@ -80,6 +80,30 @@ def decrypt(word):
 
     return "".join([chr(asc) for asc in lev1])
 
+
+# lev3[i] = lev1[i] + lev2[i-1] - 26*m
+# lev1[i] = lev3[i] - lev2[i-1] + 26*m -> 97 <= range <=122
+# lev2[i] = lev1[i] + lev2[i-1]
+# Time complexity: O(n)
+# Space compexity: O(n)
+def decrypt(encrypted):
+    if not encrypted:
+        return encrypted
+    lev3 = [ord(c) for c in encrypted]
+    lev2 = [lev3[0]]
+    lev1 = [lev3[0] - 1]
+    for i in range(1, len(lev3)):
+        pre_part = lev3[i] - lev2[i - 1]
+        n = 1
+        while not (97 <= pre_part + 26 * n <= 122):
+            n += 1
+        lev1_val = pre_part + 26 * n
+        lev2_val = lev1_val + lev2[i - 1]
+        lev1.append(lev1_val)
+        lev2.append(lev2_val)
+    return "".join([chr(n) for n in lev1])
+
+
 word = "dnotq"
 test = decrypt(word)
 print(test == "crime")
