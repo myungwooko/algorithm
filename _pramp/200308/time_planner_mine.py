@@ -45,7 +45,6 @@ slotsB[i].length = 2
 [output] array.integer
 """
 
-
 # Time O(NM)
 def meeting_planner(slotsA, slotsB, dur):
     for i, s1 in enumerate(slotsA):
@@ -97,37 +96,6 @@ def meeting_planner(slotsA, slotsB, dur):
     return []
 
 
-# Time O(n*m) where n is length of slotsA and m is length of slotsB
-# Space O(1)
-def meeting_planner(slotsA, slotsB, dur):
-    for s1, e1 in slotsA:
-        for s2, e2 in slotsB:
-            start = max(s1, s2)
-            end = min(e1, e2)
-            if start < end and end - start >= dur:
-                return [start, start + dur]
-    return []
-
-
-# Time complexity: O(n+m), n is for length of slotsA and m is for length of slotsB
-# Space complexity: O(1)
-def meeting_planner(slotsA, slotsB, dur):
-    a = b = 0
-    while a < len(slotsA) and b < len(slotsB):
-        start = max(slotsA[a][0], slotsB[b][0])
-        end = min(slotsA[a][1], slotsB[b][1])
-
-        if end - start >= dur:
-            return [start, start + dur]
-
-        if slotsA[a][1] < slotsB[b][1]:
-            a += 1
-        else:
-            b += 1
-
-    return []
-
-
 # Time Complexity: O(n+m)
 # Space Complexity: O(1)
 def meeting_planner(slotsA, slotsB, dur):
@@ -144,7 +112,24 @@ def meeting_planner(slotsA, slotsB, dur):
             idx_a += 1
         else:
             idx_b += 1
+    return []
 
+
+# Time complexity: O(n+m)
+# Space complexity: O(1)
+def meeting_planner(slots_a, slots_b, dur):
+    a = b = 0
+    while a < len(slots_a) and b < len(slots_b):
+        curr_a = slots_a[a]
+        curr_b = slots_b[b]
+        start = max(curr_a[0], curr_b[0])
+        end = min(curr_a[1], curr_b[1])
+        if end - start >= dur:
+            return [start, start + dur]
+        if curr_a[1] < curr_b[1]:
+            a += 1
+        else:
+            b += 1
     return []
 
 
