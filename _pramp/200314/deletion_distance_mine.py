@@ -27,6 +27,8 @@ Constraints:
 [input] string str2
 [output] integer
 """
+
+
 # Time complexity: O(n+m) => n is for length of str1, m is for length of str2, Anyway k is definitely smaller than min(len(str1), len(str2)), doesn't need to be added
 # Space complexity: O(n+m+2k)
 def deletion_distance(str1, str2):
@@ -56,5 +58,39 @@ def deletion_distance(str1, str2):
             count += 2
         else:
             i += 1
+
+    return count
+
+
+# Time complexity: O(n+m+sum^2)
+# sum^2 => It covers for pop and remove part
+# Space complexity: O(n+m+sum*2)
+def deletion_distance(str1, str2):
+    set1 = set(str1)
+    set2 = set(str2)
+    count = 0
+
+    filtered1 = []
+    for c in str1:
+        if c in set2:
+            filtered1.append(c)
+        else:
+            count += 1
+
+    filtered2 = []
+    for c in str2:
+        if c in set1:
+            filtered2.append(c)
+        else:
+            count += 1
+
+    idx = 0
+    while filtered1 != filtered2:
+        curr = filtered1[idx]
+        if filtered2[idx] != curr:
+            filtered1.pop(idx)
+            filtered2.remove(curr)
+            count += 2
+        idx += 1
 
     return count
