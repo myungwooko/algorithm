@@ -137,6 +137,61 @@ Binary search
 https://leetcode.com/problems/koko-eating-bananas/
 
 """
+"""
+
+maximum cap on all grants
+Every grant initially planned to be higher than cap
+Grants less or equal to cap, obviously, won’t be impacted.
+
+
+ex1)
+grantsArray = [8,7,2,5,9], newBudget = 20
+              [2,5,7,8,9]
+
+              20 - 2 => 18/4 => cap 4.5
+
+- roughCap => 20/5  => 4.0
+- one(2) can be excluded because it is definitely not impacted by cutting budget
+- rough2Cap => so 20/4 => 5.0
+- one(5) can be excluded because it is definitely not impacted by cutting budget
+- 20/3 => 6.66666666
+- cap => 5 cap
+
+
+ex2)
+grantsArray = [8,7,2,5,9], newBudget = 4
+
+4/5 => 0.8
+=> 0.8
+
+
+ex3)
+grantsArray = [8,7,2,5,9], newBudget = 30
+30/5 => 6.0 => 2,5
+30 - (2+5) => 23
+23/3 => cap 7.6
+23-7 => 16
+16/2 => 8.0
+[8, 7, 2, 5, 8]
+
+
+[8,7,2,5,9] 20
+
+[2,5,7,8,9] 20 
+20/5 => 4
+
+2
+
+available = 20 -2 = 18 / 4 = 4.5
+
+
+
+Binary search
+https://leetcode.com/problems/koko-eating-bananas/
+
+"""
+
+
 def find_grants_cap(grantsArray, newBudget):
     def helper(lis, budget):
         beforeLen = len(lis)
@@ -171,3 +226,23 @@ def find_grants_cap(grantsArray, newBudget):
         return helper(nextB, budget)
 
     return helper(grantsArray, newBudget)
+
+
+# Time complexity: O(n^2), not exponential
+# Space complexity: O(n)
+def find_grants_cap(grantsArray, newBudget):
+    queue = [(grantsArray, newBudget)]
+    while queue:
+        grants, budget = queue.pop(0)
+        cap = float(budget) / len(grants)
+        next_grants = []
+        for g in grants:
+            if g >= cap:
+                next_grants.append(g)
+            else:
+                budget -= g
+        if len(next_grants) == len(grants) or not next_grants:
+            return cap
+        else:
+            queue.append((next_grants, budget))
+    return
