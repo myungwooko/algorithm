@@ -76,3 +76,19 @@ def word_count_engine(document):
     res.sort(key=lambda x: (-x[1], words.index(x[0])))
     res = [[k, str(v)] for k, v in res if k != ""]
     return res
+
+
+import string
+from collections import Counter
+
+table = string.maketrans("", "")
+
+
+# Time complexity: O(n^2), *sorted*index
+# Space complexity: O(n), *just understood about selecting the biggest one's size
+def word_count_engine(document):
+    striped = document.lower().translate(table, string.punctuation)
+    listing = striped.split(" ")
+    counter = Counter(listing).items()
+    pre_result = sorted(counter, key=lambda x: (-x[1], listing.index(x[0])))
+    return [[pair[0], str(pair[1])] for pair in pre_result if pair[0]]
