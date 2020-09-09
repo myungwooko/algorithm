@@ -80,8 +80,7 @@ def word_count_engine(document):
 
 import string
 from collections import Counter
-
-table = string.maketrans("", "")
+table = string.maketrans('','') # <- maketrans is deprecated in Python3
 
 
 # Time complexity: O(n^2), *sorted*index
@@ -92,3 +91,8 @@ def word_count_engine(document):
     counter = Counter(listing).items()
     pre_result = sorted(counter, key=lambda x: (-x[1], listing.index(x[0])))
     return [[pair[0], str(pair[1])] for pair in pre_result if pair[0]]
+
+
+test_input = "Practice makes perfect, you'll get perfecT by practice. just practice! just just just!!"
+test_result = word_count_engine(test_input)
+print('test_result', test_result)
