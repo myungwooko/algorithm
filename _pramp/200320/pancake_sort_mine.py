@@ -33,6 +33,8 @@ Simply,
 - Exclude that last one
 - Repeat it till argument length is 0
 """
+
+
 def flip(arr, k):
     l, r = 0, k
     while l <= r:
@@ -92,4 +94,25 @@ def pancake_sort(arr):
         k = s_index + 1
         sub = flip(sub, k)
         arr[i:] = sub
+    return arr
+
+
+def flip(arr, k):
+    left = 0
+    right = k - 1
+    while left < right:
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
+    return arr
+
+
+# Time complexity: O(n^2)
+# Space complxity: O(n) <= the most biggest one which is used additionally.
+def pancake_sort(arr):
+    for i in range(len(arr)):
+        sliced = arr[i:]
+        smallest = min(sliced)
+        smallest_idx = sliced.index(smallest)
+        arr[i:] = flip(sliced, smallest_idx + 1)
     return arr
