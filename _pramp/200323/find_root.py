@@ -1,4 +1,27 @@
 """
+Root of Number
+Many times, we need to re-implement basic functions without using any standard library functions already implemented.
+For example, when designing a chip that requires very little memory space.
+
+In this question we’ll implement a function root that calculates the n’th root of a number.
+The function takes a nonnegative number x and a positive integer n, and returns the positive n’th root of x within
+an error of 0.001 (i.e. suppose the real root is y, then the error is: |y-root(x,n)| and must satisfy |y-root(x,n)| < 0.001).
+
+Don’t be intimidated by the question. While there are many algorithms to calculate roots that require prior knowledge
+in numerical analysis (some of them are mentioned here), there is also an elementary method which doesn’t require more
+than guessing-and-checking. Try to think more in terms of the latter.
+
+Make sure your algorithm is efficient, and analyze its time and space complexities.
+
+Examples:
+
+input:  x = 7, n = 3
+output: 1.913
+
+input:  x = 9, n = 2
+output: 3
+
+
 In this question we’ll implement a function root
 that calculates the n’th root of a number.
 - The function takes a nonnegative number "x"
@@ -21,29 +44,27 @@ pow(0.25, 2) = 1/2
    (1/4)^0.5 =  1/2
 """
 
-"""
-Our purpose is looking for the root(* value is decimal point => binary search with decimal point - no problem)
-"""
 
 # Time complexity O(logN)
 # Space complexity O(1)
+# Our purpose is looking for the root(* value is decimal point => binary search with decimal point - no problem)
 def root(x, n):
     if x == 0: return 0
+
     # anyway it is not 0 but we use it as we want to search maximum arrange
+    # for result value of root() <= root()의 결과값에 대한
     lower_bound = 0
-    # if numerator is smaller than denominator, below formula can't be applied. 2^2 => 4(커짐) | (1/2)^2 = 1/4(작아짐)
-    # The Minimum of x has to be 1
+
     # For maximum, if n = 1, the result will be the same with x. So upper_bound's max is x
+    # for result value of root() <= root()의 결과값에 대한
     upper_bound = max(1, x)
-    # approximate "root"
+
+    # starting value of approximate value of result of root()
     approx_root = (lower_bound + upper_bound) / 2
 
     # approx_root - lower_bound == upper_bound - approx_root
     # make the condition with any one of them doesn't matter
-    # , 그리고 처음에도 그 수도 차이 안나면 그건 같은 수나 마찬가지고 어쨌든 0과 그 범위안에는 무조건 있는 것(루트를 씌우면 어쩄든 작아지니까), => 근데 0.001보다 그 차이가 작으면 바로 그것을 return하면 됨.
-    # 다음도 계속 그 범위안에 있는 건 매한가지이고 그러니 언제든 while만 만족시키지 않으면 바로 OK
-    # , becuase covering root makes anyway the number smaller than before it definetley in the range.
-    # so anyway if the condition does not satisfy while loop's condition => approx_root will be the root.
+    # , 그리고 처음에도 그 수도 차이 안나면 그건 같은 수나 마찬가지고, 그 다음부턴 공식에 따라 그 범위 안의 것일 수 밖에 없게 되므로
     # At the first time if the difference is smaller than that, that means those are assumed as almost same.
     # After the first time, along the formula it has to be in the range anyway.
     while (approx_root - lower_bound >= 0.001):
@@ -60,16 +81,19 @@ def root(x, n):
     return approx_root
 
 
-# simply we implement root()
 # it has to be a function that has difference at most smaller than 0.001
+# lower_bound can't be zero though
+# Time complexity: O(logn)
+# Space complexity: O(1)
 def root(x, n):
     lower_bound, upper_bound = 0, max(1, x)
     approx_root = (lower_bound + upper_bound) / float(2)
 
     while approx_root - lower_bound >= 0.001:
-        if pow(approx_root, n) < x:
+        calced = pow(approx_root, n)
+        if calced < x:
             lower_bound = approx_root
-        elif pow(approx_root, n) > x:
+        elif calced > x:
             upper_bound = approx_root
         else:
             break
@@ -78,25 +102,34 @@ def root(x, n):
     return approx_root
 
 
-# Time Complexity: O(logn)
-# Space Complexity: O(1)
+# Time complexity: O(log(n))
+# Space complexity: O(1)
+# Just tried to use lambda. It looks not useful here though.
 def root(x, n):
-    # can't be zero though
-    min_bound = 0
-    max_bound = x
-    approx_root = (min_bound + max_bound) / float(2)
-    while approx_root - min_bound > 0.001:
-        powered = pow(approx_root, n)
-        if powered == x:
-            return approx_root
-        elif powered > x:
-            max_bound = approx_root
+    upper_bound = x
+    lower_bound = 0
+    get_possible_root = lambda lower_bound, upper_bound: (lower_bound + upper_bound) / 2
+    possible_root = get_possible_root(lower_bound, upper_bound)
+    while upper_bound - possible_root > 0.001:
+        val = pow(possible_root, n)
+        if val == x:
+            return possible_root
+        elif val < x:
+            lower_bound = possible_root
         else:
-            min_bound = approx_root
-        approx_root = (max_bound + min_bound) / float(2)
-
-    return approx_root
-
-
+            upper_bound = possible_root
+        possible_root = get_possible_root(lower_bound, upper_bound)
+    # Unlike Pramp need to do
+    return round(possible_root, 3)
 
 
+# Tests
+x = 7
+n = 3
+test = root(x, n)
+print(test == 1.913)
+
+x = 9
+n = 2
+test = root(x, n)
+print(test == 3)
