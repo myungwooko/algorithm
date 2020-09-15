@@ -21,6 +21,8 @@ Constraints:
 0 ≤ k ≤ 20
 [output] array.integer
 """
+
+
 # 이경우 k는 Time complexity를 위해 줬다고 생각? 어쨌든 그만큼에 못간다는 걸 나타내준거니까.
 # insertionSort Time: O(Nk), Space: O(1)
 def sort_k_messed_array(arr, k):
@@ -46,13 +48,28 @@ def sort_k_messed_array(arr, k):
 # Time complexity: O(n*k) => n is lenght of arr, k is k of the arguments
 # Space complexity: O(1)
 def sort_k_messed_array(arr, k):
-  for i in range(1, len(arr)):
-    if arr[i] < arr[i-1]:
-      curr = i
-      while curr > 0 and arr[curr-1] > arr[curr]:
-        arr[curr], arr[curr-1] = arr[curr-1], arr[curr]
-        curr -= 1
-  return arr
+    for i in range(1, len(arr)):
+        if arr[i] < arr[i - 1]:
+            curr = i
+            while curr > 0 and arr[curr - 1] > arr[curr]:
+                arr[curr], arr[curr - 1] = arr[curr - 1], arr[curr]
+                curr -= 1
+    return arr
+
+
+# Time complexity: O(n*k)
+# Space complexity: O(1)
+def sort_k_messed_array(arr, k):
+    for i in range(1, len(arr)):
+        curr = i
+        limit = curr - k
+        while curr >= limit and curr > 0:
+            if arr[curr] < arr[curr - 1]:
+                arr[curr], arr[curr - 1] = arr[curr - 1], arr[curr]
+                curr -= 1
+            else:
+                break
+    return arr
 
 
 arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9]
@@ -60,6 +77,5 @@ k = 2
 test = sort_k_messed_array(arr, k)
 print(test)
 
-test = sort_k_messed_array([1,2,4,3,5,7,6], 1)
+test = sort_k_messed_array([1, 2, 4, 3, 5, 7, 6], 1)
 print(test)
-
