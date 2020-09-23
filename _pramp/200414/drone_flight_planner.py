@@ -60,22 +60,30 @@ Even if we descend before climbing to the max altitude,
 by ascending back to the same altitude as the starting altitude, 
 our balance is zero and we then need more energy to climb from the starting altitude to the max altitude.
 """
+
+
 # more Elegant
 # Anyway go up more => before down(store) will be consumed
 # Time O(N)
 # Space O(1)
 def calc_drone_min_energy(route):
-  max_height = route[0][2]
-  for i in range(1, len(route)):
-    if route[i][2] > max_height:
-      max_height = route[i][2]
-  return max_height - route[0][2]
+    max_height = route[0][2]
+    for i in range(1, len(route)):
+        if route[i][2] > max_height:
+            max_height = route[i][2]
+    return max_height - route[0][2]
 
 
 def calc_drone_min_energy(route):
-  max_height = route[0][2]
-  for i in range(1, len(route)):
-      max_height = max(max_height, route[i][2])
-  return max_height - route[0][2]
+    max_height = route[0][2]
+    for i in range(1, len(route)):
+        max_height = max(max_height, route[i][2])
+    return max_height - route[0][2]
 
 
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+def calc_drone_min_energy(route):
+    start = route[0][2]
+    max_height = max([z for x, y, z in route])
+    return max_height - start
