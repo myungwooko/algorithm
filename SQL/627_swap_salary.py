@@ -42,16 +42,8 @@ SET sex = CASE sex WHEN 'm' THEN 'f'
                    WHERE sex IN ('m', 'f');
 """
 
-
-
-
-
-
-
-
 # You want to use a CASE expression of some type.
 # In SQL Server the code would look like this:
-
 """
 UPDATE TableName
 SET gender = CASE WHEN gender = 'M' THEN 'W' 
@@ -60,8 +52,6 @@ SET gender = CASE WHEN gender = 'M' THEN 'W'
 """
 
 # Edit: As stated in the comments (and some of the other answers) the ELSE isn't necessary if you put a WHERE clause on the statement.
-
-
 """
 UPDATE TableName
 SET gender = CASE WHEN gender = 'M' THEN 'W' 
@@ -70,7 +60,6 @@ WHERE gender IN ('M','W')
 """
 
 # This avoids unnecessary updates. The important thing in either case is to remember that there are options other than M & W (NULL for example) and you don't want to put in mistaken information. For example:
-
 """
 UPDATE TableName
 SET gender = CASE WHEN gender = 'M' THEN 'W' 
@@ -82,7 +71,6 @@ SET gender = CASE WHEN gender = 'M' THEN 'W'
 # A couple of other options would be
 
 # Simple form of CASE rather than Searched form*/
-
 """
 UPDATE TableName
 SET    gender = CASE gender
@@ -92,5 +80,3 @@ SET    gender = CASE gender
 WHERE  gender IN ( 'M', 'W' );
 
 """
-
-

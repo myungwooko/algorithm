@@ -5,8 +5,8 @@ import json
 import time
 
 
-def  getMovieTitles(substr):
-    url = "https://jsonmock.hackerrank.com/api/movies/search/?Title="+substr
+def getMovieTitles(substr):
+    url = "https://jsonmock.hackerrank.com/api/movies/search/?Title=" + substr
 
     titles = []
     page = 1
@@ -27,10 +27,10 @@ def  getMovieTitles(substr):
             ids.append(movie["imdbID"])
 
         if page == 1:
-            page+=1
+            page += 1
             url += '&page=' + str(page)
         else:
-            page+=1
+            page += 1
             url = url[:-1]
             url += str(page)
 
@@ -38,8 +38,8 @@ def  getMovieTitles(substr):
 
     return titles
 
-getMovieTitles('spiderman')
 
+getMovieTitles('spiderman')
 
 
 def funWithAnagrams(s):
@@ -64,15 +64,7 @@ def funWithAnagrams(s):
     return result
 
 
-
-test = ['code',
-'aaagmnrs',
-'anagrams',
-'doce']
-
-
+test = ['code', 'aaagmnrs', 'anagrams', 'doce']
 
 test = funWithAnagrams(test)
 print(1, test)
-
-

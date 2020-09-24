@@ -24,6 +24,8 @@ Constraints:
 k ≥ 0
 [output] array.array.integer
 """
+
+
 # brute force
 def find_pairs_with_given_difference(arr, k):
     dic = {}
@@ -50,6 +52,8 @@ twoSum just return when it found the pair satisfies the condition
 but this problem need to return all of pairs
 one element can be x in a pair and can be y in another pair
 """
+
+
 # y = x - k
 # Time complexity: O(n)
 # Space complexity: O(n)
@@ -66,5 +70,3 @@ def find_pairs_with_given_difference(arr, k):
             res.append([x, y])
 
     return res
-
-

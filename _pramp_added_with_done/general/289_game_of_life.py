@@ -82,13 +82,10 @@ class Solution:
 
     def neigbor_process(self, board, x, y):
         count = 0
-        candidates = [(x - 1, y), (x - 1, y + 1), (x, y + 1), (x + 1, y + 1), (x + 1, y), (x + 1, y - 1), (x, y - 1),
-                      (x - 1, y - 1)]
+        candidates = [(x - 1, y), (x - 1, y + 1), (x, y + 1), (x + 1, y + 1),
+                      (x + 1, y), (x + 1, y - 1), (x, y - 1), (x - 1, y - 1)]
         for (x1, y1) in candidates:
-            if 0 <= x1 < self.M and 0 <= y1 < self.N and (0 < board[x1][y1] <= 2):
+            if 0 <= x1 < self.M and 0 <= y1 < self.N and (0 < board[x1][y1] <=
+                                                          2):
                 count += 1
         return count
-
-
-
-

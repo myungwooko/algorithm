@@ -43,6 +43,8 @@ What if the BST is modified (insert/delete operations) often and you need to fin
 => that's all
 => 좌 빼고 => 부모인 자신 빼고 => (그 위의 부모로 올라가기전) 자신의 우 빼고 => 반복
 """
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
@@ -55,7 +57,8 @@ class Solution:
     # Time complexity : O(N)
     def kthSmallest(self, root: TreeNode, k: int) -> int:
         def helper(node):
-            return helper(node.left) + [node.val] + helper(node.right) if node else []
+            return helper(node.left) + [node.val] + helper(
+                node.right) if node else []
 
         return helper(root)[k - 1]
 

@@ -29,6 +29,8 @@ Constraints:
 3 <= logs[i].length <= 100
 logs[i] is guaranteed to have an identifier, and a word after the identifier.
 """
+
+
 class Solution:
     def reorderLogFiles(self, logs):
         # letter should be before digit
@@ -42,9 +44,13 @@ class Solution:
                     dic[" ".join(splitted[1:])] = [splitted[0]]
                 else:
                     dic[" ".join(splitted[1:])].append(splitted[0])
-                    dic[" ".join(splitted[1:])] = sorted(dic[" ".join(splitted[1:])])
+                    dic[" ".join(splitted[1:])] = sorted(dic[" ".join(
+                        splitted[1:])])
         dig = [i for i in logs if i.split(" ")[1].isnumeric()]
-        let = [" ".join(i.split(" ")[1:]) for i in logs if not i.split(" ")[1].isnumeric()]
+        let = [
+            " ".join(i.split(" ")[1:]) for i in logs
+            if not i.split(" ")[1].isnumeric()
+        ]
         let.sort()
         let = [dic[i].pop(0) + " " + i for i in let]
         res = let + dig
@@ -55,5 +61,6 @@ class Solution:
             id, rest = log.split(" ", 1)
             # letter 인 경우 일단 dig보다 앞으로 오고 그 안에서 rest를 비교하고 그 다음 id를 비교하겠다는 의미
             # 여기서 dig같은 경우 그냥 (1, ) 보냈는데 뒤의 내용은 비교하지 않겠다는 의미이고 letter 보다는 뒤니까 그것만 해주는 의미.
-            return (0, rest, id) if rest[0].isalpha() else (1,)
+            return (0, rest, id) if rest[0].isalpha() else (1, )
+
         return sorted(logs, key=f)

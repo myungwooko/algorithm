@@ -19,7 +19,7 @@ def quickSort(arr):
     return quickSort(s_list) + m_list + quickSort(l_list)
 
 
-a = [10,2,3,5,6,4,5,6,67,8]
+a = [10, 2, 3, 5, 6, 4, 5, 6, 67, 8]
 
 test = quickSort(a)
 print(test)

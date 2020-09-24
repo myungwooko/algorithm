@@ -76,7 +76,7 @@ def shortestWordEditPath(source, target, words):
 
 source = "hit"
 target = "cog"
-words = ["hot","dot","dog","lot","log","cog"]
+words = ["hot", "dot", "dog", "lot", "log", "cog"]
 
 test = shortestWordEditPath(source, target, words)
 print(test)

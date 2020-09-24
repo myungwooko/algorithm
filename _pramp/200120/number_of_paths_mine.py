@@ -26,7 +26,6 @@ b까지의 경로는 a까지의 경로 + d까지의 경로
 아래의 문제에선 조건이 하나 더있다. y(column) >= x(row) 여야만 한다.
 각각의 문제의 조건을 잘 확인할 것.
 """
-
 """
 Attention:
 Explanation's (i, j) referring (col, row) => So, that can be translated to => (i >= j) == (col >= row)  
@@ -46,19 +45,19 @@ Explanation's (i, j) referring (col, row) => So, that can be translated to => (i
 
 
 def num_of_paths_to_dest(n):
-  if n == 1:
-    return 1
+    if n == 1:
+        return 1
 
-  dp = [[0] * n for _ in range(n)]
-  dp[0] = [1] * n
-  dp[0][0] = 0
+    dp = [[0] * n for _ in range(n)]
+    dp[0] = [1] * n
+    dp[0][0] = 0
 
-  for row in range(n):
-    for col in range(n):
-      if row > 0 and col > 0 and col >= row:
-        dp[row][col] = dp[row][col - 1] + dp[row - 1][col]
+    for row in range(n):
+        for col in range(n):
+            if row > 0 and col > 0 and col >= row:
+                dp[row][col] = dp[row][col - 1] + dp[row - 1][col]
 
-  return dp[-1][-1]
+    return dp[-1][-1]
 
 
 """
@@ -68,21 +67,21 @@ def num_of_paths_to_dest(n):
  0 0 0 5 
 """
 
-
 # (column,row)
 # rule 1: column >= row
 # rule 2: it cannot cross the diagonal border
 
+
 # Time Complexity: O((n-1)^2)
 # Space Complexity: O(n^2)
 def num_of_paths_to_dest(n):
-  dp = [[0] * n for r in range(n)]
-  dp[0] = [1] * n
-  for r in range(1, n):
-    for c in range(1, n):
-      if c >= r:
-        dp[r][c] = dp[r - 1][c] + dp[r][c - 1]
-  return dp[n - 1][n - 1]
+    dp = [[0] * n for r in range(n)]
+    dp[0] = [1] * n
+    for r in range(1, n):
+        for c in range(1, n):
+            if c >= r:
+                dp[r][c] = dp[r - 1][c] + dp[r][c - 1]
+    return dp[n - 1][n - 1]
 
 
 test = num_of_paths_to_dest(4)

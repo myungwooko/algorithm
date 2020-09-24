@@ -38,6 +38,8 @@ Explanation:
 "bbaA" is also a valid answer, but "Aabb" is incorrect.
 Note that 'A' and 'a' are treated as two different characters.
 """
+
+
 class Solution:
     def frequencySort(self, s: str) -> str:
         hash = {}
@@ -46,39 +48,12 @@ class Solution:
                 hash[i] = 1
             else:
                 hash[i] += 1
-        sortByFreq = sorted(hash.items(), key= lambda x: x[1], reverse=True)
-        res = [i[0]*i[1] for i in sortByFreq]
+        sortByFreq = sorted(hash.items(), key=lambda x: x[1], reverse=True)
+        res = [i[0] * i[1] for i in sortByFreq]
         return "".join(res)
+
 
 input = "tree"
 s = Solution()
 test = s.frequencySort(input)
-print(test=="eetr")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(test == "eetr")

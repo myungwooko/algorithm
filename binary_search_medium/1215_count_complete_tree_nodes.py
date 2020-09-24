@@ -31,6 +31,8 @@ mine
   else:
     result_count + under the node.right and node then => ndoe = node.left !!! 2**r is not only include nodes counts of under the node.right and node.right but also node.
 """
+
+
 class Solution(object):
     def countNodes(self, root):
         """
@@ -56,10 +58,3 @@ class Solution(object):
             h += 1
             node = node.left
         return h
-
-
-
-
-
-
-

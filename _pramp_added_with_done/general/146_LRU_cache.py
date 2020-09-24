@@ -35,8 +35,8 @@ cache.get(4);       // returns 4
 """
 import collections
 
-class LRUCache:
 
+class LRUCache:
     def __init__(self, capacity: int):
         self.db = collections.OrderedDict()
         self.capacity = capacity
@@ -53,6 +53,7 @@ class LRUCache:
         if self.capacity < len(self.db):
             self.db.popitem(last=False)
         return
+
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)

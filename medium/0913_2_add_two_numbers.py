@@ -15,11 +15,11 @@ Explanation: 342 + 465 = 807.
 """
 
 
-
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 def addTwoNumbers(l1, l2):
     """이게 신의 한수 cur은 그때그때의 node를 생성하기도 위하면서 처음에 dummy를 바라볼수 있게 하는 역할로서의 중추역할
@@ -36,7 +36,7 @@ def addTwoNumbers(l1, l2):
             carry += l2.val
             l2 = l2.next
         """cur.next하면 맨 처음에는 동시에 dummy.next도 되는 것이다. dummy = cur 이니까"""
-        cur.next = ListNode(carry%10)
+        cur.next = ListNode(carry % 10)
         """
         붙이고 cur.next 자체가 cur이라는 참조값의 주체가 된다. 그래서 그렇게 다음 것들을 계속 붙여나갈 목적으로서.
         즉 cur의 참조값은 바뀌게 된다. cur.next의 값으로
@@ -45,6 +45,7 @@ def addTwoNumbers(l1, l2):
         carry //= 10
     """dummy.next 부터 값이 추가 되었으니깐 이렇게 하면 결과값 리턴"""
     return dummy.next
+
 
 node1 = ListNode(2)
 node2 = ListNode(4)

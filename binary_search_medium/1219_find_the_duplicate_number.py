@@ -20,6 +20,8 @@ You must use only constant, O(1) extra space.
 Your runtime complexity should be less than O(n2).
 There is only one duplicate number in the array, but it could be repeated more than once.
 """
+
+
 class Solution(object):
     def findDuplicate(self, nums):
         """
@@ -50,7 +52,7 @@ class Solution(object):
         """
         l, r = 0, len(nums) - 1
         while l < r:
-            m = (l+r) // 2
+            m = (l + r) // 2
             if sum([i <= m for i in nums]) > m:
                 # 201개중 m인 index 100이 101개를 포함하고 있는거니까
                 r = m
@@ -58,7 +60,8 @@ class Solution(object):
                 l = m + 1
         return l
 
-input = [1,2,3,4,4]
+
+input = [1, 2, 3, 4, 4]
 s = Solution()
 test = s.findDuplicate(input)
 print(test)

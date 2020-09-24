@@ -34,9 +34,6 @@
 # s = "64723"
 #
 # print(solution(p, s))
-
-
-
 """
 - 물건 -1
 - 먼지의 양은 0이상의 정수
@@ -53,7 +50,6 @@
 - NxN  2 <= N <= 20
 - 칸    0 <= 칸 <= 100
 """
-
 """
 - 물건 -1
 - 먼지의 양은 0이상의 정수
@@ -70,7 +66,6 @@
 - NxN  2 <= N <= 20
 - 칸    0 <= 칸 <= 100
 """
-
 """
 - 물건 -1
 - 먼지의 양은 0이상의 정수
@@ -92,7 +87,7 @@
 def solution(office, r, c, move):
     answer = []
 
-    def helper(r, c, direction,  move_idx, answer):
+    def helper(r, c, direction, move_idx, answer):
         print(answer)
         if move_idx == len(move):
             return
@@ -101,29 +96,27 @@ def solution(office, r, c, move):
             if direction == "north":
                 if r - 1 >= 0 and office[r - 1][c] != -1:
                     answer.append(office[r - 1][c])
-                    office[r-1][c] = 0
+                    office[r - 1][c] = 0
                     r -= 1
                 helper(r, c, direction, move_idx + 1, answer)
             elif direction == "south":
                 if r + 1 < len(office) and office[r + 1][c] != -1:
                     answer.append(office[r + 1][c])
-                    office[r+1][c] = 0
+                    office[r + 1][c] = 0
                     r += 1
                 helper(r, c, direction, move_idx + 1, answer)
             elif direction == "west":
                 if c - 1 >= 0 and office[r][c - 1] != -1:
                     answer.append(office[r][c - 1])
-                    office[r][c-1] = 0
+                    office[r][c - 1] = 0
                     c -= 1
                 helper(r, c, direction, move_idx + 1, answer)
             elif direction == "east":
                 if c + 1 < len(office[0]) and office[r][c + 1] != -1:
                     answer.append(office[r][c + 1])
-                    office[r][c+1] = 0
+                    office[r][c + 1] = 0
                     c += 1
                 helper(r, c, direction, move_idx + 1, answer)
-
-
 
         elif move[move_idx] == "right":
             if direction == "north":
@@ -147,46 +140,21 @@ def solution(office, r, c, move):
             helper(r, c, direction, move_idx + 1, answer)
 
         return
+
     answer += [office[r][c]]
     office[r][c] = 0
     helper(r, c, "north", 0, answer)
     return sum(answer)
 
-#
-#
-office = [[-1, -1, 4],
-          [6, 3, -1],
-          [2, -1, 1]]
-r, c = 1, 0
-move =  ["go", "go", "right", "go", "right", "go", "left", "go"]
 
+#
+#
+office = [[-1, -1, 4], [6, 3, -1], [2, -1, 1]]
+r, c = 1, 0
+move = ["go", "go", "right", "go", "right", "go", "left", "go"]
 
 test = solution(office, r, c, move)
 print(test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #
 #
@@ -230,10 +198,3 @@ print(test)
 #
 #
 #
-
-
-
-
-
-
-

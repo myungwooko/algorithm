@@ -15,7 +15,6 @@ Calling hasNext() after that should return false.
 Follow up: How would you extend your design to be generic and work with all types, not just integer?
 """
 
-
 # Below is the interface for Iterator, which is already defined for you.
 #
 # class Iterator:
@@ -36,6 +35,7 @@ Follow up: How would you extend your design to be generic and work with all type
 #         Returns the next element in the iteration.
 #         :rtype: int
 #         """
+
 
 class PeekingIterator:
     def __init__(self, iterator):
@@ -87,7 +87,6 @@ class PeekingIterator:
 # while iter.hasNext():
 #     val = iter.peek()   # Get the next element but not advance the iterator.
 #     iter.next()         # Should return the same value as [val].
-
 """
 input
 ["PeekingIterator","next","peek","next","next","hasNext"]

@@ -32,6 +32,8 @@ Note that the input array is passed in by reference, which means modification to
 
 Internally you can think of this:
 """
+
+
 class Solution:
     def removeElement(self, nums, val) -> int:
         if not nums:
@@ -45,4 +47,3 @@ class Solution:
                 idx += 1
 
         return len(nums)
-

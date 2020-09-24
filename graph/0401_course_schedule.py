@@ -37,6 +37,7 @@ You may assume that there are no duplicate edges in the input prerequisites.
 """
 import collections
 
+
 class Solution(object):
     def canFinish(self, numCourses, prerequisites):
         """
@@ -52,7 +53,8 @@ class Solution(object):
         # print(1, forward)
         # print(2, backward)
         # finding out the first one that has no prerequisite
-        queue = collections.deque([node for node in forward if len(forward[node]) == 0])
+        queue = collections.deque(
+            [node for node in forward if len(forward[node]) == 0])
         # print(3, queue)
         while queue:
             node = queue.popleft()
@@ -70,7 +72,8 @@ class Solution(object):
             forward.pop(node)
         return not forward  # if there is cycle, forward won't be None
 
+
 s = Solution()
-n, p = 2, [[1,0]]
+n, p = 2, [[1, 0]]
 test = s.canFinish(n, p)
 print(test)

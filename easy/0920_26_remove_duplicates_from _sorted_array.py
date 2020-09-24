@@ -47,6 +47,7 @@ for (int i = 0; i < len; i++) {
  # while문은 i 가 자동으로 증가하지 않는다. 아래 버전 예시
 """
 
+
 class Solution:
     def removeDuplicates(self, nums) -> int:
         if not nums:
@@ -67,6 +68,8 @@ class Solution:
 while문은 i 가 자동으로 증가하지 않는다.
 
 """
+
+
 class Solution:
     def removeDuplicates(self, num):
 
@@ -80,8 +83,7 @@ class Solution:
             print(num)
 
 
-
 s = Solution()
-s.removeDuplicates([1,2,3,3,4,5])
+s.removeDuplicates([1, 2, 3, 3, 4, 5])
 
 print(s)

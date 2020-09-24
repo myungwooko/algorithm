@@ -43,8 +43,6 @@ FROM Scores AS t1
 ORDER BY Score DESC
 """
 
-
-
 # 내용: t2가 t1의 score보다 큰것은 distinct하게 구분해서(Score기준) count를 하는데 기본 0부터 시작이니까 +1해주는 것으로 해서 Rank로서 넣어준다.
 
 # plus concept

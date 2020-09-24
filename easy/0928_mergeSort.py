@@ -20,7 +20,6 @@ class MergeSort:
 
         return result
 
-
     def merge_sort(self, list):
         if len(list) <= 1:
             return list
@@ -33,6 +32,7 @@ class MergeSort:
         right = self.merge_sort(right)
 
         return self.merger(left, right)
+
 
 m = MergeSort()
 test = m.merge_sort([1, 2, 5, 2, 3, 21, 1, 1, 3])

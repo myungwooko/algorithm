@@ -16,6 +16,8 @@ Input: [1,null,2,3]
 Output: [1,2,3]
 Follow up: Recursive solution is trivial, could you do it iteratively?
 """
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
@@ -42,4 +44,3 @@ class Solution(object):
             if node.left:
                 stack.append(node.left)
         return res
-

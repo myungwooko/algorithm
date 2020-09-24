@@ -43,7 +43,6 @@ class Solution(object):
         :type t2: TreeNode
         :rtype: TreeNode
         """
-
         def helper(t1, t2):
             if not t1 or not t2:
                 return t1 or t2

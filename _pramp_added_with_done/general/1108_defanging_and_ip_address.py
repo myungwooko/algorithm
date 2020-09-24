@@ -21,12 +21,15 @@ Constraints:
 
 The given address is a valid IPv4 address.
 """
+
+
 class Solution:
     def defangIPaddr(self, address: str) -> str:
         addr = "".join(["[.]" if e == "." else e for e in address])
         return addr
 
+
 s = Solution()
 address = "1.1.1.1"
 test = s.defangIPaddr(address)
-print(test =="1[.]1[.]1[.]1")
+print(test == "1[.]1[.]1[.]1")

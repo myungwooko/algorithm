@@ -21,6 +21,8 @@ Given target = 5, return true.
 
 Given target = 20, return false.
 """
+
+
 class Solution(object):
     def searchMatrix(self, matrix, target):
         """
@@ -69,7 +71,6 @@ class Solution(object):
                 u = mid + 1
         return False
 
-
     """
     Starting with the bottom left corner of the matrix, if the current element curr equals target, we return True. 
     If curr is larger than target, than since any element to the right of curr (in the same row) is larger than curr, 
@@ -78,6 +79,7 @@ class Solution(object):
     until we find target in which case we return True or move out of matrix in which case we return False.
     Time complexity: O(m+n), space complexity: O(1).
     """
+
     def searchMatrix2(self, matrix, target):
         m = len(matrix)
         if m == 0:
@@ -85,7 +87,7 @@ class Solution(object):
         n = len(matrix[0])
         if n == 0:
             return False
-        y = m-1
+        y = m - 1
         x = 0
         while x < n and y >= 0:
             if matrix[y][x] == target:

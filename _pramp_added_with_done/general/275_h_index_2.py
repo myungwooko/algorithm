@@ -67,16 +67,16 @@ class Solution(object):
     - if every elements are satisfied as h index lastly l will be 0 as it was at the first time => n-l = n
     so these cases are handled in the below logic naturally.  
     """
+
     def hIndex(self, citations):
         n = len(citations)
-        l, r = 0, n-1
+        l, r = 0, n - 1
         while l <= r:
-            mid = (l+r)/2
-            if citations[mid] >= n-mid:
+            mid = (l + r) / 2
+            if citations[mid] >= n - mid:
                 r = mid - 1
             else:
                 #마지막에(해당 자신들이 같아지는 포인트에서) 자기 자신이 만족시키지 못하면 자기 자신에서 +1을 하는데 그것은 현재의 r이 이전의 mid에서 만족이 되고 넘어오기 전의 그 위치이기 때문에
                 #마지막에 +1을 하면 마지막 기준을 충족하던 것으로 가는 것이된다. 그래서 우리는 l을 기준으로 return 값을 계산하게 되는 것.
                 l = mid + 1
-        return n-l
-
+        return n - l

@@ -16,6 +16,8 @@ s = "3[a]2[bc]", return "aaabcbc".
 s = "3[a2[c]]", return "accaccacc".
 s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 """
+
+
 class Solution(object):
     def decodeString(self, s):
         """
@@ -49,7 +51,7 @@ class Solution(object):
                 stack.pop()
                 while stack and stack[-1] in nums:
                     num = stack.pop() + num
-                product = int(num)*chars
+                product = int(num) * chars
                 stack.append(product)
         return ''.join(stack)
 
@@ -59,24 +61,3 @@ input2 = "100[lele]"
 s = Solution()
 test = s.decodeString(input2)
 print(test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

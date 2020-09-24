@@ -26,6 +26,8 @@ Example 3:
 Input: numerator = 2, denominator = 3
 Output: "0.(6)"
 """
+
+
 def fractionToDecimal(numerator, denominator):
     num, den = numerator, denominator
     if not den:  # denominator is 0
@@ -40,7 +42,7 @@ def fractionToDecimal(numerator, denominator):
         res.append("-")  # add the sign
 
     num, den = abs(num), abs(den)
-    res.append(str(num//den))
+    res.append(str(num // den))
     rmd = num % den
     if not rmd:
         return "".join(res)  # only has integral part
@@ -50,14 +52,14 @@ def fractionToDecimal(numerator, denominator):
 
     while rmd:
         # print(1, dic, rmd)
-        if rmd in dic:   # the remainder recurs => *** anyway rmd is one length int because rmd is always length one you know => that means we can terminate it first repeat point.
+        if rmd in dic:  # the remainder recurs => *** anyway rmd is one length int because rmd is always length one you know => that means we can terminate it first repeat point.
             res.insert(dic[rmd], "(")
             res.append(")")
             break
         # for having the index as a value
         dic[rmd] = len(res)
         # one position by one position
-        div, rmd = divmod(rmd*10, den)
+        div, rmd = divmod(rmd * 10, den)
         # when we insert "(" into the index of dic[rmd] => this will be automatically go to next index
         # we do that if that is recur, otherwise it just remain that point
         res.append(str(div))

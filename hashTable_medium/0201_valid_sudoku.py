@@ -51,9 +51,12 @@ Only the filled cells need to be validated according to the mentioned rules.
 The given board contain only digits 1-9 and the character '.'.
 The given board size is always 9x9.
 """
+
+
 class Solution:
     def isValidSudoku(self, board):
-        return self.isRowValid(board) and self.isColValid(board) and self.isSquareValid(board)
+        return self.isRowValid(board) and self.isColValid(
+            board) and self.isSquareValid(board)
 
     def isRowValid(self, board):
         for i in board:
@@ -70,7 +73,10 @@ class Solution:
     def isSquareValid(self, board):
         for r in (0, 3, 6):
             for c in (0, 3, 6):
-                square = [board[i][j] for i in range(r, r + 3) for j in range(c, c + 3)]
+                square = [
+                    board[i][j] for i in range(r, r + 3)
+                    for j in range(c, c + 3)
+                ]
                 if not self.isUnitValid(square):
                     return False
         return True
@@ -78,32 +84,31 @@ class Solution:
     def isUnitValid(self, unit):
         unit = [i for i in unit if i != "."]
         return len(unit) == len(set(unit))
-input = [
-  ["5","3",".",".","7",".",".",".","."],
-  ["6",".",".","1","9","5",".",".","."],
-  [".","9","8",".",".",".",".","6","."],
-  ["8",".",".",".","6",".",".",".","3"],
-  ["4",".",".","8",".","3",".",".","1"],
-  ["7",".",".",".","2",".",".",".","6"],
-  [".","6",".",".",".",".","2","8","."],
-  [".",".",".","4","1","9",".",".","5"],
-  [".",".",".",".","8",".",".","7","9"]]
 
-input1 = [
-  ["8","3",".",".","7",".",".",".","."],
-  ["6",".",".","1","9","5",".",".","."],
-  [".","9","8",".",".",".",".","6","."],
-  ["8",".",".",".","6",".",".",".","3"],
-  ["4",".",".","8",".","3",".",".","1"],
-  ["7",".",".",".","2",".",".",".","6"],
-  [".","6",".",".",".",".","2","8","."],
-  [".",".",".","4","1","9",".",".","5"],
-  [".",".",".",".","8",".",".","7","9"]
-]
+
+input = [["5", "3", ".", ".", "7", ".", ".", ".", "."],
+         ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+         [".", "9", "8", ".", ".", ".", ".", "6", "."],
+         ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+         ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+         ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+         [".", "6", ".", ".", ".", ".", "2", "8", "."],
+         [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+         [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
+
+input1 = [["8", "3", ".", ".", "7", ".", ".", ".", "."],
+          ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+          [".", "9", "8", ".", ".", ".", ".", "6", "."],
+          ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+          ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+          ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+          [".", "6", ".", ".", ".", ".", "2", "8", "."],
+          [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+          [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
 
 s = Solution()
 test = s.isValidSudoku(input)
 print("====")
 test1 = s.isValidSudoku(input1)
-print(test==True)
-print(test1==False)
+print(test == True)
+print(test1 == False)

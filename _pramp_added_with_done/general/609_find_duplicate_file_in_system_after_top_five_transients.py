@@ -46,7 +46,6 @@ If you can only read the file by 1kb each time, how will you modify your solutio
 What is the time complexity of your modified solution? What is the most time-consuming part and memory consuming part of it? How to optimize?
 How to make sure the duplicated files you find are not false positive?
 """
-
 """
 similar to the problem, but easier
 """
@@ -62,5 +61,6 @@ class Solution:
             for file in pieces[1:]:
                 content = file.split("(")[1][:-1]
                 curlAndConLength = 2 + len(content)
-                pathMap[content].append(pathHead + "/" + file[:-curlAndConLength])
+                pathMap[content].append(pathHead + "/" +
+                                        file[:-curlAndConLength])
         return [gathered for gathered in pathMap.values() if len(gathered) > 1]

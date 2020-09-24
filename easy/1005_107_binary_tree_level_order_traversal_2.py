@@ -31,6 +31,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 class Solution:
     def levelOrderBottom(self, root: TreeNode):
         if not root:
@@ -67,11 +68,14 @@ class Solution:
 
     def dfs(self, root, level, res):
         if root:
-            if len(res) < level + 1: #==================================> 다음 층위것들이 들어왔을때를 의미 하나당 한층위의 것들이니깐
+            if len(
+                    res
+            ) < level + 1:  #==================================> 다음 층위것들이 들어왔을때를 의미 하나당 한층위의 것들이니깐
                 res.insert(0, [])
-            res[-(level+1)].append(root.val)
+            res[-(level + 1)].append(root.val)
             self.dfs(root.left, level + 1, res)
             self.dfs(root.right, level + 1, res)
+
 
 """
     3
@@ -97,18 +101,3 @@ root.right = f_right
 
 test = s.levelOrderBottom1(root)
 print(test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

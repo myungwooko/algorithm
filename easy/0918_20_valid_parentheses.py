@@ -35,16 +35,17 @@ Output: true
 solution => stack 이용 => 어쨌든 다 간단하게들 푸는군 생각을 해보자. 문제를 잘 파악하고, "잘" 풀도록 하자.
 """
 
+
 class Solution:
     # @param {string} s
     # @return {boolean}
     def isValid(self, s):
-        stack=[]
+        stack = []
         for i in s:
-            if i in ['(','[','{']:
+            if i in ['(', '[', '{']:
                 stack.append(i)
             else:
-                if not stack or {')':'(',']':'[','}':'{'}[i]!=stack[-1]:
+                if not stack or {')': '(', ']': '[', '}': '{'}[i] != stack[-1]:
                     return False
                 stack.pop()
         return not stack
@@ -59,5 +60,3 @@ print(test_2)
 
 test_3 = s.isValid(("["))
 print(test_3)
-
-

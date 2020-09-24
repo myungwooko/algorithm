@@ -45,6 +45,7 @@ slotsB[i].length = 2
 [output] array.integer
 """
 
+
 # Time O(NM)
 def meeting_planner(slotsA, slotsB, dur):
     for i, s1 in enumerate(slotsA):

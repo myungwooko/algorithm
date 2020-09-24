@@ -23,7 +23,6 @@ Explanation: The answer is "wke", with the length of 3.
 """
 
 
-
 def lengthOfLongestSubstring(s: str) -> int:
     """
     - 문제를 차분히 잘 확인하고 이해해야한다. 요지를 분명히 파악하라.
@@ -45,9 +44,10 @@ def lengthOfLongestSubstring(s: str) -> int:
             sub = sub[index + 1:] + v
         else:
             sub += v
-            if i is len(s[1:])-1:
+            if i is len(s[1:]) - 1:
                 map[sub] = len(sub)
     return max(list(map.values()))
+
 
 test1 = lengthOfLongestSubstring("pwwkew")
 print('expected is 3', test1)
@@ -55,9 +55,3 @@ test2 = lengthOfLongestSubstring("au")
 print('expected is 2', test2)
 test3 = lengthOfLongestSubstring("abcabv")
 print('expected is 4', test3)
-
-
-
-
-
-

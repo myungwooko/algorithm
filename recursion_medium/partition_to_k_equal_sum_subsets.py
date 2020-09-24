@@ -18,6 +18,8 @@ Note:
 
 - 그러니까 첫번째에서 쭉 잘들어가서 만족시켜서 True여야 True가 되는가보다.
 """
+
+
 class Solution(object):
     def canPartitionKSubsets(self, nums, k):
         target, m = divmod(sum(nums), k)
@@ -43,7 +45,8 @@ class Solution(object):
 
         return nums[0] <= target and dfs(0)
 
-nums = [4,3,2,3,5,2,1]
+
+nums = [4, 3, 2, 3, 5, 2, 1]
 k = 4
 s = Solution()
 test = s.canPartitionKSubsets(nums, k)

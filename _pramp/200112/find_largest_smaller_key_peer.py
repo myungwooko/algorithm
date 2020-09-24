@@ -30,6 +30,7 @@ class BinarySearchTree:
 
 # using stack
 # but it looks not right. if there is possible result, it should return that. Look at the below.
+
     def find_largest_smaller_key(self, num):
         stack = [self.root]
 
@@ -97,8 +98,6 @@ bst = BinarySearchTree()
 # bst.insert(12);
 # bst.insert(11);
 # bst.insert(17);
-
-
 """
 num = 15
 
@@ -114,12 +113,12 @@ tree
 in this case, it has to check the parent values.
 """
 bst.insert(20)
-bst.insert(9);
-bst.insert(21);
-bst.insert(4);
-bst.insert(17);
-bst.insert(1);
-bst.insert(23);
+bst.insert(9)
+bst.insert(21)
+bst.insert(4)
+bst.insert(17)
+bst.insert(1)
+bst.insert(23)
 
 result = bst.find_largest_smaller_key(15)
 

@@ -35,6 +35,8 @@ Given tree t:
  1   2
 Return false.
 """
+
+
 class Solution:
     def isSubtree(self, s, t):
         # same structure is possible
@@ -42,7 +44,8 @@ class Solution:
         # can I asume there is no duplicate value in a tree?
         def isEqual(n1, n2):
             if n1 and n2:
-                return n1.val == n2.val and isEqual(n1.left, n2.left) and isEqual(n1.right, n2.right)
+                return n1.val == n2.val and isEqual(
+                    n1.left, n2.left) and isEqual(n1.right, n2.right)
             elif any([n1, n2]):
                 return False
             else:
@@ -59,7 +62,3 @@ class Solution:
                 return True
 
         return dfs(s, t)
-
-
-
-

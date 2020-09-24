@@ -35,19 +35,19 @@ Constraints:
 # Time: O(n^3)
 # Space: O(1)
 def find_array_quadruplet(arr, s):
-  arr.sort()
-  for i in range(len(arr)-3):
-    for j in range(i+1, len(arr)-2):
-      l, r = j+1, len(arr)-1
-      while l < r:
-        quad = [arr[i], arr[j], arr[l], arr[r]]
-        if sum(quad) == s:
-          return quad
-        elif sum(quad) < s:
-          l += 1
-        else:
-          r -= 1
-  return []
+    arr.sort()
+    for i in range(len(arr) - 3):
+        for j in range(i + 1, len(arr) - 2):
+            l, r = j + 1, len(arr) - 1
+            while l < r:
+                quad = [arr[i], arr[j], arr[l], arr[r]]
+                if sum(quad) == s:
+                    return quad
+                elif sum(quad) < s:
+                    l += 1
+                else:
+                    r -= 1
+    return []
 
 
 # This is not about only return first one, return every possible combination
@@ -56,24 +56,24 @@ def find_array_quadruplet(arr, s):
 def find_array_quadruplet(arr, s):
     arr.sort()
     result = []
-    for i in range(len(arr)-3):
-        if arr[i] == arr[i-1]:
+    for i in range(len(arr) - 3):
+        if arr[i] == arr[i - 1]:
             continue
-        for j in range(i+1, len(arr)-2):
-            if j != i+1 and arr[j] == arr[j-1]:
+        for j in range(i + 1, len(arr) - 2):
+            if j != i + 1 and arr[j] == arr[j - 1]:
                 continue
-            l, r = j+1, len(arr) - 1
+            l, r = j + 1, len(arr) - 1
             while l < r:
                 sum = arr[i] + arr[j] + arr[l] + arr[r]
-                if sum  == s:
+                if sum == s:
                     result.append([arr[i], arr[j], arr[l], arr[r]])
                     while l < r:
-                        if arr[l] == arr[l+1]:
+                        if arr[l] == arr[l + 1]:
                             l += 1
                         else:
                             break
                     while l < r:
-                        if arr[r] == arr[r-1]:
+                        if arr[r] == arr[r - 1]:
                             r -= 1
                         else:
                             break
@@ -89,7 +89,3 @@ def find_array_quadruplet(arr, s):
 arr, s = [4, 4, 4, 4, 6, 2], 16
 test = find_array_quadruplet(arr, s)
 print(test)
-
-
-
-

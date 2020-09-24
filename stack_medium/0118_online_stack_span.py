@@ -35,6 +35,8 @@ There will be at most 10000 calls to StockSpanner.next per test case.
 There will be at most 150000 calls to StockSpanner.next across all test cases.
 The total time limit for this problem has been reduced by 75% for C++, and 50% for all other languages.
 """
+
+
 class StockSpanner:
     def __init__(self):
         self.stack = []
@@ -46,6 +48,7 @@ class StockSpanner:
             res += self.stack.pop()[1]
         self.stack.append([price, res])
         return res
+
 
 # Your StockSpanner object will be instantiated and called as such:
 # obj = StockSpanner()

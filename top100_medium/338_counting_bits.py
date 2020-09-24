@@ -22,6 +22,8 @@ Can you do it like a boss? Do it without using any builtin function like __built
 -  이진법 shift게산 법
    => n>>m : n이라는 수를 2진법으로 바꿔서 >> or << 이 가리키는 방향으로 m만큼 밀어준다. 그리고 그결과를 십진법의 수로 바꿔주면 그것이 n>>m의 결과가 된다.
 """
+
+
 class Solution(object):
     def countBits(self, num):
         """
@@ -43,7 +45,7 @@ class Solution(object):
         result, idx = 0, 0
         while (n >= 1):
             n, r = divmod(n, 2)
-            result += (10 ** idx) * r
+            result += (10**idx) * r
             idx += 1
         return result
 
@@ -53,9 +55,10 @@ class Solution(object):
         :rtype: List[int]
         """
         result = [0]
-        for i in range(1, num+1):
-            result.append(result[i>>1] + int(i&1))
+        for i in range(1, num + 1):
+            result.append(result[i >> 1] + int(i & 1))
         return result
+
 
 s = Solution()
 test = s.countBits(168)

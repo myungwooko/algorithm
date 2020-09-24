@@ -21,18 +21,26 @@ from collections import Counter
 import heapq
 import unittest
 
+
 # Complexity is O(Nlog(K)) O(N)
 class Solution(object):
     def topKFrequent(self, nums, k):
         # 1.counter => freq mapping  2.items => make index order => keeping index order, make (freq, num) list
         d, h = [(freq, num) for num, freq in Counter(nums).items()], []
-        print(1, Counter(nums), "<= "
-                             "collections.Counter() Counter object create: freq first, between same freq index first <= ordering like this // "
-                             "num: freq <= form like this *Counter object create")
-        print(2, Counter(nums).items(), "<= if we call items() ordering from the counter object's to nums index order")
+        print(
+            1, Counter(nums), "<= "
+            "collections.Counter() Counter object create: freq first, between same freq index first <= ordering like this // "
+            "num: freq <= form like this *Counter object create")
+        print(
+            2,
+            Counter(nums).items(),
+            "<= if we call items() ordering from the counter object's to nums index order"
+        )
         for i in range(k):
             heapq.heappush(h, d[i])
-        print(f"h => {h} <= heapq.heappush: it orders basically the one that smallest frequency will be first one")
+        print(
+            f"h => {h} <= heapq.heappush: it orders basically the one that smallest frequency will be first one"
+        )
         for i in range(k, len(d)):
             # iterate rest of d => if d[i] freq is bigger than smaller of h => swap those
             if d[i][0] > h[0][0]:
@@ -48,9 +56,7 @@ k = 2
 s = Solution()
 test = s.topKFrequent(nums, k)
 print(test)
-print(test==[2,1])
-
-
+print(test == [2, 1])
 
 
 class Test(unittest.TestCase):
@@ -58,10 +64,8 @@ class Test(unittest.TestCase):
         nums = [1, 7, 1, 1, 2, 2, 4]
         k = 2
         s = Solution()
-        self.assertEqual(s.topKFrequent(nums, k), [1,2])
+        self.assertEqual(s.topKFrequent(nums, k), [1, 2])
+
 
 if __name__ == '__main__':
     unittest.main()
-
-
-

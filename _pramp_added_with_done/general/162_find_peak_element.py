@@ -28,6 +28,8 @@ Your solution should be in logarithmic complexity.
 - mid > mid+1이면 자신보다 작은 것을 오른쪽에 딱 붙여서 데리고 왼쪽으로 줄여나가는 거고,
 - not (mid > mid + 1) 이면 왼쪽에 더 작은애를 확보하고 오른쪽으로 줄여나가는 것.
 """
+
+
 class Solution(object):
     def findPeakElement(self, nums):
         """
@@ -35,18 +37,19 @@ class Solution(object):
         :rtype: int
         """
         l = 0
-        r = len(nums)-1
+        r = len(nums) - 1
         while l < r:
-            mid = (l+r) // 2
+            mid = (l + r) // 2
             #이걸 아무문제 없이 쭉 만족시킨다면 그건 결국 index 0 이 index 1 보다도 작은것을 향해 쭉 가는거고.
-            if nums[mid] > nums[mid+1]:
+            if nums[mid] > nums[mid + 1]:
                 r = mid
             # 이렇게 쭉 만족시키면서 가면 결국 마지막 index가 peak이 되는 것.
             else:
-                l = mid+1
+                l = mid + 1
         return l
 
-input = [1,2,1,3,5,6,4]
+
+input = [1, 2, 1, 3, 5, 6, 4]
 s = Solution()
 test = s.findPeakElement()
 print(test)

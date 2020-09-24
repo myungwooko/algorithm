@@ -34,6 +34,8 @@ Output: false
 
 - 마지막이 모두 #로 끝맺음 되어야 한다.
 """
+
+
 class Solution(object):
     #every last has to finish "#""
     def isValidSerialization(self, preorder: str) -> bool:
@@ -52,10 +54,8 @@ class Solution(object):
         print(stack)
         return stack == ['#']
 
+
 preorder = "9,3,4,#,#,1,#,#,2,#,6,#,#"
 s = Solution()
 test = s.isValidSerialization(preorder)
 print(test)
-
-
-

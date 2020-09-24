@@ -38,14 +38,12 @@ Explanation: Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","
 # => it can't make valid answer
 from collections import deque, defaultdict
 
-
 # Every ticket can't be valid answer for that turn
 # So we need to check everything
 # [["JFK","KUL"],["JFK","NRT"],["NRT","JFK"]]
 # In this case
 # => if we choose ["JFK","KUL"] as the first one(because it is prior to ["JFK","NRT"] in lexical order)
 # => it can't make valid answer
-
 
 # Every ticket can't be valid answer for that turn
 # So we need to check everything
@@ -54,6 +52,7 @@ from collections import deque, defaultdict
 # => if we choose ["JFK","KUL"] as the first one(because it is prior to ["JFK","NRT"] in lexical order)
 # => it can't make valid answer
 import collections
+
 
 class Solution(object):
     def findItinerary(self, tickets):
@@ -124,7 +123,6 @@ class Solution(object):
 
 
 S = Solution()
-input = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
+input = [["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
 test = S.findItinerary(input)
 print(test)
-

@@ -2,7 +2,9 @@
 Given an array of meeting time intervals consisting of  start and end times [[s1,e1],[s2,e2],...] (si < ei),
 find the minimum number of conference rooms required. Example 1: Input: [[0, 30],[5, 10],[15, 20]] Output: 2
 """
-def rooms (arr):
+
+
+def rooms(arr):
     if not arr:
         return 0
     rooms = [arr[0]]
@@ -22,6 +24,6 @@ def rooms (arr):
             rooms.append([i, j])
     return len(rooms)
 
-arr =  [[10,15], [9,11], [12,15], [18,20], [16,19],[9, 10], [18,23]]
-print(rooms(arr))
 
+arr = [[10, 15], [9, 11], [12, 15], [18, 20], [16, 19], [9, 10], [18, 23]]
+print(rooms(arr))

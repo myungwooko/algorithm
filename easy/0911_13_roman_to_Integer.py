@@ -48,7 +48,6 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 """
 
 
-
 class Solution:
     def romanToInt(self, s: str) -> int:
         map_num = {
@@ -59,10 +58,10 @@ class Solution:
             "C": 100,
             "D": 500,
             "M": 1000
-            }
+        }
         res = 0
         for i, v in enumerate(s):
-            if i == len(s) - 1 or map_num[v] >= map_num[s[i+1]]:
+            if i == len(s) - 1 or map_num[v] >= map_num[s[i + 1]]:
                 res += map_num[v]
             else:
                 res -= map_num[v]

@@ -28,17 +28,19 @@ Accepted
 """
 import heapq
 
+
 class Solution:
-	# 축적된 비용에다가 다시 두개의 합을 더하는 것이기 때문에 축적된 비용을 최소화 시켜나가면 축적해 나가야 가장 작은 수를 만들수 있다.
-	def connectSticks(self, A) -> int:
-		heapq.heapify(A)
-		cost = 0
-		while len(A) > 1:
-			x, y = heapq.heappop(A), heapq.heappop(A)
-			cost += (x + y)
-			heapq.heappush(A, (x + y))
-		return cost
+    # 축적된 비용에다가 다시 두개의 합을 더하는 것이기 때문에 축적된 비용을 최소화 시켜나가면 축적해 나가야 가장 작은 수를 만들수 있다.
+    def connectSticks(self, A) -> int:
+        heapq.heapify(A)
+        cost = 0
+        while len(A) > 1:
+            x, y = heapq.heappop(A), heapq.heappop(A)
+            cost += (x + y)
+            heapq.heappush(A, (x + y))
+        return cost
+
 
 s = Solution()
-test = s.connectSticks([2,4,3])
+test = s.connectSticks([2, 4, 3])
 print(test == 14)

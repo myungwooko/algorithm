@@ -21,7 +21,6 @@ Given the Employee table, write a SQL query that finds out employees who earn mo
 | Joe      |
 +----------+
 """
-
 """
 SELECT name AS Employee FROM Employee WHERE salary > SELECT Salary from Employee Id=ManagerId 
 

@@ -18,6 +18,8 @@ return its level order traversal as:
   [15,7]
 ]
 """
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
@@ -46,25 +48,6 @@ class Solution(object):
         else:
             return
         if node.left:
-            self.helper(node.left, res, levelIdx+1)
+            self.helper(node.left, res, levelIdx + 1)
         if node.right:
-            self.helper(node.right, res, levelIdx+1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            self.helper(node.right, res, levelIdx + 1)

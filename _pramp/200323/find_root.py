@@ -108,7 +108,8 @@ def root(x, n):
 def root(x, n):
     upper_bound = x
     lower_bound = 0
-    get_possible_root = lambda lower_bound, upper_bound: (lower_bound + upper_bound) / 2
+    get_possible_root = lambda lower_bound, upper_bound: (lower_bound +
+                                                          upper_bound) / 2
     possible_root = get_possible_root(lower_bound, upper_bound)
     while upper_bound - possible_root > 0.001:
         val = pow(possible_root, n)

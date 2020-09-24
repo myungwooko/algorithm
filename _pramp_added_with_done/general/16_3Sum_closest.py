@@ -13,6 +13,7 @@ The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 - 파이썬에 기존에 있는 함수명으로 변수명을 만들지 말것! => 참조하다가 에러나고 꼬이는 경우가 빈번하게 발생.
 """
 
+
 class Solution(object):
     def threeSumClosest(self, nums, target):
         """
@@ -73,9 +74,8 @@ class Solution(object):
         return res
 
 
-
 s = Solution()
-arg1 = [1,2,4,8,16,32,64,128]
+arg1 = [1, 2, 4, 8, 16, 32, 64, 128]
 arg2 = 82
 test = s.threeSumClosest(arg1, arg2)
 print(1, test)

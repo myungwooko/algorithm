@@ -30,6 +30,8 @@ A solution set is:
 ]
 
 """
+
+
 class Solution(object):
     def combinationSum2(self, candidates, target):
         """
@@ -51,11 +53,12 @@ class Solution(object):
                 res.append(path)
             return
         for i in range(index, len(nums)):
-            if i > index and nums[i] == nums[i-1]:
+            if i > index and nums[i] == nums[i - 1]:
                 continue
-            self.dfs(nums, target - nums[i], i+1, path + [nums[i]], res)
+            self.dfs(nums, target - nums[i], i + 1, path + [nums[i]], res)
 
-candidates = [10,1,2,7,6,1,5]
+
+candidates = [10, 1, 2, 7, 6, 1, 5]
 target = 8
 s = Solution()
 test = s.combinationSum2(candidates, target)

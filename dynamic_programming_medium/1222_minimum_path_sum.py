@@ -17,6 +17,8 @@ Input:
 Output: 7
 Explanation: Because the path 1→3→1→1→1 minimizes the sum.
 """
+
+
 class Solution(object):
     # recursive
     def minPathSum(self, grid):
@@ -48,7 +50,7 @@ class Solution(object):
         if x < c - 1:
             self.allPaths(x + 1, y, c, r, grid, sum, res)
         if y < r - 1:
-            self.allPaths(x, y+1, c, r, grid, sum, res)
+            self.allPaths(x, y + 1, c, r, grid, sum, res)
         return
 
     # dp O(mn)
@@ -88,11 +90,8 @@ class Solution(object):
         print(4, dp[2])
         return dp[-1][-1]
 
-input = [
-  [1,3,1],
-  [1,5,1],
-  [4,2,1]
-]
+
+input = [[1, 3, 1], [1, 5, 1], [4, 2, 1]]
 s = Solution()
 test = s.minPathSum(input)
 print('result is:', test)

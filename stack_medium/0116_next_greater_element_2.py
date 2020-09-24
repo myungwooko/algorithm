@@ -14,6 +14,8 @@ The number 2 can't find next greater number;
 The second 1's next greater number needs to search circularly, which is also 2.
 Note: The length of given array won't exceed 10000.
 """
+
+
 class Solution(object):
     # Time Limit Exceeded
     def nextGreaterElements(self, nums):
@@ -38,7 +40,6 @@ class Solution(object):
                 res.append(stack[0])
             idx += 1
         return res
-
 
     # 두바퀴로 서클을 돌수 있는 환경을 만들고 => 자신보다 큰 수가 자신보다 뒤에 있지 않고 앞에 있는 경우에 대한 비교를 해줘야 하므로.
     # 마지막에 지난애가 최신의 것으로서 stack에 쌓이게 된다. 자신의 순서로서 자신보다 큰수를 찾기 위해 비교를 해야하니깐.
@@ -73,4 +74,3 @@ test = s.nextGreaterElements(nums)
 print(test)
 # 012
 # 0101
-

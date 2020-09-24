@@ -19,6 +19,8 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
 
 mine => inorder is simply => left child => node it self => right child
 """
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
@@ -59,4 +61,3 @@ class Solution(object):
             node = stack.pop()
             res.append(node.val)
             root = node.right
-

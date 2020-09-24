@@ -17,7 +17,7 @@ Note:
 
 Although the above answer is in lexicographical order, your answer could be in any order you want.
 """
-""""""""""""""""""""""""""""""""""""""""""""""
+"""""" """""" """""" """""" """""" """""" """""" """"
 리컬젼시에 혹은 변수를 참조하는 경우에서 굉장히 중요한 point
 
 1. res += char -> X
@@ -29,21 +29,35 @@ Although the above answer is in lexicographical order, your answer could be in a
 res+char를 argument(인수)로서 넣는것은 선언하는 것과 아무런 상관이 없는 것. 그냥 그값을 넣는 것일뿐이다. 그러므로 이 경우에 참조되는 값은 아무런 영향을
 받지 않는다.  
 """
+
+
 def letterCombinations(digits):
     if not digits:
         return []
-    dic = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
+    dic = {
+        "2": "abc",
+        "3": "def",
+        "4": "ghi",
+        "5": "jkl",
+        "6": "mno",
+        "7": "pqrs",
+        "8": "tuv",
+        "9": "wxyz"
+    }
     result = []
+
     def helper(idx, res):
         if len(res) == len(digits):
             result.append(res)
             return
         for char in dic[digits[idx]]:
             helper(idx + 1, res + char)
+
     helper(0, "")
     return result
+
 
 num = "23"
 # letterCombinations("23") == ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
 test = letterCombinations(num)
-print(test==["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"])
+print(test == ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"])

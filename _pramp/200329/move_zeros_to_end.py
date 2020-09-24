@@ -34,8 +34,8 @@ def moveZerosToEnd(arr):
     write = idx = 0
     while idx < len(arr):
         if arr[idx]:
-          arr[write], arr[idx] = arr[idx], arr[write]
-          write += 1
+            arr[write], arr[idx] = arr[idx], arr[write]
+            write += 1
         idx += 1
     return arr
 

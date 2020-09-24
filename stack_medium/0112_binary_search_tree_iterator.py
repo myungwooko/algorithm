@@ -38,6 +38,7 @@ class TreeNode(object):
         self.left = None
         self.right = None
 
+
 class BSTIterator(object):
     def __init__(self, root):
         """
@@ -83,9 +84,12 @@ class BSTIterator(object):
         else:
             return True
 
+
 """
 Because binary search tree's lefty nodes are always lesser than their righty nodes.
 """
+
+
 class BSTIterator(object):
     def __init__(self, root):
         self.stack = []
@@ -103,5 +107,3 @@ class BSTIterator(object):
         node = self.stack.pop()
         self.helper(node.right)
         return node.val
-
-

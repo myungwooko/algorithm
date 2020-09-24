@@ -15,6 +15,8 @@ Input:
 
 Output: 4
 """
+
+
 class Solution(object):
     def maximalSquare(self, matrix):
         """
@@ -26,6 +28,7 @@ class Solution(object):
         maxS = [0]
         maxR = len(matrix) - 1
         maxC = len(matrix[0]) - 1
+
         def squareChecker(r, c):
             count = 0
             print(33, 'r, c', r, c, count)
@@ -57,6 +60,7 @@ class Solution(object):
             print('count', count)
             if count > maxS[0]:
                 maxS[0] = count
+
         for r in range(len(matrix)):
             if maxR - r < maxS[0]:
                 continue
@@ -76,13 +80,13 @@ class Solution(object):
         print(pre, cur)
         for i in range(r):
             for j in range(c):
-                cur[j + 1] = (min(pre[j], pre[j + 1], cur[j]) + 1) * int(matrix[i][j])
-                res = max(res, cur[j + 1] ** 2)
+                cur[j + 1] = (min(pre[j], pre[j + 1], cur[j]) + 1) * int(
+                    matrix[i][j])
+                res = max(res, cur[j + 1]**2)
                 print(cur, pre)
             pre = cur
             cur = [0] * (c + 1)
         return res
-
 
     """
     본인이 일단 기본적으로 1인 경우
@@ -92,27 +96,30 @@ class Solution(object):
     예술이다 ㅜㅜ 
     It's kind of art
     """
+
     def maximalSquare(self, matrix):
         if not matrix: return 0
         m, n = len(matrix), len(matrix[0])
-        dp = [[0 if matrix[i][j] == '0' else 1 for j in range(n)] for i in range(m)]
+        dp = [[0 if matrix[i][j] == '0' else 1 for j in range(n)]
+              for i in range(m)]
         print(1, dp)
         for i in range(1, m):
             for j in range(1, n):
                 if matrix[i][j] == '1':
-                    dp[i][j] = min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1
+                    dp[i][j] = min(dp[i - 1][j], dp[i][j - 1],
+                                   dp[i - 1][j - 1]) + 1
                 else:
                     dp[i][j] = 0
         print(1, dp)
         ans = max([max(i) for i in dp])
-        return ans ** 2
+        return ans**2
 
 
-matrix =[["1","1","1","1","1","1"],["0","1","1","1","1","1"],["1","1","1","1","0","1"],["1","1","1","1","1","1"]]
+matrix = [["1", "1", "1", "1", "1", "1"], ["0", "1", "1", "1", "1", "1"],
+          ["1", "1", "1", "1", "0", "1"], ["1", "1", "1", "1", "1", "1"]]
 s = Solution()
 test = s.maximalSquare(matrix)
 print(test)
-
 """
 [
  [1, 1, 1, 1, 1, 1],
@@ -128,4 +135,3 @@ print(test)
 [1, 2, 2, 3, 1, 1]
 ]
 """
-

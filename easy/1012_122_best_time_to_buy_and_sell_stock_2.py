@@ -39,9 +39,12 @@ Accepted
 
 => 문제 파악이 정말 중요하다... 같은날 팔고나서 사는건 가능한 거였다...............
 """
+
+
 class Solution:
     # @param {integer[]} prices
     # @return {integer}
     def maxProfit(self, prices):
-        return sum([max(prices[i+1] - prices[i], 0) for i in range(len(prices)-1)])
-
+        return sum([
+            max(prices[i + 1] - prices[i], 0) for i in range(len(prices) - 1)
+        ])

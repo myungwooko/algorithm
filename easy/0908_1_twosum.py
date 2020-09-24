@@ -20,21 +20,23 @@ Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 """
+
+
 class Solution(object):
     def twoSum(self, nums, target):
-        d={}
+        d = {}
         for i, num in enumerate(nums):
-            if target-num in d:
-                return d[target-num], i
+            if target - num in d:
+                return d[target - num], i
             d[num] = i
+
 
 inst = Solution()
 a = inst.twoSum([2, 7, 11, 15], 9)
 
 print(a)
 
-dick = {'a':3,
-        'b':4}
+dick = {'a': 3, 'b': 4}
 
 print('a' in dick)
 print(4 in dick)

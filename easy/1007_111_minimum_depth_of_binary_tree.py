@@ -2,11 +2,14 @@
 """
 - number of nodes(including root node) along the shortest path from root to one of the nearest leaf
 """
+
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
+
 
 class Solution:
     def minDepth(self, root: TreeNode) -> int:
@@ -26,7 +29,7 @@ class Solution:
                     under_layer.append(node.right)
                     count += 1
                 if not count:
-                    return depth+1
+                    return depth + 1
             depth += 1
 
             current_layer = under_layer

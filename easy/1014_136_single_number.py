@@ -23,15 +23,17 @@ Output: 4
 """
 from functools import reduce
 
+
 class Solution:
     def singleNumber(self, nums) -> int:
-        return 2*sum(set(nums)) - sum(nums)
+        return 2 * sum(set(nums)) - sum(nums)
 
     def singleNumber2(self, nums):
-        return reduce(lambda x, y: x^y, nums)
+        return reduce(lambda x, y: x ^ y, nums)
+
 
 s = Solution()
-ele1 = [2,2,1]
+ele1 = [2, 2, 1]
 test1 = s.singleNumber2(ele1)
 
 print(test1)

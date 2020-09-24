@@ -38,6 +38,8 @@ f(A)=25, f(B)=8, f(C)=5, f(D)=3, f(E)=3　→ h-index=3
 in the example above index start from 1
 **
 """
+
+
 class Solution(object):
     def hIndex(self, citations):
         """
@@ -85,37 +87,8 @@ class Solution(object):
         return result
 
 
-citations1 = [3,0,6,1,5] # =>3
-citations = [] # =>1
+citations1 = [3, 0, 6, 1, 5]  # =>3
+citations = []  # =>1
 s = Solution()
 test = s.hIndex(citations1)
 print(test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

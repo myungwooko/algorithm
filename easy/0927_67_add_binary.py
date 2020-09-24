@@ -21,6 +21,8 @@ Output: "10101"
 - True + False => True
 - divmod(a, b) => a를 b로 나눈 => 결과: 몫, 나머지
 """
+
+
 class Solution(object):
     def addBinary(self, a, b):
         if not a or not b:
@@ -80,9 +82,6 @@ using True False as 0 or 1 with 'and', 'or', '+'
 #             idx_a -= 1
 #             idx_b -= 1
 #         return res
-
-
-
 """
 Using binary methods
 """
@@ -95,7 +94,6 @@ Using binary methods
 #         print(2, x+y, bin(x+y))
 #         print(3, z[2::])
 #         return z[2::]                             # python binary prints 100 binary value like 0b100 slicing first 2 values returns the output
-
 
 s = Solution()
 test1 = s.addBinary('11', '1')

@@ -76,23 +76,8 @@ class Solution(object):
 
         return res
 
+
 s = Solution()
 test = s.convert("AB", 1)
 
 print(test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

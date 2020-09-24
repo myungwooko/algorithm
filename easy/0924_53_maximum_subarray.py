@@ -13,6 +13,8 @@ Follow up:
 
 If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 """
+
+
 class Solution:
     def maxSubArray(self, nums) -> int:
         # if nums was given as empty array?
@@ -29,7 +31,7 @@ class Solution:
         sum_list = []
         while idx < len(nums):
             if sum + nums[idx] < sum:
-                sum_list.append(sum+nums[idx])
+                sum_list.append(sum + nums[idx])
                 if sum + nums[idx] < 0:
                     sum = 0
                 else:
@@ -59,17 +61,17 @@ What a simple it is!!!
 #
 #         return maxSum
 
-
 s = Solution()
 #
-test = s.maxSubArray([8,-2,-4,-1,-8,3,8,8,3,4,2,-9,-1,-3,-6,8,-3,9])
+test = s.maxSubArray(
+    [8, -2, -4, -1, -8, 3, 8, 8, 3, 4, 2, -9, -1, -3, -6, 8, -3, 9])
 print(test, '== 28 ?')
 
-test2 = s.maxSubArray([-2,1,-3,4,-1,2,1,-5,4])
+test2 = s.maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])
 print(test2, '== 6 ?')
 
-test3 = s.maxSubArray([-2,1])
+test3 = s.maxSubArray([-2, 1])
 print(test3, '== 1 ?')
 
-test4 = s.maxSubArray([-2,-1])
+test4 = s.maxSubArray([-2, -1])
 print(test4, '== -1 ?')

@@ -23,6 +23,7 @@ input:  str1 = "", str2 = ""
 output: 0
 """
 
+
 # Time complexity: O(n+m+k^2), n is for length of str1, m is for length of str2, k is for lenght of same characters
 # Space complexity: O(n+m)
 def deletion_distance(str1, str2):
@@ -54,8 +55,3 @@ def deletion_distance(str1, str2):
             idx += 1
 
     return result_count
-
-
-
-
-

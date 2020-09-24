@@ -86,9 +86,10 @@ class TicTacToe:
         return 0
 
     def finish(self, row, col):
-        if self.vertical(row, col) or self.horizontal(row, col) or (
-                self.diagonal(row, col, "one") and self.diagonal(row, col, "seven")) or (
-                self.diagonal(row, col, "five") and self.diagonal(row, col, "eleven")):
+        if self.vertical(row, col) or self.horizontal(
+                row, col) or (self.diagonal(row, col, "one") and self.diagonal(
+                    row, col, "seven")) or (self.diagonal(row, col, "five") and
+                                            self.diagonal(row, col, "eleven")):
             return True
         return False
 
@@ -113,7 +114,9 @@ class TicTacToe:
         if direction == 'one':
             if row == 0 and col == self.n - 1:
                 return True
-            if row - 1 >= 0 and col + 1 < self.n and self.board[row - 1][col + 1] == val:
+            if row - 1 >= 0 and col + 1 < self.n and self.board[row -
+                                                                1][col +
+                                                                   1] == val:
                 return self.diagonal(row - 1, col + 1, 'one')
             else:
                 return False
@@ -121,7 +124,8 @@ class TicTacToe:
         if direction == 'five':
             if row == self.n - 1 and col == self.n - 1:
                 return True
-            if row + 1 < self.n and col + 1 < self.n and self.board[row + 1][col + 1] == val:
+            if row + 1 < self.n and col + 1 < self.n and self.board[row + 1][
+                    col + 1] == val:
                 return self.diagonal(row + 1, col + 1, 'five')
             else:
                 return False
@@ -129,7 +133,8 @@ class TicTacToe:
         if direction == 'seven':
             if row == self.n - 1 and col == 0:
                 return True
-            if row + 1 < self.n and col - 1 < self.n and self.board[row + 1][col - 1] == val:
+            if row + 1 < self.n and col - 1 < self.n and self.board[row + 1][
+                    col - 1] == val:
                 return self.diagonal(row + 1, col - 1, 'seven')
             else:
                 return False
@@ -137,22 +142,20 @@ class TicTacToe:
         if direction == 'eleven':
             if row == 0 and col == 0:
                 return True
-            if row - 1 >= 0 and col - 1 >= 0 and self.board[row - 1][col - 1] == val:
+            if row - 1 >= 0 and col - 1 >= 0 and self.board[row - 1][col -
+                                                                     1] == val:
                 return self.diagonal(row - 1, col - 1, 'eleven')
             else:
                 return False
-
-
-
 
 
 """
 diagonal은 전체에서의 n의 개수로 만들어지는 것을 말하는 것. 하긴 Bingo를 생각하면! ㅎㅎ <===============================================
 """
 
+
 # simpler and better
 class TicTacToe:
-
     def __init__(self, n: int):
         """
         Initialize your data structure here.
@@ -201,6 +204,7 @@ class TicTacToe:
                 return player
             row += 1
         return 0
+
 
 # Your TicTacToe object will be instantiated and called as such:
 # obj = TicTacToe(n)

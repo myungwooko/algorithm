@@ -69,12 +69,9 @@ class Solution(object):
         return all(w1 <= w2 for w1, w2 in zip(words, words[1:]))
 
 
-words = ["apple","app"]
+words = ["apple", "app"]
 order = "abcdefghijklmnopqrstuvwxyz"
 
 S = Solution()
 test = S.isAlienSorted(words, order)
 print(test)
-
-
-

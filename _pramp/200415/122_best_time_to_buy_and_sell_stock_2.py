@@ -40,19 +40,22 @@ Accepted
 
 => 문제 파악이 정말 중요하다... 같은날 팔고나서 사는건 가능한 거였다...............
 """
+
+
 class Solution:
     # @param {integer[]} prices
     # @return {integer}
 
     def maxProfit(self, prices):
-        return sum([max(prices[i]-prices[i-1], 0) for i in range(1, len(prices))])
+        return sum(
+            [max(prices[i] - prices[i - 1], 0) for i in range(1, len(prices))])
 
 
 s = Solution()
-prices1 = [7,1,5,3,6,4]
+prices1 = [7, 1, 5, 3, 6, 4]
 test1 = s.maxProfit(prices1)
 print(test1)
 
-prices2 = [1,2,3,4,5]
+prices2 = [1, 2, 3, 4, 5]
 test2 = s.maxProfit(prices2)
 print(test2)

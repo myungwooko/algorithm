@@ -31,9 +31,9 @@ class Solution:
 
 s = Solution()
 
-a = ["flower","flow","flight"]
+a = ["flower", "flow", "flight"]
 # output: "fl"
-b = ["dog","racecar","car"]
+b = ["dog", "racecar", "car"]
 # output: ""
 
 sol_a = s.longestCommonPrefix(a)
@@ -41,7 +41,6 @@ sol_b = s.longestCommonPrefix(b)
 
 print(sol_a)
 print(sol_b)
-
 """
 line 3
 => zip(strs)  => allstring

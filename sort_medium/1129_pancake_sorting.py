@@ -39,6 +39,8 @@ mine
 - the biggest one has to go to the end
 - then we can reduce the size of object we has to sort.
 """
+
+
 class Solution(object):
     def pancakeSort(self, A):
         """
@@ -50,10 +52,10 @@ class Solution(object):
             maxVal = max(A)
             idxMax = A.index(maxVal)
             if idxMax != 0:
-                res.append(idxMax+1)
-                tmp = A[:idxMax+1]
+                res.append(idxMax + 1)
+                tmp = A[:idxMax + 1]
                 tmpRvs = tmp[::-1]
-                preA = tmpRvs + A[idxMax+1:]
+                preA = tmpRvs + A[idxMax + 1:]
                 preA = preA[::-1]
                 res.append(len(preA))
                 A = preA[:-1]
@@ -65,20 +67,8 @@ class Solution(object):
                 break
         return res
 
-input = [3,2,4,1]
+
+input = [3, 2, 4, 1]
 s = Solution()
 test = s.pancakeSort(input)
 print(test)
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -35,7 +35,6 @@ import collections
 
 
 class LFUCache:
-
     def __init__(self, capacity):
         """
         :type capacity: int
@@ -75,9 +74,6 @@ class LFUCache:
         if self.capacity == len(self.cacheKey):
             self._evict()
         self.leastFreq = 1
-        self.cacheKey[key] = {
-                                "val": value,
-                                "freq": self.leastFreq
-                            }
+        self.cacheKey[key] = {"val": value, "freq": self.leastFreq}
         self.cacheFreq[self.leastFreq][key] = value
         return

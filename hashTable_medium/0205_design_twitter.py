@@ -35,6 +35,8 @@ twitter.unfollow(1, 2);
 // since user 1 is no longer following user 2.
 twitter.getNewsFeed(1);
 """
+
+
 class Twitter:
     """
     process:
@@ -50,7 +52,6 @@ class Twitter:
     if followerId is followeeId:
         return
     """
-
     def __init__(self):
         """
         Initialize your data structure here.
@@ -99,8 +100,8 @@ class Twitter:
         if followerId is followeeId:
             return
         if self.userFollowees.get(followerId, None):
-            self.userFollowees[followerId] = list(set(self.userFollowees[followerId]))
+            self.userFollowees[followerId] = list(
+                set(self.userFollowees[followerId]))
             if followeeId in self.userFollowees[followerId]:
                 self.userFollowees[followerId].remove(followeeId)
         return
-

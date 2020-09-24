@@ -21,6 +21,8 @@ if there is one target in the nums => [the index, the index]
 if there is not target in the nums => [-1, -1]
 if there is many target in the nums => [the smallest index, the biggest index]
 """
+
+
 class Solution(object):
     def searchRange(self, nums, target):
         """
@@ -33,7 +35,7 @@ class Solution(object):
         lo, hi = 0, len(nums) - 1
         the_idx = -1
         while lo < hi:
-            mid = (lo+hi) // 2
+            mid = (lo + hi) // 2
             if nums[mid] == target:
                 the_idx = mid
             elif nums[mid] < target:
@@ -42,7 +44,8 @@ class Solution(object):
                 hi = mid - 1
         the_idx
         l, r = the_idx
-        while (nums[l] == target and l >= 0) or (nums[r] == target and r < len(nums)):
+        while (nums[l] == target and l >= 0) or (nums[r] == target
+                                                 and r < len(nums)):
             if nums[l] == target:
                 l -= 1
             if nums[r] == target:
@@ -53,6 +56,6 @@ class Solution(object):
 
 
 s = Solution()
-nums, target = [5,7,7,8,8,10], 8
+nums, target = [5, 7, 7, 8, 8, 10], 8
 test = s.searchRange(nums, target)
 print(test)

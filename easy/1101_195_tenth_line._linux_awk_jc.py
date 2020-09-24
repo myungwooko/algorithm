@@ -64,4 +64,3 @@ WHAT CAN WE DO WITH AWK ?
 solution
 awk '{if(NR==10) print $0}' file.txt
 """
-

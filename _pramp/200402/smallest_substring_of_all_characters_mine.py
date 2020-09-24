@@ -161,7 +161,7 @@ def get_shortest_unique_substring(arr, str):
     return res
 
 
-arr = ['x','y','z']
+arr = ['x', 'y', 'z']
 str = "xyyzyzyx"
 test = get_shortest_unique_substring(arr, str)
 print(test)

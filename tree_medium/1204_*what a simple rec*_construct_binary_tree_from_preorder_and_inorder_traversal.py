@@ -31,6 +31,8 @@ inorder
  if 다음것이 자신 보다 높은 층인 경우 그것의 left로서 가고 해당 다음것을 이전것의 right로
  else 다음것이 자신보다 높은 층이 아닌경우 이전것의 right로 간다.
 """
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
@@ -57,21 +59,3 @@ class Solution:
         root.right = self.buildTree(preorder, inorder[inorderIdx + 1:])
 
         return root
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

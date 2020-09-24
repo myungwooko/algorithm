@@ -22,6 +22,8 @@ and A[0] + A[1] + ... + A[j] = V. Thus, there are count[V] subarrays A[j+1] + A[
 - 아하! 계속 축적 되었던 거고 그 축적값에서 k를 뺀값이 그 전에 있으면! 거기부터 해당 축적까지 딱 k만큼 온거니깐!!
 - 그래서 축적값-k를 해서 나온값이 지나온데에 있으면 count를 증가 시켜줬던 거였구나!!!!!!!
 """
+
+
 class Solution:
     def subarraySum(self, nums, k):
         count = 0

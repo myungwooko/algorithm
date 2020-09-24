@@ -48,6 +48,8 @@ Intuition
 - because we are finding the smallest swapping count.
 
 """
+
+
 class Solution:
     def minDominoRotations(self, A, B):
         for x in [A[0], B[0]]:

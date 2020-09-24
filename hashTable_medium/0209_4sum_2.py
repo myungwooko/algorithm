@@ -31,15 +31,17 @@ The two tuples are:
 """
 from collections import Counter
 
+
 class Solution:
     def fourSumCount(self, A, B, C, D):
-        AB = Counter(a+b for a in A for b in B)
-        return sum(AB[-c-d] for c in C for d in D)
+        AB = Counter(a + b for a in A for b in B)
+        return sum(AB[-c - d] for c in C for d in D)
 
-A = [ 1, 2]
-B = [-2,-1]
+
+A = [1, 2]
+B = [-2, -1]
 C = [-1, 2]
-D = [ 0, 2]
+D = [0, 2]
 s = Solution()
 test = s.fourSumCount(A, B, C, D)
-print(test==2)
+print(test == 2)

@@ -44,6 +44,8 @@ Input: 1994
 Output: "MCMXCIV"
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 """
+
+
 class Solution(object):
     def intToRoman(self, num):
         """
@@ -110,7 +112,10 @@ class Solution(object):
 
     def intToRoman1(self, num):
         values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
-        numerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+        numerals = [
+            "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV",
+            "I"
+        ]
         res = ""
         for n, v in zip(numerals, values):
             res += (num // v) * n
@@ -122,57 +127,3 @@ s = Solution()
 content = 300
 test = s.intToRoman(content)
 print(test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

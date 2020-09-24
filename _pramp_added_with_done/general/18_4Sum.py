@@ -28,16 +28,17 @@ A solution set is:
 ]
 """
 
+
 class Solution:
     # 2 for loops
     def fourSum(self, nums, target: int):
         nums.sort()
         pairs = []
-        for i in range(len(nums)-3):
-            if i > 0 and nums[i] == nums[i-1]:
+        for i in range(len(nums) - 3):
+            if i > 0 and nums[i] == nums[i - 1]:
                 continue
-            for j in range(i+1, len(nums) - 2):
-                if j > i + 1 and nums[j] == nums[j-1]:
+            for j in range(i + 1, len(nums) - 2):
+                if j > i + 1 and nums[j] == nums[j - 1]:
                     continue
                 l = j + 1
                 r = len(nums) - 1
@@ -49,21 +50,20 @@ class Solution:
                         r -= 1
                     else:
                         pairs.append([nums[i], nums[j], nums[l], nums[r]])
-                        while l < r and nums[l] == nums[l+1]:
+                        while l < r and nums[l] == nums[l + 1]:
                             l += 1
-                        while l < r and nums[r] == nums[r-1]:
+                        while l < r and nums[r] == nums[r - 1]:
                             r -= 1
                         l += 1
                         r -= 1
         return pairs
 
-
     # one for, many while loops
     def fourSum(self, nums, target: int):
         nums.sort()
         pairs = []
-        for i in range(len(nums)-3):
-            if i > 0 and nums[i] == nums[i-1]:
+        for i in range(len(nums) - 3):
+            if i > 0 and nums[i] == nums[i - 1]:
                 continue
             j = i + 1
             l, r = j + 1, len(nums)
@@ -80,9 +80,9 @@ class Solution:
                         r -= 1
                     else:
                         pairs.append([nums[i], nums[j], nums[l], nums[r]])
-                        while l < r and nums[l] == nums[l+1]:
+                        while l < r and nums[l] == nums[l + 1]:
                             l += 1
-                        while l < r and nums[r] == nums[r-1]:
+                        while l < r and nums[r] == nums[r - 1]:
                             r -= 1
                         l += 1
                         r -= 1

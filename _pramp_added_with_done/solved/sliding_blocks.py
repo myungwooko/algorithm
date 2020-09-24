@@ -4,6 +4,7 @@
 # The function accepts 2D_INTEGER_ARRAY puzzle as parameter.
 #
 
+
 # using queue => every possible candidates
 # make positioned map
 # when it matched return count
@@ -11,7 +12,6 @@ def movesToSolve(puzzle):
     positioned = []
     num = 0
     zero_start = False
-
 
     for r in range(len(puzzle)):
         row = []
@@ -27,7 +27,6 @@ def movesToSolve(puzzle):
         for c in range(len(puzzle[0])):
             p_map[positioned[r][c]] = (r, c)
 
-
     queue = [(zero_start[0], zero_start[1], puzzle, [], 0)]
     while queue:
 
@@ -36,7 +35,7 @@ def movesToSolve(puzzle):
         if curr_puzzle == positioned:
             return count
 
-        candidates = [(r+1, c), (r-1, c), (r, c+1), (r, c-1)]
+        candidates = [(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)]
 
         for r1, c1 in candidates:
             if 0 <= r1 < len(positioned) and 0 <= c1 < len(positioned[0]):
@@ -50,12 +49,13 @@ def movesToSolve(puzzle):
                 copied[r][c], copied[r1][c1] = copied[r1][c1], copied[r][c]
 
                 if copied not in seen:
-                    queue.append((r1, c1, copied, seen+[copied], count+1))
+                    queue.append((r1, c1, copied, seen + [copied], count + 1))
 
     return
 
 
 import collections
+
 
 def slidingPuzzle(board):
     """
@@ -67,7 +67,7 @@ def slidingPuzzle(board):
     for i in range(0, R):
         start_list += board[i]
     start = tuple(start_list)
-    target = tuple(range(1, R*C) + [0])
+    target = tuple(range(1, R * C) + [0])
     start_idx = start.index(0)
     queue = collections.deque([(start, start_idx, 0)])
     visited = {start}
@@ -76,23 +76,21 @@ def slidingPuzzle(board):
         state, pos, depth = queue.popleft()
         if state == target:
             return depth
-        for d in ((0,-1), (1,0), (0,1), (-1,0)):
-            r, c = pos/C , pos%C
+        for d in ((0, -1), (1, 0), (0, 1), (-1, 0)):
+            r, c = pos / C, pos % C
             nr, nc = r + d[0], c + d[1]
             if 0 <= nr < R and 0 <= nc < C:
-                npos = nr*C + nc
+                npos = nr * C + nc
                 nstate = list(state)
                 nstate[pos], nstate[npos] = nstate[npos], nstate[pos]
                 nstate = tuple(nstate)
                 if nstate not in visited:
                     visited.add(nstate)
-                    queue.append((nstate, npos, depth+1))
+                    queue.append((nstate, npos, depth + 1))
 
     return -1
 
 
-
-
-puzzle = [[1,3,4], [2,5,0], [6,8,7]]
+puzzle = [[1, 3, 4], [2, 5, 0], [6, 8, 7]]
 test = slidingPuzzle(puzzle)
 print(test)

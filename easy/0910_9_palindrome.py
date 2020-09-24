@@ -21,13 +21,14 @@ Follow up:
 
 Coud you solve it without converting the integer to a string?
 """
-
 """
 조합으로 만드는게 아니라 말 그대로 반대인 문제였음
 
 list.revserse() => None을 return => 행위로 '바라보는곳'을 바꿔줄뿐 행위 자체는 아무것도 리턴하지 않는다.
 
 """
+
+
 def isPalindrome(x: int) -> bool:
     if x < 0:
         return False

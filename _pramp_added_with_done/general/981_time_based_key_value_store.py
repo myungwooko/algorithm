@@ -55,7 +55,6 @@ TimeMap.set and TimeMap.get functions will be called a total of 120000 times (co
 # obj = TimeMap()
 # obj.set(key,value,timestamp)
 # param_2 = obj.get(key,timestamp)
-
 """
 ### First Try => This wasn't passed because of time limit was exceeding
 
@@ -63,7 +62,6 @@ Returns a value such that set(key, value, timestamp_prev) was called previously,
 If there are multiple such values, it returns the one with the largest timestamp_prev.
 If there are no values, it returns the empty string ("").
 """
-
 """
 if we condider time stamp as a time sequence, we can't get past timestamps value
 ex) set ["love","high",10], set ["love","low",20], get ["love",5]
@@ -83,9 +81,9 @@ in this case=> get ["love", 5] =>  ""
 import collections
 import bisect
 
+
 # time limit exceeds
 class TimeMap:
-
     def __init__(self):
         """
         Initialize your data structure here.
@@ -106,7 +104,6 @@ class TimeMap:
 
 
 class TimeMap:
-
     def __init__(self):
         self.times = collections.defaultdict(list)
         self.values = collections.defaultdict(list)
@@ -123,6 +120,3 @@ class TimeMap:
 
         # in the case of i == 0, return "" bc that means there is no values
         return self.values[key][i - 1] if i else ""
-
-
-

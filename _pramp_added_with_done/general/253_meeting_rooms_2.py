@@ -18,6 +18,7 @@ NOTE: input types have been changed on April 15, 2019. Please reset to default c
 """
 import heapq
 
+
 class Solution:
     def minMeetingRooms(self, intervals):
         intervals.sort(key=lambda x: x[0])
@@ -42,5 +43,3 @@ class Solution:
             else:
                 heapq.heappush(heap, time[1])
         return len(heap)
-
-

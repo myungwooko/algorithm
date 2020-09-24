@@ -11,15 +11,18 @@ Both num1 and num2 contains only digits 0-9.
 Both num1 and num2 does not contain any leading zero.
 You must not use any built-in BigInteger library or convert the inputs to integer directly.
 """
+
+
 class Solution:
     def addStrings(self, num1: str, num2: str) -> str:
-        if (len(num1) != 1 and num1[0] == "0") or (len(num2) != 1 and num2[0] == "0"):
+        if (len(num1) != 1 and num1[0] == "0") or (len(num2) != 1
+                                                   and num2[0] == "0"):
             return
         if not num1 or not num2:
             return num1 or num2
         if len(num1) > 5100 or len(num2) > 5100:
             return
-        nums = ["0", "1", "2", "3","4","5","6", "7", "8", "9"]
+        nums = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         li1 = list(num1)
         li2 = list(num2)
         container = 0
@@ -41,8 +44,8 @@ class Solution:
             if container:
                 res.insert(0, container)
         else:
-            for i in range(len(head)-1, -1, -1):
-                tmpSum = container +  int(head[i])
+            for i in range(len(head) - 1, -1, -1):
+                tmpSum = container + int(head[i])
                 if tmpSum > 9:
                     container = 1
                     tmpSum = int(str(tmpSum)[1])
@@ -66,5 +69,3 @@ class Solution:
             s = str(rem) + s
             i, j = i - 1, j - 1
         return s
-
-

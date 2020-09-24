@@ -29,6 +29,8 @@ and then reverse right then multiply two values of each side
 
 lap times 33:28:66
 """
+
+
 class Solution(object):
     def productExceptSelf(self, nums):
         """
@@ -63,7 +65,8 @@ class Solution(object):
 
         return result
 
+
 s = Solution()
-input = [1,2,3,4 ]
+input = [1, 2, 3, 4]
 test = s.productExceptSelf(input)
 print(test)

@@ -56,9 +56,9 @@ class Solution(object):
                     r = mid - 1
         return False
 
-nums = [1,1,1,3,1]
+
+nums = [1, 1, 1, 3, 1]
 target = 3
 s = Solution()
 test = s.search(nums, target)
 print(test)
-

@@ -45,6 +45,8 @@ go on... + case of root 12 + case of root 13
 - index of res indicate number of tree node and value of res[index] indicate => number of possible tree structure
 - the problem said "1...n" so it starts from 1 even though n is 0.
 """
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
@@ -71,9 +73,11 @@ class Solution(object):
                 # => that means firstly right side should minus 1 because it shouldn't include root
                 # => and also right side shouldn't include left side count
                 # => that naturally made i-1-j => 1=root count, j=left side count
-                res[i] += res[j] * res[i - 1 - j] # this easily counts all of combinations for making n nodes unique structure Trees.
-                print(22, i, j, i-1-j)
-                print(33, res[j], res[i-1-j])
+                res[i] += res[j] * res[
+                    i - 1 -
+                    j]  # this easily counts all of combinations for making n nodes unique structure Trees.
+                print(22, i, j, i - 1 - j)
+                print(33, res[j], res[i - 1 - j])
         print(4, res)
         return res[n]
 
@@ -86,15 +90,7 @@ class Solution(object):
                 res[i] += res[j] * res[i - 1 - j]
         return res[n]
 
+
 s = Solution()
 test = s.numTrees(4)
 print(test)
-
-
-
-
-
-
-
-
-

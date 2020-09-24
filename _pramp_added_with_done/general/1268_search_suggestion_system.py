@@ -45,6 +45,8 @@ All characters of products[i] are lower-case English letters.
 1 <= searchWord.length <= 1000
 All characters of searchWord are lower-case English letters.
 """
+
+
 class Solution:
     # brute force
     #     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
@@ -60,9 +62,6 @@ class Solution:
     #     def makingCandidates(self, part, products):
     #         e = len(part)
     #         return sorted([w for w in products if w[:e] == part])[:3]
-
-
-
     """
     Trie: 한단계 한단계 유효한 것에 대한 후보군을 모두 child로 가지고 있는 구
     """
@@ -128,8 +127,9 @@ class Solution:
 
 
 s = Solution()
-p = ["mobile","mouse","moneypot","monitor","mousepad"]
+p = ["mobile", "mouse", "moneypot", "monitor", "mousepad"]
 word = "mouse"
 test = s.suggestedProducts(p, word)
-print(test==[["mobile","moneypot","monitor"],["mobile","moneypot","monitor"],["mouse","mousepad"],["mouse","mousepad"],["mouse","mousepad"]])
-
+print(test == [["mobile", "moneypot", "monitor"],
+               ["mobile", "moneypot", "monitor"], ["mouse", "mousepad"],
+               ["mouse", "mousepad"], ["mouse", "mousepad"]])

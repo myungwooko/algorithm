@@ -31,6 +31,8 @@ Example 4:
 Input: "()))(("
 Output: 4
 """
+
+
 class Solution(object):
     def minAddToMakeValid(self, S):
         """

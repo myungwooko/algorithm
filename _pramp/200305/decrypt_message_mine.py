@@ -52,11 +52,11 @@ step3: enc
 => lev2[i] = lev2[i-1] + origin[i]
 """
 
-
 # the range of lowercase letters a-z in ASCII: 97-122
 # Formula for second~last: word[n] = lev1[n] + lev2[n-1] - 26*m
 # lev1[n] = word[n] - lev2[n-1] + 26*m
 # lev2[n] = lev2[n-1] + lev1[n]
+
 
 # Time O(n)  <= O(n+k) N is for one for loop, k is process of finding m
 # Space complexity: O(n) <= O(3n)

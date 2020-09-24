@@ -84,6 +84,8 @@ time = O(m+n) space = O(m+n)
 loop (while i < len(arr1) and j < arr2)
 
 """
+
+
 # Time complexity: O(n+m)
 # Space complexity: O(min(n, m))
 def find_duplicates(arr1, arr2):
@@ -118,4 +120,3 @@ def find_duplicates(arr1, arr2):
             left_idx += 1
             right_idx += 1
     return res
-

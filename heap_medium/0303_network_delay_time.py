@@ -26,6 +26,7 @@ All edges times[i] = (u, v, w) will have 1 <= u, v <= N and 0 <= w <= 100.
 import collections
 import heapq
 
+
 #Heap => 다음 행선지를 계속 뽑아서 더해나가는 방식 = accumulating time, access next destination approach.
 class Solution(object):
     def networkDelayTime(self, times, N, K):
@@ -44,7 +45,7 @@ class Solution(object):
 
 
 s = Solution()
-times = [[2,1,1],[2,3,1],[3,4,1]]
+times = [[2, 1, 1], [2, 3, 1], [3, 4, 1]]
 N = 4
 K = 2
 test = s.networkDelayTime(times, N, K)

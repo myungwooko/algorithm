@@ -22,6 +22,7 @@ Constraints:
 [input] Node inputNode
 [output] Node
 """
+
 #########################################################
 # CODE INSTRUCTIONS:                                    #
 # 1) The method findInOrderSuccessor you're asked      #
@@ -32,6 +33,7 @@ Constraints:
 # 4) Jump to line 88 to see an example for how the      #
 #    helper code is used to test findInOrderSuccessor.  #
 #########################################################
+
 
 # A node
 class Node:
@@ -89,18 +91,18 @@ class BinarySearchTree:
 
             if (key < currentNode.key):
                 if (currentNode.left is None):
-                    currentNode.left = newNode;
-                    newNode.parent = currentNode;
+                    currentNode.left = newNode
+                    newNode.parent = currentNode
                     break
                 else:
-                    currentNode = currentNode.left;
+                    currentNode = currentNode.left
             else:
                 if (currentNode.right is None):
-                    currentNode.right = newNode;
-                    newNode.parent = currentNode;
+                    currentNode.right = newNode
+                    newNode.parent = currentNode
                     break
                 else:
-                    currentNode = currentNode.right;
+                    currentNode = currentNode.right
 
     # Return a reference to a node in the BST by its key.
     # Use this method when you need a node to test your
@@ -127,12 +129,12 @@ class BinarySearchTree:
 # Create a Binary Search Tree
 bst = BinarySearchTree()
 bst.insert(20)
-bst.insert(9);
-bst.insert(25);
-bst.insert(5);
-bst.insert(12);
-bst.insert(11);
-bst.insert(14);
+bst.insert(9)
+bst.insert(25)
+bst.insert(5)
+bst.insert(12)
+bst.insert(11)
+bst.insert(14)
 
 # Get a reference to the node whose key is 9
 test = bst.getNodeByKey(9)
@@ -146,4 +148,3 @@ if succ is not None:
           % (test.key, succ.key))
 else:
     print("\nInorder Successor doesn't exist")
-

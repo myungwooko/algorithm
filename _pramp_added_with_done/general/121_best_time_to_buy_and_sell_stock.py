@@ -20,6 +20,8 @@ Input: [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transaction is _pramp_added_with_done, i.e. max profit = 0.
 """
+
+
 class Solution:
     def maxProfit(self, prices) -> int:
         if not prices:
@@ -41,8 +43,6 @@ class Solution:
                 max_idx += 1
         return profit
 
-
-
     def maxProfit(self, prices):
         if not prices:
             return 0
@@ -61,6 +61,6 @@ class Solution:
 
 
 s = Solution()
-p = [7,1,5,3,6,4]
-p = [2,10,1,3,4,25]
+p = [7, 1, 5, 3, 6, 4]
+p = [2, 10, 1, 3, 4, 25]
 print(s.maxProfit(p))

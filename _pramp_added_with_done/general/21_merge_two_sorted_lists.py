@@ -9,6 +9,8 @@ Example:
 Input: 1->2->4, 1->3->4
 Output: 1->1->2->3->4->4
 """
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -30,6 +32,7 @@ class Solution:
             curr = curr.next
         curr.next = l1 or l2
         return dummy.next
+
 
 ## Test해보면 알수있다. sorted 하게 엮어서 return 것
 # class Solution:
@@ -75,5 +78,3 @@ class Solution:
 #         else:
 #             tmp.next = l1
 #         return ret
-
-

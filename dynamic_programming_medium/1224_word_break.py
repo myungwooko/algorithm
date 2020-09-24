@@ -27,6 +27,8 @@ Output: false
 
 referenced from: https://leetcode.com/problems/word-break/discuss/164472/Python-solution
 """
+
+
 class Solution(object):
     """
     dp solution
@@ -50,6 +52,8 @@ class Solution(object):
     and space complexity is the same as above.
     Dynamic Programming top down (memoization) 
     """
+
+
 #     def wordBreak(self, s, wordDict):
 #         :type s: str
 #         :type wordDict: List[str]
@@ -86,7 +90,6 @@ class Solution(object):
 #             return False
 #         recursion(s)
 #         return any(result)
-
 
 string = "cars"
 wordDict = ["car", "ca", "rs"]

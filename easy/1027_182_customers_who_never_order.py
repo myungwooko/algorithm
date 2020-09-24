@@ -32,7 +32,6 @@ Using the above tables as example, return the following:
 | Max       |
 +-----------+
 """
-
 """
 select 
     Name as Customers 

@@ -25,6 +25,8 @@ Note:
 1 <= A[i] <= 1000
 1 <= K <= 2000
 """
+
+
 class Solution:
     def twoSumLessThanK(self, A, K):
         A.sort()
@@ -55,7 +57,7 @@ class Solution:
     #     return arr
 
 
-A, K = [34,23,1,24,75,33,54,8], 60
+A, K = [34, 23, 1, 24, 75, 33, 54, 8], 60
 s = Solution()
 test = s.twoSumLessThanK(A, K)
 print(test)

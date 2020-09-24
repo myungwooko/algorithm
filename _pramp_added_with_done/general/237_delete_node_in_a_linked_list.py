@@ -33,6 +33,7 @@ Do not return anything from your function.
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
     def deleteNode(self, node):
         print(node)
@@ -42,15 +43,3 @@ class Solution(object):
         """
         node.val = node.next.val
         node.next = node.next.next
-
-
-
-
-
-
-
-
-
-
-
-

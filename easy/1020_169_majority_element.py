@@ -19,6 +19,8 @@ Output: 2
 - There are answers in the problem.
 
 """
+
+
 class Solution(object):
     def majorityElement(self, nums):
         """
@@ -43,7 +45,7 @@ class Solution(object):
 
 
 s = Solution()
-test = s.majorityElement([1,2,2,2,2,2,1,3])
-test1 = s.majorityElement([3,2,3])
+test = s.majorityElement([1, 2, 2, 2, 2, 2, 1, 3])
+test1 = s.majorityElement([3, 2, 3])
 print(test)
 print(test1)

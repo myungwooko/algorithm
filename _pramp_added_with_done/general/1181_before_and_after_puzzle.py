@@ -64,7 +64,12 @@ class Solution(object):
         return sorted(res)
 
 
-input = ["nrop xshcva twecfm twecfm twecfm xshcva twecfm","ggwznmv twecfm nrop nrop nrop xshcva ggwznmv ggwznmv p twecfm nrop xshcva p p","p p nrop ggwznmv twecfm nrop p p","xshcva twecfm ggwznmv twecfm nrop p ggwznmv p twecfm","xshcva"]
+input = [
+    "nrop xshcva twecfm twecfm twecfm xshcva twecfm",
+    "ggwznmv twecfm nrop nrop nrop xshcva ggwznmv ggwznmv p twecfm nrop xshcva p p",
+    "p p nrop ggwznmv twecfm nrop p p",
+    "xshcva twecfm ggwznmv twecfm nrop p ggwznmv p twecfm", "xshcva"
+]
 S = Solution()
 test = S.beforeAndAfterPuzzles(input)
 print(test)

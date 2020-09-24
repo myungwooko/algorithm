@@ -38,6 +38,8 @@ We illustrate the above procedure with people_sorted, as i goes from 0 to 5, the
 큰애들 부터 자신의 인덱스 확보된 채로 넣는개념.
 그럼 뒤에 애들은 자신보다 튼애들이 이미 끝난 상태에서 자신의 인덱스에 상응하는 큰애들을 딱 놓고, 인덱스를 찾아서 넣기만 하면 되는 개념.
 """
+
+
 class Solution(object):
     def reconstructQueue(self, people):
         """
@@ -51,8 +53,8 @@ class Solution(object):
             res.insert(p[1], p)
         return res
 
-input = [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
+
+input = [[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]]
 s = Solution()
 test = s.reconstructQueue(input)
 print(test)
-

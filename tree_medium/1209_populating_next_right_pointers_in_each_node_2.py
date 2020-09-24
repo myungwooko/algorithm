@@ -28,6 +28,8 @@ null,"right":{"$ref":"5"},"val":3},"right":{"$ref":"4"},"val":2},"next":null,"ri
 Explanation: Given the above binary tree (Figure A), your function should populate each next pointer to point to its next
 right node, just like in Figure B.
 """
+
+
 # Definition for a Node.
 class Node(object):
     def __init__(self, val, left, right, next):
@@ -38,6 +40,7 @@ class Node(object):
 
 
 import collections
+
 
 class Solution:
     # @param root, a tree link node

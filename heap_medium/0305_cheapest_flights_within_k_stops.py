@@ -38,6 +38,7 @@ There will not be any duplicated flights or self cycles.
 import collections
 import heapq
 
+
 class Solution(object):
     def findCheapestPrice(self, n, flights, src, dst, K):
         """
@@ -66,19 +67,15 @@ class Solution(object):
         return -1
 
 
-
 s = Solution()
 n = 3
-edges = [[0,1,100],[1,2,100],[0,2,500]]
+edges = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]
 src = 0
 dst = 2
 k = 1
 
 test = s.findCheapestPrice(n, edges, src, dst, k)
 print(test)
-
-
-
 """
 discuss
 

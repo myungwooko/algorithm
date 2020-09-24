@@ -20,7 +20,7 @@ Assume we are dealing with an environment which could only store integers within
 [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
 """
 
-a = ['1','2','3']
+a = ['1', '2', '3']
 
 seperator = ''
 
@@ -28,7 +28,7 @@ b = seperator.join(a)
 
 print(-int(b))
 
-print(1534236469 < pow(2, 31)-1)
+print(1534236469 < pow(2, 31) - 1)
 
 
 class Solution:

@@ -26,12 +26,14 @@ def findPermutation(s, t):
             compared[v] -= 1
 
         # values() alsoO(N), N is number of key of compared
-        if acc == l-1 and (len(set(compared.values())) == 1 and list(compared.values())[0] == 0):
-            res.append((i, i-l+1))
+        if acc == l - 1 and (len(set(compared.values())) == 1
+                             and list(compared.values())[0] == 0):
+            res.append((i, i - l + 1))
             acc -= 1
-            compared[t[i-l+1]] += 1
+            compared[t[i - l + 1]] += 1
         acc += 1
     return res
+
 
 test = findPermutation("secret", "trceestor")
 print(test)
@@ -44,7 +46,7 @@ def findPermutation(s, t):
     dic = {}
     for i, v in enumerate(t):
         if i >= l:
-            dic[t[i-l]] -= 1
+            dic[t[i - l]] -= 1
         if not dic.get(v, None):
             dic[v] = 1
         else:
@@ -52,33 +54,10 @@ def findPermutation(s, t):
 
         # another time complexity O(N), N is number of key of dic
         if dic == compared:
-            res.append((i, i-l+1))
+            res.append((i, i - l + 1))
 
     return res
 
+
 test = findPermutation("secret", "trceestor")
 print(test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

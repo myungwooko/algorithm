@@ -29,6 +29,7 @@ detailed explanation
 - You can use linear space and precompute max_right. max_left can be computed as we move left to right.
 """
 
+
 class Solution:
     def trap(self, height):
         if not height:
@@ -49,6 +50,6 @@ class Solution:
 
 
 s = Solution()
-input = [0,1,0,2,1,0,1,3,2,1,2,1]
+input = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
 test = s.trap(input)
 print(test)

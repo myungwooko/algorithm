@@ -15,12 +15,15 @@ Example 2:
 Input: a = "1010", b = "1011"
 Output: "10101"
 """
+
+
 class Solution(object):
     def addBinary(self, a, b):
         res, carry = "", 0
         idx_a, idx_b = len(a) - 1, len(b) - 1
         while idx_a >= 0 or idx_b >= 0 or carry:
-            curval = (idx_a >= 0 and a[idx_a] == '1') + (idx_b >= 0 and b[idx_b] == '1')
+            curval = (idx_a >= 0 and a[idx_a] == '1') + (idx_b >= 0
+                                                         and b[idx_b] == '1')
             carry, curval = divmod(curval + carry, 2)
             res = str(curval) + res
             idx_a -= 1
@@ -37,5 +40,3 @@ class Solution(object):
             s = str(rem) + s
             i, j = i - 1, j - 1
         return s
-
-

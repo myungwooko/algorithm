@@ -30,6 +30,7 @@ There are two ways to reach the bottom-right corner:
 2. Down -> Down -> Right -> Right
 """
 
+
 class Solution(object):
     # recursive
     def uniquePathsWithObstacles(self, obstacleGrid):
@@ -59,7 +60,7 @@ class Solution(object):
         if not obstacleGrid:
             return
         r, c = len(obstacleGrid), len(obstacleGrid[0])
-        dp = [[0]*c for _ in range(r)]
+        dp = [[0] * c for _ in range(r)]
         print(1, dp)
         dp[0][0] = 1 - obstacleGrid[0][0]
         print(2, dp)
@@ -71,14 +72,12 @@ class Solution(object):
         print(4, dp)
         for i in range(1, r):
             for j in range(1, c):
-                dp[i][j] = (dp[i][j - 1] + dp[i - 1][j]) * (1 - obstacleGrid[i][j])
+                dp[i][j] = (dp[i][j - 1] + dp[i - 1][j]) * (1 -
+                                                            obstacleGrid[i][j])
         return dp[-1][-1]
 
-input =[
-  [0,0,0],
-  [0,1,0],
-  [0,0,0]
-]
+
+input = [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
 s = Solution()
 test = s.uniquePathsWithObstacles(input)
 print(test)

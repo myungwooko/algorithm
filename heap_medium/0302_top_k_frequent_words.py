@@ -22,6 +22,8 @@ Input words contain only lowercase letters.
 Follow up:
 Try to solve it in O(n log k) time and O(n) extra space.
 """
+
+
 #not Python3 => Python
 class Solution(object):
     def topKFrequent(self, words, k):
@@ -47,7 +49,8 @@ class Solution(object):
                     res.append((w, f))
             if len(res) >= k:
                 break
-        res.sort(cmp=lambda a,b: b[1]-a[1] if a[1] != b[1] else -1 if a[0] < b[0] else 1)
+        res.sort(cmp=lambda a, b: b[1] - a[1] if a[1] != b[1] else -1
+                 if a[0] < b[0] else 1)
         return [i[0] for i in res[:k]]
 
 
@@ -55,4 +58,4 @@ word = ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"]
 k = 4
 s = Solution()
 test = s.topKFrequent(word, k)
-print(test = ["the", "is", "sunny", "day"])
+print(test=["the", "is", "sunny", "day"])

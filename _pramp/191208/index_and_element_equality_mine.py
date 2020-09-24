@@ -19,11 +19,10 @@ Constraints:
 1 ≤ arr.length ≤ 100
 [output] integer
 """
-
 """"Let us find the smallest element that the element itself and the index is same"""
 
-
 # basically from some point, if value is greater than its index it's not possible to find matching one.
+
 
 # O(N)
 def index_equals_value_search(arr):
@@ -78,7 +77,6 @@ def egg(the_level, top):
 
     return -1
 
+
 test = egg(the_level, top)
 print(test)
-
-

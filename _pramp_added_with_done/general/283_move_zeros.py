@@ -24,6 +24,8 @@ Accepted
 Submissions
 1,060,022
 """
+
+
 class Solution(object):
     def moveZeroes(self, nums):
         """
@@ -56,4 +58,3 @@ class Solution(object):
             # it passes zero, and that remains the zero's index as a record
             # and when it face not zero, swap it with zero => that makes zero goes to tail
         return nums
-

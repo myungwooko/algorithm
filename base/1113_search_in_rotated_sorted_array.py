@@ -28,30 +28,16 @@ Example 2:
 Input: nums = [4,5,6,7,0,1,2], target = 3
 Output: -1
 """
+
+
 class Solution(object):
     def search(self, nums, target):
         lo, hi = 0, len(nums) - 1
         while lo < hi:
             mid = (lo + hi) // 2
-            if (nums[0] > target) ^ (nums[0] > nums[mid]) ^ (nums[mid] < target):
+            if (nums[0] > target) ^ (nums[0] > nums[mid]) ^ (nums[mid] <
+                                                             target):
                 lo = mid + 1
             else:
                 hi = mid
-        return lo if target in nums[lo:lo+1] else -1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return lo if target in nums[lo:lo + 1] else -1

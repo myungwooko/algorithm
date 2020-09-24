@@ -34,6 +34,7 @@ A solution set is:
 - list concatenate => [1] + [3, 4] => [1, 3, 4]
 """
 
+
 class Solution(object):
     def combinationSum(self, candidates, target):
         res = []
@@ -54,31 +55,3 @@ nums, target = [2, 3, 5], 8
 s = Solution()
 test = s.combinationSum(nums, target)
 print(test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

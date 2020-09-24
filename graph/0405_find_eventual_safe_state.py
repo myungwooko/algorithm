@@ -26,6 +26,8 @@ graph will have length at most 10000.
 The number of edges in the graph will not exceed 32000.
 Each graph[i] will be a sorted list of different integers, chosen within the range [0, graph.length - 1].
 """
+
+
 class Solution(object):
     def eventualSafeNodes(self, graph):
         """

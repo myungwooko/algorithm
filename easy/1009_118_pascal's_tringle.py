@@ -19,6 +19,8 @@ Output:
  [1,4,6,4,1]
 ]
 """
+
+
 class Solution:
     def generate(self, numRows: int):
         if not numRows:
@@ -26,7 +28,7 @@ class Solution:
         elif numRows == 1:
             return [[1]]
 
-        result = [[1], [1,1]]
+        result = [[1], [1, 1]]
         current = [1]
         count = numRows - 2
 
@@ -34,7 +36,7 @@ class Solution:
             last = result[-1]
             for i, v in enumerate(last):
                 if i < len(last) - 1:
-                    added = v + last[i+1]
+                    added = v + last[i + 1]
                     current.append(added)
 
             current.append(1)

@@ -31,6 +31,7 @@ Note:
 """
 import heapq
 
+
 class Solution:
     def maximumMinimumPath(self, A) -> int:
         res = A[0][0]
@@ -62,13 +63,7 @@ class Solution:
 
 
 s = Solution()
-input = [[2,0,5,2,0],
-         [2,4,4,4,3],
-         [1,5,0,0,0],
-         [5,4,4,3,1],
-         [1,3,1,5,3]]
+input = [[2, 0, 5, 2, 0], [2, 4, 4, 4, 3], [1, 5, 0, 0, 0], [5, 4, 4, 3, 1],
+         [1, 3, 1, 5, 3]]
 test = s.maximumMinimumPath(input)
-print(2==test)
-
-
-
+print(2 == test)

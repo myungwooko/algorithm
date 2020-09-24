@@ -33,11 +33,14 @@ In merge에서
 
 - r이 커서 붙여도 l애 붙이고 r을 기존 r의 next로 시작해도
 """
+
+
 # Definition for singly-linked list.
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution(object):
     def sortList(self, head):

@@ -27,6 +27,8 @@ For the purpose of this problem, we will return 0 when needle is an empty string
     - a[0:0]            => ''
     - a == b == 0       => 다중 가능
 """
+
+
 def strStr(haystack: str, needle: str) -> int:
     if not needle:
         return 0
@@ -43,9 +45,11 @@ def strStr(haystack: str, needle: str) -> int:
                         return idx
     return -1
 
+
 """
 참고풀이
 """
+
 
 def strStr(haystack, needle):
     if haystack == needle == '':
@@ -53,7 +57,9 @@ def strStr(haystack, needle):
 
     n = len(needle)
 
-    for i in range(len(haystack) - n + 1):  # 해당 계산은 => "만약 중간에 나오지 않았다면 유효 검사 대상의 앞글자가 되는 자신부터 끝날때까지의 길이가 needle의 길이인 것까지는 검사를 해봐야 알수 있는 거니까. 이 이상은 길이가 넘어가는 거므로 표현을 못하니 할필요없고" 에서 나온것.
+    for i in range(
+            len(haystack) - n + 1
+    ):  # 해당 계산은 => "만약 중간에 나오지 않았다면 유효 검사 대상의 앞글자가 되는 자신부터 끝날때까지의 길이가 needle의 길이인 것까지는 검사를 해봐야 알수 있는 거니까. 이 이상은 길이가 넘어가는 거므로 표현을 못하니 할필요없고" 에서 나온것.
         if haystack[i:i + n] == needle:
             return i
 

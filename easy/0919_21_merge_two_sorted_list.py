@@ -13,14 +13,17 @@ Output: 1->1->2->3->4->4
 - a or b => a와 b의 합집합이 return
 - 반복에서의 recursion 이용은 아래 참고.
 """
+
+
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
 
+
 class Solution:
     def mergeTwoLists(self, l1, l2):
-        if not l1  or not l2:
+        if not l1 or not l2:
             return l1 or l2
 
         sorted = []
@@ -50,6 +53,7 @@ class Solution:
 
         return ret
 
+
 """
 참고한 reecursive 풀이
 결과가 recursive하게 들아가면서 연결이 되어지게 되는.
@@ -64,4 +68,3 @@ class Solution:
 #     else:
 #         l2.next = self.mergeTwoLists(l1, l2.next)
 #         return l2
-

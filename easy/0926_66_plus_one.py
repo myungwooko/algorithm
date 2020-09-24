@@ -25,5 +25,7 @@ class Solution:
     def plusOne(self, digits):
         # @ will be given list of digits
         # @ no zero head list
-        return [int(ele) for ele in list(str(int("".join([str(e) for e in digits])) + 1))]
-
+        return [
+            int(ele)
+            for ele in list(str(int("".join([str(e) for e in digits])) + 1))
+        ]

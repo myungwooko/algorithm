@@ -31,6 +31,8 @@ Note:
 -10000 < points[i][0] < 10000
 -10000 < points[i][1] < 10000
 """
+
+
 class Solution(object):
     def kClosest(self, points, K):
         """
@@ -38,16 +40,6 @@ class Solution(object):
         :type K: int
         :rtype: List[List[int]]
         """
-
-
-
-
-
-
-
-
-
-
 
 
 """

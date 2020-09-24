@@ -1,7 +1,7 @@
 def test(s, x):
     if not s or not x or len(x) > len(s):
         return -1
-    if len(s) < 1 or len(s) > 5*(10**5):
+    if len(s) < 1 or len(s) > 5 * (10**5):
         return -1
     if len(x) < 1 or len(x) > 1000:
         return -1
@@ -11,16 +11,20 @@ def test(s, x):
         head = x[0]
         tail = x[1]
         for i, v in enumerate(s):
-            if s[i:i+len(head)] == head and s[i+len(head)+1:((i+len(head))+1)+len(tail)] == tail:
+            if s[i:i + len(head)] == head and s[i + len(head) + 1:(
+                (i + len(head)) + 1) + len(tail)] == tail:
                 return i
     else:
         for i, v in enumerate(s):
-            if s[i:i+len(x)] == x:
+            if s[i:i + len(x)] == x:
                 return i
     return
 
+
 #regex
 import re
+
+
 def test_reg(s, x):
     if "*" in x:
         head = r"\b" + re.escape(x[0]) + r"\b"
@@ -38,13 +42,4 @@ def test_reg(s, x):
 s = "juliasamanthasamanthajulia"
 x = "ant*as"
 
-print(test(s,x))
-
-
-
-
-
-
-
-
-
+print(test(s, x))

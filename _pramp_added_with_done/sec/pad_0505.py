@@ -78,24 +78,17 @@ agent1 = Agent(name="A", skills=["English"], load=2)
 agent2 = Agent(name="B", skills=["English", "Japanese"], load=0)
 agents = [agent1, agent2]
 
-
-
 least_loaded_policy = LeastLoadedAgent()
 test = least_loaded_policy.find(ticket, agents)
 print(1, test)
-
-
-
 
 least_flexible_policy = LeastFlexibleAgent()
 test1 = least_flexible_policy.find(ticket, agents)
 print(2, test1)
 
-
-
-
 # you can write to stdout for debugging purposes, e.g.
 # print("this is a debug message")
+
 
 def solution(S):
     seq = S.split(" ")
@@ -105,7 +98,7 @@ def solution(S):
         print(stack)
         if s.isdigit():
             num = int(s)
-            if 0 <= num <= pow(2, 20)-1:
+            if 0 <= num <= pow(2, 20) - 1:
                 stack.append(int(s))
         else:
             if s == "POP":
@@ -135,6 +128,7 @@ def solution(S):
                 else:
                     return -1
     return stack[-1]
+
 
 S = '13 DUP 4 POP 5 DUP + DUP + -'
 test = solution(S)

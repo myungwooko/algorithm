@@ -19,6 +19,8 @@ Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
 
 Output: ["AAAAACCCCC", "CCCCCAAAAA"]
 """
+
+
 class Solution:
     def findRepeatedDnaSequences(self, s):
         hash = {}
@@ -33,6 +35,7 @@ class Solution:
             if v > 1:
                 res.append(k)
         return res
+
 
 seq = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
 s = Solution()

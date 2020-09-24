@@ -23,6 +23,8 @@ Bonus point if you are able to do this using only O(n) extra space, where n is t
 과정중 음수가 존재할 수 있기 떄문
 so 바로 아래에서는 큰쪽으로 간다해도 최종적으로는 최소값이 되는 것이 나올 가능성이 있는 구조.
 """
+
+
 class Solution(object):
     ## recursive
     #     def minimumTotal(self, triangle):
@@ -60,11 +62,10 @@ class Solution(object):
         return res[0]
 
 
-input = [[-1],[2,3],[1,-1,-3]]
-input2 = [[2],[3,4],[6,5,7],[4,1,8,3]]
-input3 = [[2],[3,4],[6,5,7],[4,1,6,3],[5,7,6,4,2]]
-input4 = [[2],[3,4],[6,-5,1],[4,1,8,-8],[5,7,6,4,1]]
-
+input = [[-1], [2, 3], [1, -1, -3]]
+input2 = [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]
+input3 = [[2], [3, 4], [6, 5, 7], [4, 1, 6, 3], [5, 7, 6, 4, 2]]
+input4 = [[2], [3, 4], [6, -5, 1], [4, 1, 8, -8], [5, 7, 6, 4, 1]]
 """
 We can check it works properly through using input4 as an argument.
 - top down => just selecting smaller one from selectable next row's two is not working 

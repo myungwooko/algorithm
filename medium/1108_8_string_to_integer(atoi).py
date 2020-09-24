@@ -44,6 +44,8 @@ Output: -2147483648
 Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
              Thefore INT_MIN (−231) is returned.
 """
+
+
 class Solution(object):
     def myAtoi(self, str):
         """
@@ -81,28 +83,7 @@ class Solution(object):
 
         return int(res)
 
+
 s = Solution()
 test = s.myAtoi("-5-")
 print(test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -70,6 +70,8 @@ mySolution
         => Y ASC, X FIX => X -= 1 => Y ASC, X FIX => GO ON
         **********************************************************************
 """
+
+
 class Solution(object):
     def rotate(self, matrix):
         """
@@ -81,7 +83,7 @@ class Solution(object):
 
         preRes = []
         for _ in range(n):
-            row = [0]*(n)
+            row = [0] * (n)
             preRes.append(row)
         for y in range(n):
             for x in range(n):
@@ -110,31 +112,8 @@ class Solution(object):
                 matrix[r][q] = matrix[p][r]
                 matrix[p][r] = cache
 
-inputM =[
-     [1,2,3],
-     [4,5,6],
-     [7,8,9]
-    ]
+
+inputM = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 s = Solution()
 test = s.rotate(inputM)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

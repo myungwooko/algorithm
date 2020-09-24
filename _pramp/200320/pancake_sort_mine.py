@@ -68,7 +68,6 @@ def pancake_sort(arr):
 
 a = [2, 3, 41, 23, 4, 6]
 print(pancake_sort(a))
-
 """
 The reason for doing (s_idx+1 and k-1) two steps,
 even though when two steps are done that will be equal to doing nothing, 

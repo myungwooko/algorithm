@@ -24,6 +24,8 @@ Return:
    [5,8,4,5]
 ]
 """
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
@@ -61,4 +63,3 @@ class Solution(object):
         if root.right:
             self.helper(root.right, path2, res)
         return res
-

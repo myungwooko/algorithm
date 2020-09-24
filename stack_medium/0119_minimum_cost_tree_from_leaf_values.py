@@ -56,6 +56,8 @@ Greedy python solution
 
 => 결국 제일 작은거 찾고 거기서 부터 작은 단위의 tree 부터 하나씩 해결해나가는 것이다.
 """
+
+
 class Solution:
     def mctFromLeafValues(self, arr):
         res = 0
@@ -64,8 +66,10 @@ class Solution:
             mini_idx = arr.index(min(arr))
             if 0 < mini_idx < len(arr) - 1:
                 #
-                res += min(arr[mini_idx - 1], arr[mini_idx + 1]) * arr[mini_idx]
+                res += min(arr[mini_idx - 1],
+                           arr[mini_idx + 1]) * arr[mini_idx]
             else:
-                res += arr[1 if mini_idx == 0 else mini_idx - 1] * arr[mini_idx]
+                res += arr[1 if mini_idx == 0 else mini_idx -
+                           1] * arr[mini_idx]
             arr.pop(mini_idx)
         return res

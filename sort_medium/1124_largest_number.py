@@ -40,6 +40,7 @@ AttributeError: 'list' object has no attribute 'lstrip'
 """
 from functools import cmp_to_key
 
+
 class Solution:
     def largestNumber(self, nums):
         def cmp_func(x, y):
@@ -74,8 +75,7 @@ class Solution:
         return str(n1) + str(n2) > str(n2) + str(n1)
 
 
-input = [41,23,87,55,50,53,18,9, 0, 0]
+input = [41, 23, 87, 55, 50, 53, 18, 9, 0, 0]
 s = Solution()
 test = s.largestNumber(input)
 print(test)
-

@@ -22,6 +22,8 @@ Output: 49
 have to be careful* => 3 * 2 - 1 != 3 * (2 - 1)
 *******************
 """
+
+
 class Solution(object):
     def maxArea(self, height):
         """
@@ -38,19 +40,7 @@ class Solution(object):
         return area
 
 
-
 s = Solution()
 content = [1, 8, 6, 2, 5, 4, 8, 3, 7]
 test = s.maxArea(content)
 print(test)
-
-
-
-
-
-
-
-
-
-
-

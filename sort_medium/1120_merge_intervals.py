@@ -23,6 +23,7 @@ NOTE: input types have been changed on April 15, 2019. Please reset to default c
 - 그렇게 순서대로 해나가면
 """
 
+
 class Solution(object):
     def merge(self, intervals):
         if not intervals:
@@ -40,10 +41,11 @@ class Solution(object):
         res.append(base)
         return res
 
-input = [[1,4],[0,5]]                     # => [[0, 5]]
-input1 = [[1,3],[2,6],[8,10],[15,18]]     # =>  [[1,6],[8,10],[15,18]]
-input2 = [[1,4],[4,5]]                    # => [[1,5]]
-input3 = [[2,3],[4,5],[6,7],[8,9],[1,10]] # => [[1,10]]
+
+input = [[1, 4], [0, 5]]  # => [[0, 5]]
+input1 = [[1, 3], [2, 6], [8, 10], [15, 18]]  # =>  [[1,6],[8,10],[15,18]]
+input2 = [[1, 4], [4, 5]]  # => [[1,5]]
+input3 = [[2, 3], [4, 5], [6, 7], [8, 9], [1, 10]]  # => [[1,10]]
 
 s = Solution()
 test = s.merge(input3)

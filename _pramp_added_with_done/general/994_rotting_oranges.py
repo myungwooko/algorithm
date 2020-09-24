@@ -36,6 +36,8 @@ Note:
 1 <= grid[0].length <= 10
 grid[i][j] is only 0, 1, or 2.
 """
+
+
 class Solution:
     def orangesRotting(self, grid) -> int:
         time = 0
@@ -57,17 +59,18 @@ class Solution:
                             return -1
                         time += 1
                         grid = [row[:] for row in copied]
+
     def helper(self, grid, copied, r, c):
-        if r - 1 >= 0 and grid[r-1][c] == 2:
+        if r - 1 >= 0 and grid[r - 1][c] == 2:
             copied[r][c] = 2
             return
-        if r + 1 < len(grid) and grid[r+1][c] == 2:
+        if r + 1 < len(grid) and grid[r + 1][c] == 2:
             copied[r][c] = 2
             return
-        if c - 1 >= 0 and grid[r][c-1] == 2:
+        if c - 1 >= 0 and grid[r][c - 1] == 2:
             copied[r][c] = 2
             return
-        if c + 1 < len(grid[0]) and grid[r][c+1] == 2:
+        if c + 1 < len(grid[0]) and grid[r][c + 1] == 2:
             copied[r][c] = 2
             return
         return

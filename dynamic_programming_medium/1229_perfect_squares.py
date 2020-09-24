@@ -48,6 +48,7 @@ class Solution(object):
 
         return helper({}, n)
 
+
 n = 15
 s = Solution()
 test = s.numSquares(n)
@@ -57,4 +58,3 @@ li = []
 for i in range(100):
     li.append(s.numSquares(i))
 print(li)
-

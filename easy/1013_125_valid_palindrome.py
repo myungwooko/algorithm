@@ -17,15 +17,19 @@ Output: false
 
 - 그렇지 palindrom은 결국 거꾸로 해도 똑같은거지 => 거꾸로해도 이효리
 """
+
+
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         only_alnum = [i.lower() for i in s if i.isalnum()]
         return only_alnum == only_alnum[::-1]
 
-
     def isPalindrome1(self, s):
-        s = ''.join(e for e in s if e.isalnum()).lower()  # (안에 넣으니까 list로 인식하고 그렇게 때문에 가능한가 보다.)
+        s = ''.join(
+            e for e in s
+            if e.isalnum()).lower()  # (안에 넣으니까 list로 인식하고 그렇게 때문에 가능한가 보다.)
         return s == s[::-1]
+
 
 s = Solution()
 test1 = s.isPalindrome("A man, a plan, a canal: Panama")

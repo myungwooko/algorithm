@@ -67,7 +67,6 @@ class Solution:
         # recursion
         # 넣으면 1짝을 2로 만들수 있는애들 각각 만들고 count 만든애를 recursion
         # recursion은 들어오면 2 뒤의 1들을 2로 만드는 짝
-
         """
         이걸로 답은 같게 나오는것 같은데 시간이 너무 오래 걸린다.
         """

@@ -35,6 +35,8 @@ Output: 0
 
 Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
 """
+
+
 class Solution:
     # dfs
     def ladderLength(self, source, target, words):
@@ -66,12 +68,14 @@ class Solution:
             for k in candidates:
                 if k in seen:
                     continue
-                helper(k, seen + [word],
-                       count + 1)  ############################ """recursion에서 reference를 끊기 위해 새로 생성되는 새로운 주소값을 넣기 위해서 이렇게 해준다."""
+                helper(
+                    k, seen + [word], count + 1
+                )  ############################ """recursion에서 reference를 끊기 위해 새로 생성되는 새로운 주소값을 넣기 위해서 이렇게 해준다."""
             return -1
 
-        helper(source, [],
-               0)  ###########################   그래서 set이 아닌 list를 썼다. set은 add로 넣게 되면 같은 주소값 같은 set 오브젝트를 참조하니까.
+        helper(
+            source, [], 0
+        )  ###########################   그래서 set이 아닌 list를 썼다. set은 add로 넣게 되면 같은 주소값 같은 set 오브젝트를 참조하니까.
         if results:
             return min(results) + 1
         else:
@@ -148,9 +152,9 @@ class Solution:
 
 
 s = Solution()
-source =  "hit"
+source = "hit"
 target = "cog"
-words =["hot","dot","dog","lot","log","cog"]
+words = ["hot", "dot", "dog", "lot", "log", "cog"]
 
 # source = "bit"
 # target = "pog"
@@ -162,5 +166,3 @@ words =["hot","dot","dog","lot","log","cog"]
 
 test = s.wordLadder(source, target, words)
 print(test)
-
-

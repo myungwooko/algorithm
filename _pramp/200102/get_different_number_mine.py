@@ -31,6 +31,7 @@ Constraints:
 [output] integer
 """
 
+
 # Time: O(nlogn)
 # Space: O(1)
 def get_different_number(arr):
@@ -66,12 +67,14 @@ def get_different_number(arr):
 # 그렇게 만들고 두번째 for loop에서 0부터 차례대로 체크하여 없으면 그것을 return
 # 다 돌면 마지막에 len(arr) => 추가 index를 return
 """
+
+
 def get_different_number(arr):
     n = len(arr)
     for i in range(n):
         tmp = arr[i]
         while tmp < n and arr[tmp] != tmp:
-            arr[tmp], tmp = tmp, arr[tmp] # <========  work
+            arr[tmp], tmp = tmp, arr[tmp]  # <========  work
             # tmp, arr[tmp] = arr[tmp]      <========  doesn't work
             # simply, 이런경우 indexing하는 것에 할당을 먼저 해준다는 개념으로 그것을 왼쪽으로서 먼저 위치 시키는 것으로서 해결. 위와 같이.
 
@@ -82,9 +85,6 @@ def get_different_number(arr):
     return n if len(arr) < 2 ^ 31 else None
 
 
-arr = [0,1,3,4] # arr will be => [0,1,3,3]
+arr = [0, 1, 3, 4]  # arr will be => [0,1,3,3]
 test = get_different_number(arr)
 print(test)
-
-
-

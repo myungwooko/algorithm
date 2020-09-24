@@ -41,11 +41,14 @@ The linked lists must retain their original structure after the function returns
 You may assume there are no cycles anywhere in the entire linked structure.
 Your code should preferably run in O(n) time and use only O(1) memory.
 """
+
+
 # Definition for singly-linked list.
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 # class Solution(object):
 #     def getIntersectionNode(self, headA, headB): =====================================> Time Limit Exceed
@@ -70,7 +73,6 @@ class ListNode(object):
 #             curB = curB.next
 #
 #         return
-
 """
 If two linked lists have intersection, we can find two observations:
 
@@ -102,6 +104,8 @@ L2 = 4,5,6,7
 
 
 """
+
+
 class Solution(object):
     def getIntersectionNode(self, headA, headB):
         p1, p2 = headA, headB

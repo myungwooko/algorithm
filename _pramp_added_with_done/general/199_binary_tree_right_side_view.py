@@ -31,6 +31,7 @@ Explanation:
 #         self.left = None
 #         self.right = None
 
+
 class Solution:
     def rightSideView(self, root):
         levels = {}
@@ -61,5 +62,3 @@ class Solution:
                 if node.left: nextLev.append(node.left)
                 if node.right: nextLev.append(node.right)
         return res
-
-

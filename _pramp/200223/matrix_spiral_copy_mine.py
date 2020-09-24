@@ -153,7 +153,6 @@ def spiral_copy(matrix):
         for j in range(topRow, btmRow + 1):
             result.append(matrix[j][rightCol])
         rightCol -= 1
-
         """ 
         This is the key
         지나갔다는것은 같은 해당 btmRow에 대해서 이미 했다는게 되므로 그것은 중복, 그러므로 해당 check 필요.
@@ -162,7 +161,6 @@ def spiral_copy(matrix):
             for k in range(rightCol, leftCol - 1, -1):
                 result.append(matrix[btmRow][k])
             btmRow -= 1
-
         """as same as that one"""
         if leftCol <= rightCol:
             for l in range(btmRow, topRow - 1, -1):

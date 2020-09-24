@@ -46,4 +46,3 @@ class Solution(object):
 
         # 맨앞과 맨뒤는 붙을 수 없으니깐
         return max(robDp(nums[1:]), robDp(nums[:-1]))
-

@@ -31,6 +31,8 @@ Follow up:
 
 If this function is called many times, how would you optimize it?
 """
+
+
 class Solution(object):
     def hammingWeight(self, n):
         """

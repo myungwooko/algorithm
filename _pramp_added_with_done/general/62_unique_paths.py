@@ -27,6 +27,8 @@ Example 2:
 Input: m = 7, n = 3
 Output: 28
 """
+
+
 # recursion
 class Solution(object):
     #1
@@ -80,4 +82,3 @@ m, n = 4, 5
 s = Solution()
 test = s.uniquePaths(m, n)
 print(test)
-

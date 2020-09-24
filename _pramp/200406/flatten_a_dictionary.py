@@ -49,23 +49,24 @@ Constraints:
 """
 
 
-# Time complexity: O(n), n is number of total keys
-# Space compexity: O(m), m is number of value of last level
+# Time complexity: O(n), n is number of all values <= but exponential inside*inside*...
+# Space complexity: O(n)
 def flatten_dictionary(dictionary):
-    res = {}
+    res = dict()
 
-    def helper(path, value):
-        if type(value) != dict:
-            res[path] = value
-            return
-
-        for k, v in value.items():
-            if not path:
-                helper(k, v)
-            elif not k:
-                helper(path, v)
-            else:
-                helper(path + "." + k, v)
+    def helper(key, value):
+        if type(value) == dict:
+            for k, v in value.items():
+                if not key:
+                    next_key = k
+                elif not k:
+                    next_key = key
+                else:
+                    next_key = key + "." + k
+                helper(next_key, v)
+        else:
+            res[key] = value
+        return
 
     for k, v in dictionary.items():
         helper(k, v)
@@ -73,6 +74,30 @@ def flatten_dictionary(dictionary):
     return res
 
 
-dic = {"Key1":"1","Key2":{"a":"2","b":"3","c":{"d":"3","e":"1"}}}
+# This solution is righter and better
+"""
+This solution is not solved by recursion, remember recursion is kind of exponential, 
+and everything that can be solved by recursion access can be sloved queue solution. 
+And, queue is better than recursion for time complexity.  
+"""
+
+
+# Time complexity: O(n) n is the number of keys of dictionary
+# Space complexity: O(m) m is the number of values of dictionary
+def flatten_dictionary(dictionary):
+    res = dict()
+    queue = [(dictionary, "")]
+    while queue:
+        curr_dic, key_head = queue.pop(0)
+        for k, v in curr_dic.items():
+            if key_head and k: k = "." + k
+            if type(v) == dict:
+                queue.append((v, key_head + k))
+            else:
+                res[key_head + k] = v
+    return res
+
+
+dic = {"Key1": "1", "Key2": {"a": "2", "b": "3", "c": {"d": "3", "e": "1"}}}
 test = flatten_dictionary(dic)
 print(test)

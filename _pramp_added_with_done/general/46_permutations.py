@@ -24,9 +24,12 @@ Output:
   [3,2,1]
 ]
 """
+
+
 class Solution:
     def permute(self, nums):
         res = []
+
         def helper(path):
             if len(path) == len(nums):
                 res.append(path)
@@ -34,7 +37,7 @@ class Solution:
             for num in nums:
                 if num not in path and path + [num] not in res:
                     helper(path + [num])
+
         for num in nums:
             helper([num])
         return res
-

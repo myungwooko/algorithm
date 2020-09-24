@@ -30,6 +30,7 @@ You may assume that there are no duplicate edges in the input prerequisites.
 """
 import collections
 
+
 class Solution(object):
     def findOrder(self, numCourses, prerequisites):
         """
@@ -55,12 +56,11 @@ class Solution(object):
             dic.pop(node)
         return res if not dic else []
 
-numCourses, pre = 4, [[1,0],[2,0],[3,1],[3,2]]
+
+numCourses, pre = 4, [[1, 0], [2, 0], [3, 1], [3, 2]]
 s = Solution()
 test = s.findOrder(numCourses, pre)
 print(test)
-
-
 """
 discuss
 

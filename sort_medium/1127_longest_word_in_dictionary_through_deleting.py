@@ -23,6 +23,8 @@ All the strings in the input will only contain lower-case letters.
 The size of the dictionary won't exceed 1,000.
 The length of all the strings in the input won't exceed 1,000.
 """
+
+
 class Solution(object):
     def findLongestWord(self, s, d):
         """
@@ -66,10 +68,12 @@ class Solution(object):
             it = iter(s)
             print(2, it, [i for i in it])
             return all(c in it for c in x)
+
         return max(sorted(filter(isSubsequence, d)) + [''], key=len)
 
+
 ss = "abpcplea"
-w = ["a","b","c"]
+w = ["a", "b", "c"]
 s = Solution()
 test = s.findLongestWord(ss, w)
 print(1, test)

@@ -34,6 +34,8 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 - 자르고 나머지 넣고 방향만 주면
 - ok
 """
+
+
 class Solution(object):
     def spiralOrder(self, matrix):
         """
@@ -43,7 +45,7 @@ class Solution(object):
         if not matrix or not matrix[0]:
             return []
         res = []
-        total = len(matrix)*len(matrix[0])
+        total = len(matrix) * len(matrix[0])
         self.helper(matrix, 1, res, total)
         return res
 
@@ -80,29 +82,6 @@ class Solution(object):
 
 
 s = Solution()
-input = [[1],[2],[3],[4],[5],[6],[7],[8],[9],[10]]
+input = [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]]
 test = s.spiralOrder(input)
 print('result: ', test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

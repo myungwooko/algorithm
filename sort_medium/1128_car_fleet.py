@@ -42,6 +42,8 @@ and becomes the new lead of a car fleet.
 forloop에서
 => sorted에서 position이 앞서서 앞인데 speed떄문에 시간은 더걸리는 경우가 있으니까 그걸로 체크하는 것
 """
+
+
 class Solution(object):
     def carFleet(self, target, pos, speed):
         """
@@ -50,7 +52,7 @@ class Solution(object):
         :type speed: List[int]
         :rtype: int
         """
-        time = [float(target-p) / s for p,s in sorted(zip(position, speed))]
+        time = [float(target - p) / s for p, s in sorted(zip(position, speed))]
         res = cur = 0
         for t in time[::-1]:
             if t > cur:
@@ -58,12 +60,8 @@ class Solution(object):
                 cur = t
         return res
 
-target, position, speed = 12, [10,8,0,5,5,3], [2,4,1,3,1,3]
+
+target, position, speed = 12, [10, 8, 0, 5, 5, 3], [2, 4, 1, 3, 1, 3]
 s = Solution()
 test = s.carFleet(target, position, speed)
 print(test)
-
-
-
-
-

@@ -30,6 +30,8 @@ postorder => 좌 -> 우 -> 자신
 - right first because postorder's reverse sequence is root -> right -> left
 - inorder => left is left, right is right
 """
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
@@ -43,6 +45,6 @@ class Solution(object):
         if inorder:
             ind = inorder.index(postorder.pop())
             root = TreeNode(inorder[ind])
-            root.right = self.buildTree(inorder[ind+1:], postorder)
+            root.right = self.buildTree(inorder[ind + 1:], postorder)
             root.left = self.buildTree(inorder[:ind], postorder)
             return root

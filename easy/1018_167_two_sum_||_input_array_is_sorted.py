@@ -19,6 +19,8 @@ Accepted
 
 - dict에서 정의 또는 넣을때 key는 숫자로 넣어도 자동으로 스트링으로 인식해서 key로서 넣는다.
 """
+
+
 class Solution(object):
     def twoSum(self, numbers, target):
         """
@@ -29,7 +31,5 @@ class Solution(object):
         hsh = {}
         for i, v in enumerate(numbers):
             if target - v in hsh:
-                return [hsh[target-v] + 1, i + 1]
+                return [hsh[target - v] + 1, i + 1]
             hsh[v] = i
-
-

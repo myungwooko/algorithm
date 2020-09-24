@@ -62,6 +62,7 @@ class Solution:
     - 굉장히 smart하게 index자체가 i와 mapping 되게 한 것.
       이해!!!
     """
+
     def coinChange(self, coins, amount):
         """
         :type coins: List[int]
@@ -73,7 +74,8 @@ class Solution:
         # 0을 만드는데는 무조건 코인 0개가 필요하니깐.
         dp[0] = 0
         for i in range(1, MAX):
-            dp[i] = min([dp[i - c] if i >= c else (MAX) for c in coins])  ### List Comprehension is faster
+            dp[i] = min([dp[i - c] if i >= c else (MAX)
+                         for c in coins])  ### List Comprehension is faster
             # 그렇게 유효한 값이 구해진 경우에만 개수 + 1을 해준다. 그렇지 않은 경우 값이 구해지지 않은 의미로서 MAX를 그대로. 그래야 일관성이 생겨서 참고 가능.
             dp[i] = dp[i] + 1 if dp[i] != MAX else dp[i]
         return -1 if (dp[-1] == MAX) else dp[-1]

@@ -42,7 +42,6 @@ Result table:
 
 Note that the result table has 13 columns (1 for the department id + 12 for the months).
 """
-
 """
 SELECT id,
 MAX(CASE WHEN month='Jan' then revenue else null end) as Jan_Revenue,

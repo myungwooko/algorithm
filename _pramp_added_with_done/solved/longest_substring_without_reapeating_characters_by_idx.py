@@ -19,6 +19,7 @@ Output: 3
 Explanation: The answer is (2, 4), with the range of "wke".
 """
 
+
 # brute force
 class Solution:
     def lengthOfLongestSubstring(self, s: str):
@@ -28,22 +29,17 @@ class Solution:
         for i in range(len(s)):
             seen = set()
             seen.add(s[i])
-            for j in range(i+1, len(s)):
+            for j in range(i + 1, len(s)):
                 if s[j] not in seen:
                     seen.add(s[j])
                 else:
                     # j-1 => because this turn is repeated turn and we want to check non repeated arrange valid one
-                    if result[1] - result[0] < (j-1) - i:
-                        result = (i, j-1)
+                    if result[1] - result[0] < (j - 1) - i:
+                        result = (i, j - 1)
                     break
         if result[0] == result[1]:
             return result[0]
         return result
-
-
-
-
-
 
 
 S = Solution()
@@ -55,26 +51,3 @@ test3 = S.lengthOfLongestSubstring("pwwkew")
 print(test3 == (2, 4))
 test4 = S.lengthOfLongestSubstring("b")
 print(test4 == 0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

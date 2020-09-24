@@ -40,7 +40,6 @@ def decodeVariations(S):
     return len(result)
 
 
-
 """
 	@param S: str
 	@return: int

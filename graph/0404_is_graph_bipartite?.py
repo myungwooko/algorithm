@@ -47,6 +47,7 @@ class Solution(object):
         """
         pass
 
+
 """
 discuss
 
@@ -72,4 +73,3 @@ class Solution(object):
         return True
 
 """
-

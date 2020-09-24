@@ -23,6 +23,8 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 - 다른 수에 대한 0은 계산에선 건너뛴다.
 - 0자체는 자신의 순서에 대해선 자신으로서 저장 되므로 카운팅 됨.
 """
+
+
 class Solution(object):
     def maxProduct(self, A):
         """
@@ -35,7 +37,8 @@ class Solution(object):
             B[i] *= B[i - 1] or 1
         return max(A + B)
 
-input = [2,3,-2,4]
+
+input = [2, 3, -2, 4]
 input = [7, -4, 3, 1, 1]
 s = Solution()
 test = s.maxProduct(input)

@@ -32,6 +32,7 @@ Explanation: There is no cycle in the linked list.
 #         self.val = x
 #         self.next = None
 
+
 class Solution:
     def hasCycle(self, head):
         try:
@@ -43,5 +44,3 @@ class Solution:
             return True
         except:
             return False
-
-

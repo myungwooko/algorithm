@@ -28,7 +28,6 @@ Constraints:
 [input] string document
 [output] array.array.string
 """
-
 """
 - all unique word
 - case insensitive
@@ -80,7 +79,7 @@ def word_count_engine(document):
 
 import string
 from collections import Counter
-table = string.maketrans('','') # <- maketrans is deprecated in Python3
+table = string.maketrans('', '')  # <- maketrans is deprecated in Python3
 
 
 # Time complexity: O(n^2), *sorted*index

@@ -18,6 +18,8 @@ A rather straight forward solution is a two-pass algorithm using counting sort.
 First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's.
 Could you come up with a one-pass algorithm using only constant space?
 """
+
+
 class Solution(object):
     def sortColors(self, nums):
         """
@@ -39,7 +41,8 @@ class Solution(object):
             count -= 1
         return nums
 
-input = [2,0,2,1,1,0] # => [0,0,1,1,2,2]
+
+input = [2, 0, 2, 1, 1, 0]  # => [0,0,1,1,2,2]
 
 s = Solution()
 test = s.sortColors(input)

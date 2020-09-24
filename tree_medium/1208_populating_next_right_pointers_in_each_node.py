@@ -47,6 +47,7 @@ class Node(object):
         self.next = next
 """
 
+
 # Definition for a Node.
 class Node(object):
     def __init__(self, val, left=None, right=None, next=None):
@@ -65,6 +66,3 @@ class Solution(object):
             self.connect(root.left)
             self.connect(root.right)
         return root
-
-
-

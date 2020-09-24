@@ -14,6 +14,8 @@ Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 """
+
+
 class Solution:
     def twoSum(self, nums, target):
         hash = {}
@@ -25,13 +27,9 @@ class Solution:
                 hash[key] = i
         return
 
+
 s = Solution()
 arr = [1, 2, 3, 7, 9, 11]
 target = 11
 test = s.twoSum(arr, target)
 print(test == [1, 4])
-
-
-
-
-

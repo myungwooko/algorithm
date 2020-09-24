@@ -41,18 +41,22 @@ input = [
     "2018-09-12 13:55, discount, $12, $22",
 ]
 
+
 def topFiveTransient(input):
     transients = [i for i in input if (i.split(",")[1]).strip() == "transient"]
     if len(transients) <= 1:
         return transients
 
     def func(x):
-        if x.split(",")[2].strip()[0] in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+        if x.split(",")[2].strip()[0] in [
+                "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+        ]:
             return float(x.split(",")[2].strip())
         elif x.split(",")[2].strip()[0] == "(":
             return float(x.split(",")[2].strip()[2:][:-1])
         else:
             return float(x.split(",")[2].strip()[1:])
+
     sorted_transient = sorted(transients, key=func)
     return sorted_transient[::-1][:5]
 

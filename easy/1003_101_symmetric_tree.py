@@ -37,6 +37,8 @@ Bonus points if you could solve it both recursively and iteratively.
 - check PLEASE execptional cases => input is []   !!!
 - Remember that easy format for tree's dfs' recursive function .
 """
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -71,7 +73,7 @@ class Solution:
             if under_vals[0] == "False" and len(set(under_vals)) == 1:
                 return True
 
-            if len(under_nodes)%2:
+            if len(under_nodes) % 2:
                 return False
             else:
                 half = len(under_vals) // 2
@@ -91,12 +93,11 @@ class Solution:
             return True
         return self.dfs(root.left, root.right)
 
-
     def dfs(self, a, b):
         if a and b:
-            return a.val == b.val and self.dfs(a.left, b.right) and self.dfs(a.right, b.left)
+            return a.val == b.val and self.dfs(a.left, b.right) and self.dfs(
+                a.right, b.left)
         return a is b
-
 
 
 """
@@ -116,7 +117,6 @@ But the following [1,2,2,null,3,null,3] is not:
    3    3
 """
 
-
 root = TreeNode(1)
 fd_left = TreeNode(2)
 # fd_left.left = TreeNode(3)
@@ -129,16 +129,3 @@ root.right = fd_right
 
 s = Solution()
 print(1, s.isSymmetric(root))
-
-
-
-
-
-
-
-
-
-
-
-
-

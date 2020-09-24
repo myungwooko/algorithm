@@ -43,6 +43,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 class Solution:
     # @param {TreeNode} root
     # @return {boolean}
@@ -50,7 +51,9 @@ class Solution:
         if not root:
             return True
 
-        return abs(self.getHeight(root.left) - self.getHeight(root.right)) < 2 and self.isBalanced(root.left) and self.isBalanced(root.right)
+        return abs(self.getHeight(root.left) -
+                   self.getHeight(root.right)) < 2 and self.isBalanced(
+                       root.left) and self.isBalanced(root.right)
 
     def getHeight(self, root):
         if not root:
@@ -98,25 +101,9 @@ root.right = f_right
 
 test = s.isBalanced(root)
 print(1, test)
-
-
-
-
-
-
-
-
-
-
-
-
-
 """
 ========================================================================================================================
 """
-
-
-
 
 
 class Solution:
@@ -148,7 +135,7 @@ class Solution:
                 print('under layer', [node.val for node in under_layer])
                 print('under depth', under_depth)
                 if zero and under_depth:
-                    under_depth.insert(0, -1*under_depth[0])
+                    under_depth.insert(0, -1 * under_depth[0])
 
                 if under_depth and under_depth[-1] - under_depth[0] > 1:
                     print('under layer', [node.val for node in under_layer])
@@ -166,17 +153,17 @@ class Solution:
             return depth
         left = right = 0
         if root.left:
-            left = self.depth(root.left, depth+1)
+            left = self.depth(root.left, depth + 1)
         if root.right:
-            right = self.depth(root.right, depth+1)
+            right = self.depth(root.right, depth + 1)
         return max(left, right)
+
     #
     # def child(self, root):
     #     if root.left or root.right:
     #         return True
     #     else:
     #         return False
-
 
 
 """
@@ -218,8 +205,6 @@ class Solution:
 #
 # test = s.isBalanced(root)
 # print(1, test)
-
-
 """
 [5,6,0,3,0,0,6,0,5,8,5,0,7,5,0,2,2,7,4,0,8,5,8,2,1,6,9,2,8,9,0,3,5,8,8,2,2,0,8,1,0,9,5,6,5,2,2,0,9,9,2,0,5,1,5,9,7,3,9,8,0,2,6,8,0,5,1,3,3,3,0,0,8,2,0,8,7,4,1,4,0,4,4,7,1,7,4,9,8
 ,3,2,7,7,8,5,3,0,6,7,8,9,3,9,3,6,4,4,6,4,9,4,8,3,9,1,9,8,3,2,4,3,7,1,7,0,5,3,1,3,0,3,1,4,9,3,7,5,8,6,7,2,5,6,2,3,4,0,5,1,8,6,7,7,9,5,8,0,7,6,3,9,4,8,4,6,2,2,2,5,0,7,4,0,6,9,0,7,7
@@ -258,5 +243,3 @@ null,null,null,null,null,null,null,null,null,null,null,null,null,null,7,null,nul
 ,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,3]
 여기서! 아예 다르게 접근해야한다는 생
 """
-
-

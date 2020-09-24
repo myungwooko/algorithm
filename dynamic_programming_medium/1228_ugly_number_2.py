@@ -57,7 +57,6 @@ class Solution(object):
             if dp[i]:
                 return dp[i]
 
-
     # 제일 작은 수일때 자신만큼의 수를 더하는 식의 곱하는 수 1이증가
     # 1이 들어있기 때문에 처음 ugly[i2, i3, i4] => ugly[0]은 모두 1을 가리킴
     # index로 ugly에 순차적으로 접근해서 각각 자신을 곱하고 작은 순으로 append.
@@ -82,9 +81,7 @@ class Solution(object):
         print(ugly)
         return ugly[-1]
 
+
 s = Solution()
 test = s.nthUglyNumber(15)
 print(test)
-
-
-

@@ -17,11 +17,14 @@ Output: 1->2->3
 !!! should handle this execptional situation => head => []
 **********************************************************
 """
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
@@ -74,9 +77,8 @@ test = s.deleteDuplicates(a)
 print(test)
 while test.next != None:
     print(test.val)
-    test=test.next
+    test = test.next
 print(test.val)
-
 
 a = ListNode(-1)
 a.next = ListNode(0)
@@ -93,11 +95,5 @@ test = s.deleteDuplicates2(a)
 print(test)
 while test.next != None:
     print(test.val)
-    test=test.next
+    test = test.next
 print(test.val)
-
-
-
-
-
-

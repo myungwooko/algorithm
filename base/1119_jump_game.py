@@ -22,6 +22,8 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum
 
 reach => 같거나 넘으면 되는 건가봐.
 """
+
+
 class Solution(object):
     def canJump(self, nums):
         maxReach = 0
@@ -32,8 +34,7 @@ class Solution(object):
         return True
 
 
-input = [2,5,0,0]
+input = [2, 5, 0, 0]
 s = Solution()
 test = s.canJump(input)
 print('result:', test)
-

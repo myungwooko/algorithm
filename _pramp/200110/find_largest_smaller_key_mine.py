@@ -12,6 +12,8 @@ Your function would return:
 14 since it’s the largest key in the tree that is still smaller than 17.
 
 """
+
+
 class Node:
 
     # Constructor to create a new node
@@ -37,6 +39,7 @@ class BinarySearchTree:
     - but if it has to go left,  but there is no left  => that means node value is bigger than the num
       we need to go parent, if parent satisfies smaller than num(because it also can be bigger than num) => return that node's val.
     """
+
     # Time Complexity: O(logn)
     # Space Complexity: O(1)
     def find_largest_smaller_key(self, num):
@@ -91,15 +94,13 @@ bst = BinarySearchTree()
 
 # Create the tree given in the above diagram
 bst.insert(20)
-bst.insert(9);
-bst.insert(25);
-bst.insert(5);
-bst.insert(12);
-bst.insert(11);
-bst.insert(14);
+bst.insert(9)
+bst.insert(25)
+bst.insert(5)
+bst.insert(12)
+bst.insert(11)
+bst.insert(14)
 
 result = bst.find_largest_smaller_key(9)
 
 print("Largest smaller number is %d " % (result))
-
-

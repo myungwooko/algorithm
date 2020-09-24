@@ -21,6 +21,8 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
 
 ex) [2,1,1,2]
 """
+
+
 class Solution(object):
     def rob(self, nums):
         if not nums: return 0
@@ -42,9 +44,5 @@ class Solution(object):
         return now
 
 
-
-
 s = Solution()
-test = s.rob([1,2,4,2,3])
-
-
+test = s.rob([1, 2, 4, 2, 3])

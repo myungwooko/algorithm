@@ -17,6 +17,8 @@ Output: 5
 문제 파악에 더 신경쓰다.
 Concentrate to what the problem's intention is more.
 """
+
+
 class Solution:
     def lengthOfLastWord(self, s) -> int:
         if not s.strip():

@@ -44,8 +44,8 @@ Explanation: By calling next repeatedly until hasNext returns false,
 #        :rtype List[NestedInteger]
 #        """
 
-class NestedIterator(object):
 
+class NestedIterator(object):
     def __init__(self, nestedList):
         """
         Initialize your data structure here.
@@ -74,6 +74,7 @@ class NestedIterator(object):
         :rtype: bool
         """
         return self.index < len(self.flatList) - 1
+
 
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []

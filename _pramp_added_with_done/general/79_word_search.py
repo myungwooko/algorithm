@@ -47,7 +47,8 @@ class Solution:
 
             candidates = [(r - 1, c), (r, c + 1), (r + 1, c), (r, c - 1)]
             for x1, y1 in candidates:
-                if 0 <= x1 < m and 0 <= y1 < n and board[x1][y1] == word[wordIdx] and (x1, y1) not in seen:
+                if 0 <= x1 < m and 0 <= y1 < n and board[x1][y1] == word[
+                        wordIdx] and (x1, y1) not in seen:
                     helper(x1, y1, wordIdx + 1, seen + [(x1, y1)])
 
         for i in range(m):
@@ -59,7 +60,6 @@ class Solution:
             return True
 
         return False
-
 
     #BFS Time limit exceeds
     def exist(self, board, word):
@@ -82,10 +82,10 @@ class Solution:
                 return True
             candidates = [(r - 1, c), (r, c + 1), (r + 1, c), (r, c - 1)]
             for x1, y1 in candidates:
-                if 0 <= x1 < m and 0 <= y1 < n and board[x1][y1] == word[wordIdx] and (x1, y1) not in seen:
-                    queue.append((x1, y1, wordIdx+1, seen + [(x1, y1)]))
+                if 0 <= x1 < m and 0 <= y1 < n and board[x1][y1] == word[
+                        wordIdx] and (x1, y1) not in seen:
+                    queue.append((x1, y1, wordIdx + 1, seen + [(x1, y1)]))
         return False
-
 
     # It works
     def exist(self, board, word):
@@ -103,7 +103,8 @@ class Solution:
         if len(word) == 0:
             return True
 
-        if r < 0 or r >= self.m or c < 0 or c >= self.n or board[r][c] != word[0]:
+        if r < 0 or r >= self.m or c < 0 or c >= self.n or board[r][c] != word[
+                0]:
             return False
 
         tmp = board[r][c]
@@ -119,19 +120,9 @@ class Solution:
         board[r][c] = tmp
 
 
-board = [
-            ["A","B","C","E"],
-            ["S","F","C","S"],
-            ["A","D","E","E"]
-]
+board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]
 word = "ASAD"
-
-
 
 s = Solution()
 test = s.exist(board, word)
 print(1, test)
-
-
-
-

@@ -21,6 +21,8 @@ A solution set is:
 
 -  [1]: 왜내하면 i = 0일때, a[0]과 그전의 None을 비교하는게 아니라 엉뚱하게 a[0]과 a[-1]을 비교하게 되니까.
 """
+
+
 class Solution(object):
     def threeSum(self, nums):
         res = []
@@ -74,8 +76,8 @@ class Solution(object):
                     r -= 1
         return res
 
+
 s = Solution()
-content = [-2,0,1,1,2]
+content = [-2, 0, 1, 1, 2]
 test = s.threeSum(content)
 print(test)
-

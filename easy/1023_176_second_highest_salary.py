@@ -86,9 +86,6 @@ Result:
 | cat789 |
 +--------+
 """
-
-
-
 """
 아래의 input에 대해서 
 #1 query는 [] => value가 아예 없음으로 리턴하고,
@@ -107,5 +104,3 @@ select Salary as SecondHighestSalary from Employee order by Salary desc limit 1,
 Select MAX(Salary) as SecondHighestSalary from Employee where Salary < (Select MAX(Salary) from Employee)
 """
 #=> {"headers": ["SecondHighestSalary"], "values": [[null]]}
-
-

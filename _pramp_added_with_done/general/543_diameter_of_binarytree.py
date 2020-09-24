@@ -22,6 +22,8 @@ Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
 
 Note: The length of path between two nodes is represented by the number of edges between them.
 """
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -37,6 +39,7 @@ class Solution(object):
         :rtype: int
         """
         self.ans = 0
+
         def depth(p):
             if not p: return 0
             left, right = depth(p.left), depth(p.right)
@@ -44,5 +47,6 @@ class Solution(object):
             self.ans = max(self.ans, left + right)
             #+1을 해주는 이유는 최소 자기로부터의 거리를 재야 하니까, 숫자를 return해주는 이유? 그래야 depth를 알고 비교해주니까.
             return 1 + max(left, right)
+
         depth(root)
         return self.ans

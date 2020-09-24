@@ -19,7 +19,6 @@ For example, your query should return the following for the above table:
 | a@b.com |
 +---------+
 """
-
 """
 SELECT 
     email

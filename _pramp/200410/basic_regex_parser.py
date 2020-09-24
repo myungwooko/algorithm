@@ -38,11 +38,9 @@ def is_match(text, pattern):
                 else:
                     return False
 
-
         # pattern done_with_pramp and text not done_with_pramp
         elif r == len(pattern) and l < len(text):
             return False
-
 
         # ('pattern: ', 'ab*d',   'r: ', 1, 'r+2: ', 2)
         # ('text: ',    'abbdbb', 'l: ', 1, 'l+1: ', 2)
@@ -65,11 +63,9 @@ def is_match(text, pattern):
                 # ('text: ',    'acbdbb', 'l: ', 3, 'l+1: ', 4)
                 return helper(l, r + 2)
 
-
         # pattern is "." or same case
         elif pattern[r] == "." or pattern[r] == text[l]:
             return helper(l + 1, r + 1)
-
 
         # other cases
         else:
@@ -101,5 +97,3 @@ def is_match(text, pattern):
             return False
 
     return helper(0, 0)
-
-

@@ -19,10 +19,7 @@ def print_diagonals(matrix):
     return
 
 
-matrix = [[9, 3, 2],
-          [8, 6, 1],
-          [5, 5, 6],
-          [1, 2, 8]]
+matrix = [[9, 3, 2], [8, 6, 1], [5, 5, 6], [1, 2, 8]]
 
 print(print_diagonals(matrix))
 

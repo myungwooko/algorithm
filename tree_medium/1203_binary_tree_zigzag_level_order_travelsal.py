@@ -18,12 +18,15 @@ return its zigzag level order traversal as:
   [15,7]
 ]
 """
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
+
 
 class Solution(object):
     def zigzagLevelOrder(self, root):
@@ -46,24 +49,21 @@ class Solution(object):
             else:
                 res[level].insert(0, node.val)
         if node.left is not None:
-            self.helper(node.left, res, level+1)
+            self.helper(node.left, res, level + 1)
         if node.right is not None:
-            self.helper(node.right, res, level+1)
+            self.helper(node.right, res, level + 1)
 
     def zigzagLevelOrder1(self, root):
         res, queue = [], [(root, 0)]
         while queue:
             curr, level = queue.pop(0)
             if curr:
-                if len(res) < level+1:
+                if len(res) < level + 1:
                     res.append([])
                 if level % 2 == 0:
                     res[level].append(curr.val)
                 else:
                     res[level].insert(0, curr.val)
-                queue.append((curr.left, level+1))
-                queue.append((curr.right, level+1))
+                queue.append((curr.left, level + 1))
+                queue.append((curr.right, level + 1))
         return res
-
-
-

@@ -45,7 +45,8 @@ class Solution(object):
                         r -= 1
                     else:
                         if [nums[i], nums[sec_i], nums[l], nums[r]] not in res:
-                            res.append([nums[i], nums[sec_i], nums[l], nums[r]])
+                            res.append(
+                                [nums[i], nums[sec_i], nums[l], nums[r]])
                         l += 1
                         r -= 1
                 sec_i += 1
@@ -53,8 +54,7 @@ class Solution(object):
 
 
 s = Solution()
-nums = [-4,-3,-2,-1,0,0,1,2,3,4]
+nums = [-4, -3, -2, -1, 0, 0, 1, 2, 3, 4]
 target = 0
 test = s.fourSum(nums, target)
 print(test)
-

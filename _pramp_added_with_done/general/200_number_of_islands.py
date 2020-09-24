@@ -27,6 +27,8 @@ Output: 3
 lap time: 1:45:48
 * took a too long time(almose 1) to conceive the problem.
 """
+
+
 class Solution:
     def numIslands(self, grid):
         """
@@ -53,7 +55,8 @@ class Solution:
     def dfs(self, i, j):
         candidates = [(i - 1, j), (i, j + 1), (i + 1, j), (i, j - 1)]
         for x1, y1 in candidates:
-            if 0 <= x1 < self.m and 0 <= y1 < self.n and self.grid[x1][y1] == "1" and (x1, y1) not in self.seen:
+            if 0 <= x1 < self.m and 0 <= y1 < self.n and self.grid[x1][
+                    y1] == "1" and (x1, y1) not in self.seen:
                 self.seen.add((x1, y1))
                 self.dfs(x1, y1)
         return
@@ -68,10 +71,8 @@ class Solution:
 ]
 """
 
-
 s = Solution()
 grid = [["1", "1", "1", "1", "0"]]
 # grid2 = [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]
 test = s.numIslands(grid)
 print(test)
-

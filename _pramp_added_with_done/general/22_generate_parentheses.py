@@ -75,6 +75,7 @@ class Solution:
         self.dfs(leftremains - 1, rightremains, path + "(")
         self.dfs(leftremains, rightremains - 1, path + ")")
 
+
 s = Solution()
 test = s.generateParenthesis(3)
 print(test)

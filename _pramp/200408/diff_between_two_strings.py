@@ -87,7 +87,6 @@ path = [A, B, +"D"]
                                                                        delete everything from source
                                                                        add everything from target = source.length +                                                                            target.length
 """
-
 """
 =========================================================================================Improved version of explanation
 
@@ -117,6 +116,8 @@ path = [a, b, +d]
 # if source and target are in total diffrent, delete all and add all and that use m+n
 # 모두 다른 경우, 다 지우고 다 더하는 공간을 사용하므로.
 """
+
+
 def diffBetweenTwoStrings(source, target):
     def helper(i, j):
         path = []
@@ -140,6 +141,3 @@ def diffBetweenTwoStrings(source, target):
         return path
 
     return helper(0, 0)
-
-
-

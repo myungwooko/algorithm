@@ -28,7 +28,6 @@ Output: 17
 Explanation: One 1 at depth 3, one 4 at depth 2, and one 6 at depth 1; 1*3 + 4*2 + 6*1 = 17.
 """
 
-
 # """
 # This is the interface that allows for creating nested lists.
 # You should not implement it, or speculate about its implementation
@@ -71,6 +70,7 @@ Explanation: One 1 at depth 3, one 4 at depth 2, and one 6 at depth 1; 1*3 + 4*2
 #        Return None if this NestedInteger holds a single integer
 #        :rtype List[NestedInteger]
 #        """
+
 
 class Solution:
 

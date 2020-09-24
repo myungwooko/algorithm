@@ -13,6 +13,8 @@ Explanation: the subarray [4,3] has the minimal length under the problem constra
 Follow up:
 If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).
 """
+
+
 class Solution(object):
     def minSubArrayLen(self, s, nums):
         """
@@ -40,7 +42,7 @@ class Solution(object):
         for r in range(len(nums)):
             sum += nums[r]
             while sum >= s:
-                res = min(res, r-l+1)
+                res = min(res, r - l + 1)
                 sum -= nums[l]
                 l += 1
         return res if res <= len(nums) else 0

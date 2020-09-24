@@ -8,6 +8,7 @@
 #  3. STRING_ARRAY task_to
 # required_task
 
+
 def is_blocked(required_tasks, task_from, task_to):
     # Write your code here
     res = []
@@ -43,6 +44,6 @@ def is_blocked(required_tasks, task_from, task_to):
 
 re = ['get gas', 'drive', 'exit']
 fro = ['get gas', 'drive', 'load materials', 'exit']
-tp = ['drive', 'exit','exit','load materials']
+tp = ['drive', 'exit', 'exit', 'load materials']
 test = is_blocked(re, fro, tp)
 print(test)

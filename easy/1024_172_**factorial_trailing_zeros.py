@@ -30,6 +30,8 @@ Well, we could compute the multiple of 5 contained in n, but this is not enough:
 So, we do the following: we start from 5, and we see how many multiples of 5 we have in n. Then, we multiply 5 by 5 (25)
 and we add how many multiples of 25 we have in n. In this case we will not have duplicates, as at in each step we will add only one 5 to the result.
 """
+
+
 class Solution(object):
     def trailingZeroes(self, n):
         """

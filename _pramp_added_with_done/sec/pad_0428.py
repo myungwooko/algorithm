@@ -38,13 +38,8 @@
 # except:
 #     print("Please put your minput correctly 1.input has to be two positive integer ex) python test1.py input1 input2")
 
-
-
-
-
-
-
 import sys
+
 
 class Test2:
     def str_to_num(self, str1):
@@ -83,7 +78,7 @@ class Test2:
         for i, c in enumerate(str1):
             if c in nums_map:
                 curr += nums_map[c]
-                if i == len(str1)-1:
+                if i == len(str1) - 1:
                     acc.append(nums_map[c])
                     res.append(sum(acc))
             else:
@@ -95,7 +90,7 @@ class Test2:
                             acc.append(curr)
                         if not acc:
                             acc.append(curr)
-                        res.append(sum(acc)*positions_map[c])
+                        res.append(sum(acc) * positions_map[c])
                         acc = []
                         curr = 0
                         if c == "만":
@@ -106,7 +101,7 @@ class Test2:
                         else:
                             curr += positions_map[c]
                         acc.append(curr)
-                        if i == len(str1)-1:
+                        if i == len(str1) - 1:
                             res.append(sum(acc))
                         curr = 0
 
@@ -212,9 +207,6 @@ As a command line program
 #     T2.add_two_string_nums(str1, str2)
 # except:
 #     print("Please put your minput correctly * input has to be strings represents two positive integer ex) python test2.py input1 input2")
-
-
-
 """
 For Test below
 """
@@ -237,7 +229,6 @@ for pair in data:
     a, b = pair
     T2.add_two_string_nums(a, b)
 
-
 ## Your program is supposed to print to stdout following:
 ##
 ## 오백삼십삼조일억천팔백구십이만사천오백사십팔
@@ -250,17 +241,3 @@ for pair in data:
 ## 이십만팔천구백삼십
 ## 일조삼
 ## 일억일만
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -14,9 +14,11 @@ Example:
 Input: 3
 Output: [1,3,3,1]
 """
+
+
 class Solution:
     def getRow(self, rowIndex: int):
-        pascal = [[1]*(i+1) for i in range(rowIndex)]
+        pascal = [[1] * (i + 1) for i in range(rowIndex)]
 
         for i in range(pascal):
             for j in range(1, i):

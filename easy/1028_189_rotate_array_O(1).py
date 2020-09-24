@@ -25,6 +25,8 @@ Try to come up as many solutions as you can, there are at least 3 different ways
 Could you do it in-place with O(1) extra space?
 
 """
+
+
 class Solution(object):
     def rotate(self, nums, k):
         """
@@ -32,10 +34,10 @@ class Solution(object):
         :type k: int
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        result = [0]*len(nums)
+        result = [0] * len(nums)
         for i, v in enumerate(nums):
             if i + k <= len(nums) - 1:
-                result[i+k] = v
+                result[i + k] = v
             else:
                 raw_idx = i + k
                 while raw_idx >= len(nums):

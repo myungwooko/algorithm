@@ -53,6 +53,8 @@ alphabet 26개 -> ... 26X26X26(ABC) 26X2(AB) 26(A)
 
 => 패턴을 보니 그런것 같다.
 """
+
+
 class Solution(object):
     def convertToTitle(self, n):
         """
@@ -77,27 +79,16 @@ class Solution(object):
         while exponent:
             d, m = divmod(n, pow(26, exponent))
             if m == 0:
-                d -= 1 # 52=AZ니까
-            result_list.append(alphabet[d-1])
+                d -= 1  # 52=AZ니까
+            result_list.append(alphabet[d - 1])
             n = m
             exponent -= 1
 
-        result_list.append(alphabet[n-1])
+        result_list.append(alphabet[n - 1])
 
         return "".join(result_list)
-
-
-
-
 
 
 s = Solution()
 test = s.convertToTitle(701)
 print(1, test)
-
-
-
-
-
-
-

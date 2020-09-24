@@ -47,6 +47,8 @@ Output: false
 - the below solution's else clause checks whether it is same as None and None or not as some value and None at the end. => not => False
 - and if clause checks whether values are same or not and trigger recursive functions for left values and right values each.
 """
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -55,11 +57,11 @@ class TreeNode:
         self.right = None
 
 
-
 class Solution:
     def isSameTree(self, p, q):
         if p and q:
-            return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+            return p.val == q.val and self.isSameTree(
+                p.left, q.left) and self.isSameTree(p.right, q.right)
         return p is q
 
 
@@ -76,10 +78,3 @@ t4 = TreeNode(None)
 s = Solution()
 test = s.isSameTree(t3, t4)
 print(test)
-
-
-
-
-
-
-

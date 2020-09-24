@@ -39,6 +39,7 @@ Node.random is null or pointing to a node in the linked list.
 Number of Nodes will not exceed 1000.
 """
 
+
 # Definition for a Node.
 class Node:
     def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
@@ -75,4 +76,3 @@ class Solution:
         #     test = test.next
         # print(result)
         return dic[head]
-

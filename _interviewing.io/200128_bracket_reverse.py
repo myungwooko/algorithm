@@ -50,8 +50,6 @@ curr = "ew"
 strs = ["oi", evol, ew] => join => reverse => weloveio 
 #######################################################
 """
-
-
 """
 Worse approach made if else hell. 
 That made it really complex.
@@ -59,6 +57,8 @@ Even though it looks right, it is too complex, that means there can be simpler r
 So in that case, try make it simpler => if it can be simpler => try to find another approach.
 make it simpler => Everything is possible.
 """
+
+
 def reverseInside(s):
     stack = []
     curr = ""
@@ -96,20 +96,19 @@ def reverseInside(s):
             result += reverse
     return result
 
+
 s1 = "(abcd)"
 test1 = reverseInside(s1)
 print(test1 == "dcba")
 
 s2 = "(oi(love)ew)"
 test2 = reverseInside(s2)
-print(11, test2=="weloveio")
-
-
-
+print(11, test2 == "weloveio")
 """
 simply, stack에 쌓아나가다가 => ")"나오면 "(" 전까지 pop()으로 계속 붙여서 stack에 쌓여있는 것에 다시 넣으면 된다.
 Simply, accumulate stack and when meet ")", before last "(" in stack => pop value and accumulate it and then add it to stack. Just like that.
 """
+
 
 def bracketReverse(s):
     stack = []
@@ -131,9 +130,7 @@ print(129, test1 == "dcba")
 
 s2 = "(oi(love)ew)"
 test2 = bracketReverse(s2)
-print(133, test2=="weloveio")
-
-
+print(133, test2 == "weloveio")
 """
 Feedback
 
@@ -158,5 +155,3 @@ To review topics of system design, the candidate can start from:
 - https://github.com/checkcheckzz/system-design-_interview
 
 """
-
-

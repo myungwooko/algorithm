@@ -41,14 +41,16 @@ Note:
 """
 import math
 
+
 class Solution:
     def kClosest(self, points, K):
-        dis = [[(x,y), math.sqrt(x**2+y**2)] for x, y in points]
+        dis = [[(x, y), math.sqrt(x**2 + y**2)] for x, y in points]
         orderByDis = sorted(dis, key=lambda ele: ele[1])
         return [i[0] for i in orderByDis][:K]
 
+
 s = Solution()
-points, K = [[3,3],[5,-1],[-2,4]], 2
+points, K = [[3, 3], [5, -1], [-2, 4]], 2
 test = s.kClosest(points, K)
 print(test)
 # Output: [[3,3],[-2,4]]
