@@ -15,7 +15,7 @@ def shortestCellPath(grid, sr, sc, tr, tc):
         candidates = [(r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)]
         for r1, c1 in candidates:
             if 0 <= r1 < m and 0 <= c1 < n and grid[r1][c1] and (
-                    r1, c1) not in seen:
+            r1, c1) not in seen:
                 helper(r1, c1, seen + [(r1, c1)], count + 1)
 
     helper(sr, sc, [(sr, sc)], 0)
@@ -37,40 +37,28 @@ def shortestCellPath(grid, sr, sc, tr, tc):
                       (curr_r, curr_c + 1), (curr_r, curr_c - 1)]
         for r1, c1 in candidates:
             if 0 <= r1 <= row_bound and 0 <= c1 <= col_bound and (
-                    r1, c1) not in seen and grid[r1][c1]:
+            r1, c1) not in seen and grid[r1][c1]:
                 queue.append((r1, c1, seen + [(r1, c1)], count + 1))
 
     return -1
 
 
+# Time complexity: O(m*n)
+# Space complexity: O(m*n) # queue has to be count although it can be 0 or 1 at the last time,
 def shortestCellPath(grid, sr, sc, tr, tc):
-  queue = [(sr, sc, [(sr, sc)], 0)]
-  m = len(grid) - 1
-  n = len(grid[0]) - 1
-  while queue:
-    x, y, seen, count = queue.pop(0)
-    if x == tc and y == tr:
-      return count
-    candidates = [(x-1, y), (x+1, y), (x, y-1), (x, y+1)]
-    for x1, y1 in candidates:
-      if 0 < x1 <= m and 0 < y1 <= m and (x1, y1) not in seen and grid[x1][y1]:
-        queue.append((x1, y1, seen + [(x1, y1)], count + 1))
-  return -1
-
-
-def shortestCellPath(grid, sr, sc, tr, tc):
-  queue = [(sr, sc, [(sr, sc)], 0)]
-  m = len(grid)
-  n = len(grid[0])
-  while queue:
-    y, x, seen, count = queue.pop(0)
-    if x == tc and y == tr:
-      return count
-    candidates = [(y-1, x), (y+1, x), (y, x-1), (y, x+1)]
-    for y1, x1 in candidates:
-      if 0 <= y1 < m and 0 <= x1 < n and (y1, x1) not in seen and grid[y1][x1]:
-        queue.append((y1, x1, seen + [(y1, x1)], count + 1))
-  return -1
+    queue = [(sr, sc, [(sr, sc)], 0)]
+    m = len(grid)
+    n = len(grid[0])
+    while queue:
+        y, x, seen, count = queue.pop(0)
+        if x == tc and y == tr:
+            return count
+        candidates = [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]
+        for y1, x1 in candidates:
+            if 0 <= y1 < m and 0 <= x1 < n and (y1, x1) not in seen and \
+                    grid[y1][x1]:
+                queue.append((y1, x1, seen + [(y1, x1)], count + 1))
+    return -1
 
 
 grid = [[1, 1, 1, 1], [0, 0, 0, 1], [1, 1, 1, 1]]
