@@ -13,7 +13,19 @@ Your function would return:
 
 """
 
+##########################################################
+# CODE INSTRUCTIONS:                                     #
+# 1) The method findLargestSmallerKey you're asked       #
+#    to implement is located at line 30.                 #
+# 2) Use the helper code below to implement it.          #
+# 3) In a nutshell, the helper code allows you to        #
+#    to build a Binary Search Tree.                      #
+# 4) Jump to line 71 to see an example for how the       #
+#    helper code is used to test findLargestSmallerKey.  #
+##########################################################
 
+
+# A node
 class Node:
 
     # Constructor to create a new node
@@ -31,33 +43,47 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
-    """
-    - if the value is bigger than num => go left
-    - if the value is smaller than num => go right
-    and additionally,
-    - but if it has to go right, but there is no right => that is the answer
-    - but if it has to go left,  but there is no left  => that means node value is bigger than the num
-      we need to go parent, if parent satisfies smaller than num(because it also can be bigger than num) => return that node's val.
-    """
-
-    # Time Complexity: O(logn)
+    # Time Complexity: O(logn) <- kind of exponenial by recursion, worse
     # Space Complexity: O(1)
     def find_largest_smaller_key(self, num):
         self.largest = -1
 
         def helper(node):
-            if node.key < num:
+            if node.key >= num:
+                if node.left:
+                    helper(node.left)
+            else:
                 self.largest = node.key
                 if node.right:
                     helper(node.right)
-            else:
-                if node.left:
-                    helper(node.left)
+            return
 
         helper(self.root)
         return self.largest
 
+    # Time complexity: O(logn), better
+    # Space compexity: O(1)
+    def find_largest_smaller_key(self, num):
+        self.largest = -1
+        queue = [self.root]
+        while queue:
+            node = queue.pop(0)
+            if node.key >= num:
+                if node.left:
+                    queue.append(node.left)
+            else:
+                self.largest = node.key
+                if node.right:
+                    queue.append(node.right)
+        return self.largest
+
+    # Given a binary search tree and a number, inserts a
+    # new node with the given number in the correct place
+    # in the tree. Returns the new root pointer which the
+    # caller should then use(the standard trick to avoid
+    # using reference parameters)
     def insert(self, key):
+
         # 1) If tree is empty, create the root
         if (self.root is None):
             self.root = Node(key)
@@ -94,12 +120,12 @@ bst = BinarySearchTree()
 
 # Create the tree given in the above diagram
 bst.insert(20)
-bst.insert(9)
-bst.insert(25)
-bst.insert(5)
-bst.insert(12)
-bst.insert(11)
-bst.insert(14)
+bst.insert(9);
+bst.insert(25);
+bst.insert(5);
+bst.insert(12);
+bst.insert(11);
+bst.insert(14);
 
 result = bst.find_largest_smaller_key(9)
 
