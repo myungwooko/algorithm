@@ -71,16 +71,17 @@ def reverse_words(arr):
 
         if i == 0 or (i > 0 and arr[i - 1] == ' '):
             left = i
+            continue
 
         # the condition of 'left' part dosen't need to be added because left must have been set before 'right'
         # but wanted to show it explicitly so that it can help understanding easily.
-        if (left == 0 or left) and (i < last_idx
-                                    and arr[i + 1] == ' ') or i == last_idx:
+        if (i < last_idx and arr[i + 1] == ' ') or i == last_idx:
             right = i
             while left < right:
                 arr[left], arr[right] = arr[right], arr[left]
                 left += 1
                 right -= 1
+
     return arr
 
 
