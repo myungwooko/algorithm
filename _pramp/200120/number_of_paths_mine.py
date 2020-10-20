@@ -68,8 +68,9 @@ def num_of_paths_to_dest(n):
 """
 
 # (column,row)
-# rule 1: column >= row
-# rule 2: it cannot cross the diagonal border
+# Condition:
+# 1: i >= j => x >= y
+# 2: it cannot cross the diagonal border
 
 
 # Time Complexity: O((n-1)^2)
@@ -77,12 +78,10 @@ def num_of_paths_to_dest(n):
 def num_of_paths_to_dest(n):
     dp = [[0] * n for r in range(n)]
     dp[0] = [1] * n
+    # Why did not change for every first element of every row to 1?
+    # Because by the condition 1, the car can't reach out there.
     for r in range(1, n):
         for c in range(1, n):
             if c >= r:
                 dp[r][c] = dp[r - 1][c] + dp[r][c - 1]
     return dp[n - 1][n - 1]
-
-
-test = num_of_paths_to_dest(4)
-print(test)

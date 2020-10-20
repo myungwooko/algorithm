@@ -161,3 +161,29 @@ def decodeVariations(S):
             if acc in mapper:
                 queue.append(curr[i + 1:])
     return count
+
+
+# Time complexity: O(max(26, n))
+# Space complexity: O(26+n)
+def decodeVariations(S):
+    mapper = dict()
+    for i in range(65, 91):
+        mapper[i - 64] = chr(i)
+    queue = [S]
+    count = 0
+    while queue:
+        curr = queue.pop(0)
+        acc = ''
+        for i, c in enumerate(curr):
+            acc += c
+            if int(acc) in mapper:
+                if not curr[i + 1:]:
+                    count += 1
+                else:
+                    queue.append(curr[i + 1:])
+    return count
+
+
+S = '1262'
+test = decodeVariations(S)
+print(test == 3)

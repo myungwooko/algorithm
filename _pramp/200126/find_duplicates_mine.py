@@ -120,3 +120,24 @@ def find_duplicates(arr1, arr2):
             left_idx += 1
             right_idx += 1
     return res
+
+
+# Time complexity: O(2*n) or O(n+m)
+# Space complexity: O(n) or O(min(n, m))
+def find_duplicates(arr1, arr2):
+    n = len(arr1)
+    m = len(arr2)
+    idx1 = idx2 = 0
+    res = []
+    while idx1 < n and idx2 < m:
+        v1 = arr1[idx1]
+        v2 = arr2[idx2]
+        if v1 == v2:
+            res.append(v1)
+            idx1 += 1
+            idx2 += 1
+        elif v1 < v2:
+            idx1 += 1
+        elif v2 < v1:
+            idx2 += 1
+    return res

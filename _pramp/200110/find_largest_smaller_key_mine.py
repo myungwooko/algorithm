@@ -120,12 +120,12 @@ bst = BinarySearchTree()
 
 # Create the tree given in the above diagram
 bst.insert(20)
-bst.insert(9);
-bst.insert(25);
-bst.insert(5);
-bst.insert(12);
-bst.insert(11);
-bst.insert(14);
+bst.insert(9)
+bst.insert(25)
+bst.insert(5)
+bst.insert(12)
+bst.insert(11)
+bst.insert(14)
 
 result = bst.find_largest_smaller_key(9)
 

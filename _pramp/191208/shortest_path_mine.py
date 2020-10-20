@@ -15,7 +15,7 @@ def shortestCellPath(grid, sr, sc, tr, tc):
         candidates = [(r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)]
         for r1, c1 in candidates:
             if 0 <= r1 < m and 0 <= c1 < n and grid[r1][c1] and (
-            r1, c1) not in seen:
+                    r1, c1) not in seen:
                 helper(r1, c1, seen + [(r1, c1)], count + 1)
 
     helper(sr, sc, [(sr, sc)], 0)
@@ -37,7 +37,7 @@ def shortestCellPath(grid, sr, sc, tr, tc):
                       (curr_r, curr_c + 1), (curr_r, curr_c - 1)]
         for r1, c1 in candidates:
             if 0 <= r1 <= row_bound and 0 <= c1 <= col_bound and (
-            r1, c1) not in seen and grid[r1][c1]:
+                    r1, c1) not in seen and grid[r1][c1]:
                 queue.append((r1, c1, seen + [(r1, c1)], count + 1))
 
     return -1
