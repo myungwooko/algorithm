@@ -53,23 +53,26 @@ step3: enc
 """
 
 # the range of lowercase letters a-z in ASCII: 97-122
-# Formula for second~last: word[n] = lev1[n] + lev2[n-1] - 26*m
-# lev1[n] = word[n] - lev2[n-1] + 26*m
+# word => encrypted
+# encrypted's ascii => lev3
+# Formula for second~last: < encrypted[n] = lev1[n] + lev2[n-1] - 26*m > and that has to be in 97~122
+# lev1[n] = lev3[n] - lev2[n-1] + 26*m
 # lev2[n] = lev2[n-1] + lev1[n]
 
 
 # Time O(n)  <= O(n+k) N is for one for loop, k is process of finding m
 # Space complexity: O(n) <= O(3n)
-def decrypt(word):
-    if not word:
-        return word
+def decrypt(encrypted):
+    if not encrypted:
+        return encrypted
 
-    lev3 = [ord(char) for char in word]
+    lev3 = [ord(char) for char in encrypted]
     lev2 = [lev3[0]]
     lev1 = [lev3[0] - 1]
 
     for n in range(1, len(lev3)):
-        before_add_26m = lev3[n] - lev2[n - 1]
+        before_add_26m = lev3[n] - lev2[
+            n - 1]  #because we know the lev2[n-1] at the very beginning
         m = 1
         while before_add_26m + 26 * m < 97:
             m += 1
@@ -101,6 +104,31 @@ def decrypt(encrypted):
         lev2_val = lev1_val + lev2[i - 1]
         lev1.append(lev1_val)
         lev2.append(lev2_val)
+    return "".join([chr(n) for n in lev1])
+
+
+# Make formula for each value of each level's current index.
+# 1. lev3[n] = lev1[n] + lev2[n-1] - 26*k
+# 2. lev2[n] = lev1[n] + lev2[n-1]
+# 3. lev1[n] = lev3[n] - lev2[n-1] + 26*k => has to be in 96< lev1[n] <123
+# Then you can get a value from step '3', then you can use that value step by step then we can get the answer.
+# Time complxeixty: O(n)
+# Space complexity: O(n)
+def decrypt(encrypted):
+    if not encrypted:
+        return encrypted
+    lev3 = [ord(c) for c in encrypted]
+    lev2 = [lev3[0]]
+    lev1 = [lev3[0] - 1]
+    for i in range(1, len(encrypted)):
+        lev1_curr_pre = lev3[i] - lev2[i - 1]
+        k = 0
+        while not (96 < (lev1_curr_pre + k * 26) < 123):
+            k += 1
+        lev1_curr = lev1_curr_pre + k * 26
+        lev1.append(lev1_curr)
+        lev2_curr = lev1[i] + lev2[i - 1]
+        lev2.append(lev2_curr)
     return "".join([chr(n) for n in lev1])
 
 

@@ -94,3 +94,37 @@ def deletion_distance(str1, str2):
         idx += 1
 
     return count
+
+
+# Time Complexity: O(n+m+smaeToOrder^2)
+# Space Complexity: O(max(m, n))
+def deletion_distance(str1, str2):
+    setA = set(str1)
+    setB = set(str2)
+    listA = []
+    listB = []
+    count = 0
+
+    for c in str1:
+        if c in setB:
+            listA.append(c)
+        else:
+            count += 1
+
+    for c in str2:
+        if c in setA:
+            listB.append(c)
+        else:
+            count += 1
+
+    idx = 0
+    while listA != listB:
+        curr = listA[idx]
+        if listA[idx] == listB[idx]:
+            idx += 1
+        else:
+            listA.remove(curr)
+            listB.remove(curr)
+            count += 2
+
+    return count
