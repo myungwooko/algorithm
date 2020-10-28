@@ -246,3 +246,22 @@ def find_grants_cap(grantsArray, newBudget):
         else:
             queue.append((next_grants, budget))
     return
+
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+def find_grants_cap(grantsArray, newBudget):
+    curr_arr = grantsArray
+    curr_budget = newBudget
+    while True:
+        curr_ave = curr_budget / float(len(curr_arr))
+        next_arr = []
+        for e in curr_arr:
+            if e <= curr_ave:
+                curr_budget -= e
+            else:
+                next_arr.append(e)
+        if not next_arr or next_arr == curr_arr:
+            return curr_ave
+        curr_arr = next_arr
+    return

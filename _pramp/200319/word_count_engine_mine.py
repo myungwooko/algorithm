@@ -77,19 +77,34 @@ def word_count_engine(document):
     return res
 
 
-import string
+# import string
+# from collections import Counter
+# table = string.maketrans('', '')  # <- maketrans is deprecated in Python3
+#
+#
+# # Time complexity: O(n^2), *sorted*index
+# # Space complexity: O(n), *just understood about selecting the biggest one's size
+# def word_count_engine(document):
+#     striped = document.lower().translate(table, string.punctuation)
+#     listing = striped.split(" ")
+#     counter = Counter(listing).items()
+#     pre_result = sorted(counter, key=lambda x: (-x[1], listing.index(x[0])))
+#     return [[pair[0], str(pair[1])] for pair in pre_result if pair[0]]
+
+
+import re
 from collections import Counter
-table = string.maketrans('', '')  # <- maketrans is deprecated in Python3
 
 
-# Time complexity: O(n^2), *sorted*index
-# Space complexity: O(n), *just understood about selecting the biggest one's size
+# Time complexity: O(n*nlog(n)) *n is for the length of parsed
+# Space complexity: O(n) *for parsed because the 'document' string
+# which consists of all characters just use O(1) space as a simple string.
 def word_count_engine(document):
-    striped = document.lower().translate(table, string.punctuation)
-    listing = striped.split(" ")
-    counter = Counter(listing).items()
-    pre_result = sorted(counter, key=lambda x: (-x[1], listing.index(x[0])))
-    return [[pair[0], str(pair[1])] for pair in pre_result if pair[0]]
+    striped = re.sub(r'[^\w\s]', '', document)
+    parsed = striped.lower().split(' ')
+    counted = list(Counter(parsed).items()) # pramp does not require list()
+    counted.sort(key=lambda x: (-x[1], parsed.index(x[0])))
+    return [[k, str(v)] for k, v in counted if k]
 
 
 test_input = "Practice makes perfect, you'll get perfecT by practice. just practice! just just just!!"
