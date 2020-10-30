@@ -124,10 +124,30 @@ def root(x, n):
     return round(possible_root, 3)
 
 
+# Time complexity: O(logn)
+# Space complexity: O(1)
+def root(x, n):
+    upper_bound = x
+    lower_bound = 0
+    approx_root = (upper_bound + lower_bound) / 2
+    while approx_root - lower_bound > 0.001:
+        v = pow(approx_root, n)
+        if v == x:
+            return approx_root
+        elif v < x:
+            lower_bound = approx_root
+        else:
+            upper_bound = approx_root
+        approx_root = (upper_bound + lower_bound) / 2
+
+    return round(approx_root, 3)
+
+
 # Tests
 x = 7
 n = 3
 test = root(x, n)
+print(test)
 print(test == 1.913)
 
 x = 9

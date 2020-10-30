@@ -91,7 +91,7 @@ def word_count_engine(document):
 #     pre_result = sorted(counter, key=lambda x: (-x[1], listing.index(x[0])))
 #     return [[pair[0], str(pair[1])] for pair in pre_result if pair[0]]
 
-
+3
 import re
 from collections import Counter
 
