@@ -139,7 +139,6 @@ def root(x, n):
         else:
             upper_bound = approx_root
         approx_root = (upper_bound + lower_bound) / 2
-
     return round(approx_root, 3)
 
 

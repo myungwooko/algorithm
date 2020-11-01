@@ -60,10 +60,10 @@ def sort_k_messed_array(arr, k):
 # Time complexity: O(n*k)
 # Space complexity: O(1)
 def sort_k_messed_array(arr, k):
-    for i in range(1, len(arr)):
+    for i in range(len(arr)):
         curr = i
-        limit = curr - k
-        while curr >= limit and curr > 0:
+        limit = i - k
+        while curr > limit and curr > 0:
             if arr[curr] < arr[curr - 1]:
                 arr[curr], arr[curr - 1] = arr[curr - 1], arr[curr]
                 curr -= 1
