@@ -31,12 +31,11 @@ Constraints:
 # Time complexity: O(n)
 # Space complexity: O(1)
 def moveZerosToEnd(arr):
-    write = idx = 0
-    while idx < len(arr):
-        if arr[idx]:
-            arr[write], arr[idx] = arr[idx], arr[write]
+    write = 0
+    for i in range(len(arr)):
+        if arr[i]:
+            arr[write], arr[i] = arr[i], arr[write]
             write += 1
-        idx += 1
     return arr
 
 

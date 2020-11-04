@@ -161,6 +161,42 @@ def get_shortest_unique_substring(arr, str):
     return res
 
 
+# Time complexity: O(n*k) n means length of string k for the process which decrease haed as a while loop.
+# Space complexity: O(m) m for length of arr
+def get_shortest_unique_substring(arr, string):
+    head = 0
+    res = ''
+    char_set = set(arr)
+    # 1 means 0.
+    curr_counter = Counter(arr)
+    unique_counter = 0
+
+    for tail in range(len(string)):
+        curr = string[tail]
+        if curr not in char_set:
+            continue
+
+        if curr_counter[curr] == 1:
+            unique_counter += 1
+        curr_counter[curr] += 1
+
+        while unique_counter == len(arr):
+            tmp = string[head:tail + 1]
+            # not res for the first time.
+            if not res or len(tmp) < len(res):
+                res = tmp
+
+            curr_head = string[head]
+            if curr_head in char_set:
+                curr_counter[curr_head] -= 1
+                # As we set, 1 means 0.
+                if curr_counter[curr_head] == 1:
+                    unique_counter -= 1
+            head += 1
+
+    return res
+
+
 arr = ['x', 'y', 'z']
 str = "xyyzyzyx"
 test = get_shortest_unique_substring(arr, str)

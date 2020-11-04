@@ -102,7 +102,7 @@ from collections import Counter
 def word_count_engine(document):
     striped = re.sub(r'[^\w\s]', '', document)
     parsed = striped.lower().split(' ')
-    counted = list(Counter(parsed).items()) # pramp does not require list()
+    counted = list(Counter(parsed).items())  # pramp does not require list()
     counted.sort(key=lambda x: (-x[1], parsed.index(x[0])))
     return [[k, str(v)] for k, v in counted if k]
 
