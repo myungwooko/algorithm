@@ -81,9 +81,11 @@ def calc_drone_min_energy(route):
     return max_height - route[0][2]
 
 
-# Time Complexity: O(n)
-# Space Complexity: O(1)
+# Time complexity: O(n)
+# Space complexity: O(1)
 def calc_drone_min_energy(route):
+    if len(route) <= 1:
+        return 0
     start = route[0][2]
     max_height = max([z for x, y, z in route])
     return max_height - start
