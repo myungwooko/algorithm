@@ -19,9 +19,11 @@ Constraints:
 1 ≤ arr.length ≤ 100
 [output] integer
 """
-""""Let us find the smallest element that the element itself and the index is same"""
 
-# basically from some point, if value is greater than its index it's not possible to find matching one.
+"""Let us find the smallest element that the element itself and the index is same"""
+
+
+#basically from some point, if value is greater than its index it's not possible to find matching one.
 
 
 # O(N)
@@ -36,17 +38,16 @@ def index_equals_value_search(arr):
     return -1
 
 
-# Time Complexity: O(logn)
-# Space Complexity: O(1)
+# Time complexity: O(logn)
+# Space complexity: O(1)
 def index_equals_value_search(arr):
     l, r = 0, len(arr) - 1
-
-    while l <= r:  # <= "=" for [0] case only one element also has to be dealt with <================================= 중요
+    while l <= r:
         mid = (l + r) // 2
         if arr[mid] == mid:
             return mid
         elif arr[mid] > mid:
-            r = mid - 1  # <= reason for the "-" is that we already know arr[mid] != mid, so we can except that and we should do that so that we and reduce the arrange
+            r = mid - 1
         else:
             l = mid + 1
     return -1
