@@ -50,6 +50,26 @@ def find_array_quadruplet(arr, s):
     return []
 
 
+# Time complexity: O(n^3)
+# Space complexity: O(1)
+def find_array_quadruplet(arr, s):
+    arr.sort()
+    n = len(arr)
+    for i in range(n - 3):
+        for j in range(i + 1, n - 2):
+            k, l = j + 1, n - 1
+            while k < l:
+                elements = [arr[i], arr[j], arr[k], arr[l]]
+                summed = sum(elements)
+                if summed == s:
+                    return elements
+                elif summed < s:
+                    k += 1
+                else:
+                    l -= 1
+    return []
+
+
 # This is not about only return first one, return every possible combination
 # When you want to skip same pick you can pass like this
 # Time, Space is as same as the one

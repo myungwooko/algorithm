@@ -71,7 +71,7 @@ def get_different_number(arr):
 
 
 def get_different_number(arr):
-    max_int = pow(2, 31) - 1
+    MAX_INT = pow(2, 31) - 1
     n = len(arr)
     for i in range(n):
         curr = arr[i]
@@ -82,7 +82,8 @@ def get_different_number(arr):
     for i in range(n):
         if i != arr[i]:
             return i
-    return n if n < 2 ^ 31 else None
+
+    return n if n <= MAX_INT else None
 
 
 arr = [0, 1, 3, 4]  # arr will be => [0,1,3,3] in this case

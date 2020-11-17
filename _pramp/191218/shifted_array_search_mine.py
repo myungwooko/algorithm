@@ -27,25 +27,24 @@ try it: https://leetcode.com/problems/search-in-rotated-sorted-array/
 """
 
 
-# Time Complexity: O(logn)
-# Space Complexity: O(1)
+# Time complexity: O(logn)
+# Space complexity: O(1)
 def shifted_arr_search(shiftArr, num):
     l, r = 0, len(shiftArr) - 1
     while l <= r:
-        mid = (l + r) // 2
-        if shiftArr[mid] == num:
-            return mid
-        elif shiftArr[mid] < shiftArr[r]:
-            if shiftArr[mid] < num <= shiftArr[r]:
-                l = mid + 1
+        m = (l + r) // 2
+        if shiftArr[m] == num:
+            return m
+        elif shiftArr[l] < shiftArr[m]:
+            if shiftArr[l] <= num < shiftArr[m]:
+                r = m - 1
             else:
-                r = mid - 1
-        else:
-            if shiftArr[l] <= num < shiftArr[mid]:
-                r = mid - 1
+                l = m + 1
+        elif shiftArr[m] < shiftArr[r]:
+            if shiftArr[m] < num <= shiftArr[r]:
+                l = m + 1
             else:
-                l = mid + 1
-
+                r = m - 1
     return -1
 
 

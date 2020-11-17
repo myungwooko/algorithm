@@ -19,9 +19,7 @@ Constraints:
 1 ≤ arr.length ≤ 100
 [output] integer
 """
-
 """Let us find the smallest element that the element itself and the index is same"""
-
 
 #basically from some point, if value is greater than its index it's not possible to find matching one.
 
