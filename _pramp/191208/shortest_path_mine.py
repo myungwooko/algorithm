@@ -44,20 +44,18 @@ def shortestCellPath(grid, sr, sc, tr, tc):
 
 
 # Time complexity: O(m*n)
-# Space complexity: O(m*n) # queue has to be count although it can be 0 or 1 at the last time,
+# Space complexity: O(m*n)
 def shortestCellPath(grid, sr, sc, tr, tc):
     queue = [(sr, sc, [(sr, sc)], 0)]
-    m = len(grid)
-    n = len(grid[0])
     while queue:
-        y, x, seen, count = queue.pop(0)
-        if x == tc and y == tr:
+        x, y, seen, count = queue.pop(0)
+        if x == tr and y == tc:
             return count
-        candidates = [(y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)]
-        for y1, x1 in candidates:
-            if 0 <= y1 < m and 0 <= x1 < n and (y1, x1) not in seen and \
-                    grid[y1][x1]:
-                queue.append((y1, x1, seen + [(y1, x1)], count + 1))
+        possible = [(x + 1, y), (x - 1, y), (x, y - 1), (x, y + 1)]
+        for x1, y1 in possible:
+            if 0 <= x1 < len(grid) and 0 <= y1 < len(
+                    grid[0]) and (x1, y1) not in seen and grid[x1][y1]:
+                queue.append((x1, y1, seen + [(x1, y1)], count + 1))
     return -1
 
 
