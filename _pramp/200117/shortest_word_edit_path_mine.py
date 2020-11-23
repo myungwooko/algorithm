@@ -74,6 +74,26 @@ def shortestWordEditPath(source, target, words):
     return -1
 
 
+# Time complexity: O(n^2*k) n is for the length of the queue and k is for the lenght of the characters of an each word.
+# Space complexity: O(n*a) a is for the length of queue's element.
+# a =  3 * average length of seen <= I think this is righter than the above
+def shortestWordEditPath(source, target, words):
+    queue = [(source, 0, [source])]
+    while queue:
+        curr, count, seen = queue.pop(0)
+        if curr == target:
+            return count
+        for word in words:
+            if word not in seen:
+                inner_count = 0
+                for i, c in enumerate(word):
+                    if word[i] != curr[i]:
+                        inner_count += 1
+                if inner_count == 1:
+                    queue.append((word, count + 1, seen + [word]))
+    return -1
+
+
 source = "hit"
 target = "cog"
 words = ["hot", "dot", "dog", "lot", "log", "cog"]
