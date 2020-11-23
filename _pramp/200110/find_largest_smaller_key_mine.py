@@ -43,7 +43,7 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
-    # Time Complexity: O(logn) <- kind of exponenial by recursion, worse
+    # Time Complexity: O(logn) <- kind of exponential by recursion, worse
     # Space Complexity: O(1)
     def find_largest_smaller_key(self, num):
         self.largest = -1
@@ -61,21 +61,25 @@ class BinarySearchTree:
         helper(self.root)
         return self.largest
 
-    # Time complexity: O(logn), better
-    # Space compexity: O(1)
+    # Time complexity: O(logn), better not exponential
+    # Space complxity: O(1)
     def find_largest_smaller_key(self, num):
-        self.largest = -1
+        largest = -1
+        if not self.root:
+            return largest
+
         queue = [self.root]
         while queue:
-            node = queue.pop(0)
-            if node.key >= num:
-                if node.left:
-                    queue.append(node.left)
+            curr = queue.pop(0)
+            if curr.key >= num:
+                if curr.left:
+                    queue.append(curr.left)
             else:
-                self.largest = node.key
-                if node.right:
-                    queue.append(node.right)
-        return self.largest
+                largest = curr.key
+                if curr.right:
+                    queue.append(curr.right)
+
+        return largest
 
     # Given a binary search tree and a number, inserts a
     # new node with the given number in the correct place
