@@ -25,28 +25,25 @@ Constraints:
 
 
 # Time complexity: O(n)
-# Space complexity: O(n)
+# Space compelxity: O(n)
 def get_indices_of_item_wights(arr, limit):
-    map1 = {}
-    for i in range(len(arr)):
-        if arr[i] not in map1:
-            map1[limit - arr[i]] = i
+    mapper = dict()
+    for i, v in enumerate(arr):
+        if v not in mapper:
+            mapper[limit - v] = i
         else:
-            return [i, map1[arr[i]]]
+            return [i, mapper[v]]
     return []
 
 
-# Time complexity: O(n)
-# Space complexity: O(n)
-def get_indices_of_item_wights(arr, limit):
-    mapper = {}
-    for i, curr in enumerate(arr):
-        if curr not in mapper:
-            mapper[limit - curr] = i
-        else:
-            return [i, mapper[curr]]
-    return []
+"""
+arr = [4, 6, 10, 15, 16]
+lim = 21
 
+test = get_indices_of_item_wights(arr, lim)
+print(test)
+
+"""
 
 """
 arr = [4, 6, 10, 15, 16]

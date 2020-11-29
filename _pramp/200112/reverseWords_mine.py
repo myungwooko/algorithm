@@ -85,6 +85,24 @@ def reverse_words(arr):
     return arr
 
 
+# Time complexity: O(n*k) k is approximately half of the average length of the words.
+# Space complexity: O(n), because it made reverse list additionally so that we can avoid to change original input.
+def reverse_words(arr):
+    rev = arr[::-1]
+    for i in range(len(rev)):
+        if rev[i] == ' ':
+            continue
+        if i == 0 or (i > 0 and rev[i - 1] == ' '):
+            start = i
+        elif i == len(rev) - 1 or (i < len(rev) - 1 and rev[i + 1] == ' '):
+            end = i
+            while start < end:
+                rev[start], rev[end] = rev[end], rev[start]
+                start += 1
+                end -= 1
+    return rev
+
+
 arr = [
     'p', 'e', 'r', 'f', 'e', 'c', 't', ' ', 'm', 'a', 'k', 'e', 's', ' ', 'p',
     'r', 'a', 'c', 't', 'i', 'c', 'e'
