@@ -121,5 +121,6 @@ def num_of_paths_to_dest(n):
                 dp[j][i] = dp[j - 1][i] + dp[j][i - 1]
     return dp[n - 1][n - 1]
 
+
 test = num_of_paths_to_dest(4)
 print(test)

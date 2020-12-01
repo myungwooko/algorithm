@@ -44,7 +44,6 @@ test = get_indices_of_item_wights(arr, lim)
 print(test)
 
 """
-
 """
 arr = [4, 6, 10, 15, 16]
 lim = 21
