@@ -163,21 +163,22 @@ def decodeVariations(S):
     return count
 
 
-# Time complexity: O(max(26, n))
-# Space complexity: O(26+n)
+# Time complexity: O(max(26, n)), n is for number of possible candidates of queue.
+# Space complexity: O(max(26, n*2)), 2? inner for loops max number always would be 2.
 def decodeVariations(S):
     mapper = dict()
-    for i in range(65, 91):
-        mapper[i - 64] = chr(i)
+    for i in range(1, 27):
+        mapper[str(i)] = chr(i + 64)
+
     queue = [S]
     count = 0
     while queue:
         curr = queue.pop(0)
         acc = ''
-        for i, c in enumerate(curr):
-            acc += c
-            if int(acc) in mapper:
-                if not curr[i + 1:]:
+        for i, v in enumerate(curr):
+            acc += v
+            if acc in mapper:
+                if i == len(curr) - 1:
                     count += 1
                 else:
                     queue.append(curr[i + 1:])
