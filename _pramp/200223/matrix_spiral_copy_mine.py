@@ -215,44 +215,36 @@ def spiral_copy(matrix):
 # Time complexity: O(n*m)
 # Space complexity: O(n*m)
 def spiral_copy(matrix):
+    spiral = []
     up = 0
-    right = len(matrix[0]) - 1
     down = len(matrix) - 1
     left = 0
-    spiral = []
-    total = len(matrix[0]) * len(matrix)
+    right = len(matrix[0]) - 1
+    full = len(matrix) * len(matrix[0])
+    while len(spiral) < full:
 
-    while len(spiral) < total:
         for i in range(left, right + 1):
-            curr = matrix[up][i]
-            spiral.append(curr)
+            spiral.append(matrix[up][i])
+        if len(spiral) == full:
+            break
         up += 1
 
-        if len(spiral) == total:
-            break
-
         for i in range(up, down + 1):
-            curr = matrix[i][right]
-            spiral.append(curr)
-
-        if len(spiral) == total:
+            spiral.append(matrix[i][right])
+        if len(spiral) == full:
             break
-
         right -= 1
 
         for i in range(right, left - 1, -1):
-            curr = matrix[down][i]
-            spiral.append(curr)
-
-        if len(spiral) == total:
+            spiral.append(matrix[down][i])
+        if len(spiral) == full:
             break
-
         down -= 1
 
         for i in range(down, up - 1, -1):
-            curr = matrix[i][left]
-            spiral.append(curr)
-
+            spiral.append(matrix[i][left])
+        if len(spiral) == full:
+            break
         left += 1
 
     return spiral
