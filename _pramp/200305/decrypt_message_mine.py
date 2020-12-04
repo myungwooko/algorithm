@@ -58,8 +58,7 @@ step3: enc
 # Formula for second~last: < encrypted[n] = lev1[n] + lev2[n-1] - 26*m > and that has to be in 97~122
 # lev1[n] = lev3[n] - lev2[n-1] + 26*m
 # lev2[n] = lev2[n-1] + lev1[n]
-
-
+#####
 # Time O(n)  <= O(n+k) N is for one for loop, k is process of finding m
 # Space complexity: O(n) <= O(3n)
 def decrypt(encrypted):
@@ -87,6 +86,7 @@ def decrypt(encrypted):
 # lev3[i] = lev1[i] + lev2[i-1] - 26*m
 # lev1[i] = lev3[i] - lev2[i-1] + 26*m -> 97 <= range <=122
 # lev2[i] = lev1[i] + lev2[i-1]
+#####
 # Time complexity: O(n)
 # Space compexity: O(n)
 def decrypt(encrypted):
@@ -112,6 +112,7 @@ def decrypt(encrypted):
 # 2. lev2[n] = lev1[n] + lev2[n-1]
 # 3. lev1[n] = lev3[n] - lev2[n-1] + 26*k => has to be in 96< lev1[n] <123
 # Then you can get a value from step '3', then you can use that value step by step then we can get the answer.
+#####
 # Time complxeixty: O(n)
 # Space complexity: O(n)
 def decrypt(encrypted):
@@ -130,6 +131,30 @@ def decrypt(encrypted):
         lev2_curr = lev1[i] + lev2[i - 1]
         lev2.append(lev2_curr)
     return "".join([chr(n) for n in lev1])
+
+
+# To get lev2[i], we need to know lev2[i-1], lev1[i]
+# To get lev1[i], we need to
+# lev1[i] = lev3[i] - lev2[i-1] + 26*m
+# lev2[i] = lev2[i-1] + lev1[i]
+#####
+# Time complexity: O(n)
+# Space complexity: O(n)
+def decrypt(encrypted):
+    if not encrypted:
+        return encrypted
+    lev3 = [ord(c) for c in encrypted]
+    lev2 = [lev3[0]]
+    lev1 = [lev3[0] - 1]
+    for i in range(1, len(lev3)):
+        pre_lev1 = lev3[i] - lev2[i - 1]
+        m = 1
+        while pre_lev1 < 97:
+            pre_lev1 += 26 * m
+        curr_lev1 = pre_lev1
+        lev1.append(curr_lev1)
+        lev2.append(lev2[i - 1] + lev1[i])
+    return "".join([chr(e) for e in lev1])
 
 
 word = "dnotq"
