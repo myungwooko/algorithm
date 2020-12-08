@@ -128,3 +128,39 @@ def deletion_distance(str1, str2):
             count += 2
 
     return count
+
+
+# Time complexity: O(k^2) Because total different order case will iterate total length of common length and also iterate n for remove().
+# Space complxity: O(max(m, n))
+def deletion_distance(str1, str2):
+    result = 0
+    set1 = set(str1)
+    set2 = set(str2)
+    surv1 = []
+    surv2 = []
+
+    for i, v in enumerate(str1):
+        if v in set2:
+            surv1.append(v)
+        else:
+            result += 1
+
+    for i, v in enumerate(str2):
+        if v in set1:
+            surv2.append(v)
+        else:
+            result += 1
+
+    idx = 0
+    while surv1 != surv2:
+        curr = surv1[idx]
+        if surv1[idx] == surv2[idx]:
+            idx += 1
+        else:
+            # surv1.remove(surv1[idx])
+            # surv1.remove(surv1[idx]) <= after the execution above, it points different value or it can raise index error.
+            surv1.remove(curr)
+            surv2.remove(curr)
+            result += 2
+
+    return result
