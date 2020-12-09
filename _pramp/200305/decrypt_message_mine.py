@@ -52,6 +52,7 @@ step3: enc
 => lev2[i] = lev2[i-1] + origin[i]
 """
 
+
 # the range of lowercase letters a-z in ASCII: 97-122
 # word => encrypted
 # encrypted's ascii => lev3

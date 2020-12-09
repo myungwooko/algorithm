@@ -265,3 +265,32 @@ def find_grants_cap(grantsArray, newBudget):
             return curr_ave
         curr_arr = next_arr
     return
+
+
+# subtract smaller ones from currBudget and
+# make a next list with greater ones than cap.
+# If there is no smaller one in that turn, return cap.
+#
+# Time complexity: O(n^2)
+# Spcae complexity: O(n)
+def find_grants_cap(grantsArray, newBudget):
+    grants = grantsArray[:]
+    while True:
+        n = len(grants)
+        cap = newBudget / n
+        gt_cap = []
+        count = 0
+        for i in range(n):
+            curr = grants[i]
+            if curr < cap:
+                newBudget -= curr
+                count += 1
+            else:
+                gt_cap.append(curr)
+        if not count:
+            return cap
+        grants = gt_cap
+
+
+test = find_grants_cap([2, 100, 50, 120, 1000], 190)
+print('Test passed?', test == 47)
