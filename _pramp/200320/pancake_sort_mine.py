@@ -115,3 +115,25 @@ def pancake_sort(arr):
         smallest_idx = sliced.index(smallest)
         arr[i:] = flip(sliced, smallest_idx + 1)
     return arr
+
+
+def flip(arr, k):
+    l = 0
+    r = k - 1
+    while l < r:
+        arr[l], arr[r] = arr[r], arr[l]
+        l += 1
+        r -= 1
+    return arr
+
+
+# Time complexity: O(n^2)
+# Space compleixty: O(n)
+def pancake_sort(arr):
+    for i in range(len(arr)):
+        sliced_to_order = arr[i:]
+        smallest = min(sliced_to_order)
+        idx_of_smallest = sliced_to_order.index(smallest)
+        # put the smallest one to head of current sliced_to_order
+        arr[i:] = flip(sliced_to_order, idx_of_smallest + 1)
+    return arr
