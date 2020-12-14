@@ -142,6 +142,26 @@ def root(x, n):
     return round(approx_root, 3)
 
 
+# Time complexity: O(logn)
+# Space complexity: O(1)
+def root(x, n):
+    # sr = square root
+    min_sr = 0
+    max_sr = x
+    get_possible_root = lambda min_sr, max_sr: (min_sr + max_sr) / float(2)
+    possible_root = get_possible_root(min_sr, max_sr)
+    while max_sr - possible_root > 0.001:
+        v = pow(possible_root, n)
+        if v == x:
+            return possible_root
+        elif v < x:
+            min_sr = possible_root
+        else:
+            max_sr = possible_root
+        possible_root = get_possible_root(min_sr, max_sr)
+    return round(possible_root, 3)
+
+
 # Tests
 x = 7
 n = 3
