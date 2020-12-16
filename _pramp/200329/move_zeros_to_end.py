@@ -21,11 +21,18 @@ Constraints:
              !
           !
 """
-"""
-# [1, 10, 0, 2, 8, 3, 0, 0, 6, 4, 0, 5, 7, 0]
-             !
-          !
-"""
+
+
+# Time complexity: O(n)
+# Space complexity: O(1)
+def moveZerosToEnd(arr):
+    write = idx = 0
+    while idx < len(arr):
+        if arr[idx]:
+            arr[write], arr[idx] = arr[idx], arr[write]
+            write += 1
+        idx += 1
+    return arr
 
 
 # Time complexity: O(n)
