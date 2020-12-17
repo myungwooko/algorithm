@@ -197,7 +197,43 @@ def get_shortest_unique_substring(arr, string):
     return res
 
 
+# Time complexity: O(n+m)
+# Space compexity: O(n)
+def get_shortest_unique_substring(arr, string):
+    counter = dict()
+    for v in arr:
+        counter[v] = 0
+    unique_char_counter = 0
+    head = 0
+    res = ''
+
+    for i, v in enumerate(string):
+        if v not in counter:
+            continue
+        counter[v] += 1
+        if counter[v] == 1:
+            unique_char_counter += 1
+
+        while unique_char_counter == len(arr):
+            candidate = string[head:i + 1]
+            if not res or len(res) > len(candidate):
+                res = candidate
+            curr_head = string[head]
+            if curr_head in counter:
+                counter[curr_head] -= 1
+                if not counter[curr_head]:
+                    unique_char_counter -= 1
+            head += 1
+
+    return res
+
+
 arr = ['x', 'y', 'z']
-str = "xyyzyzyx"
-test = get_shortest_unique_substring(arr, str)
-print(test)
+string = 'xyyzyzyx'
+test = get_shortest_unique_substring(arr, string)
+print(test == 'zyx')
+
+arr = ["A", "B", "C"]
+string = "ADOBECODEBANCDDD"
+test = get_shortest_unique_substring(arr, string)
+print(test == 'BANC')
