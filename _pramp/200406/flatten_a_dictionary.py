@@ -98,6 +98,28 @@ def flatten_dictionary(dictionary):
     return res
 
 
+# Time complexity: O(m) m is for number of all keys of argument dictionary.
+# Space complexity: O(n) n is for number of all primitive values as value in dictionary.
+def flatten_dictionary(dictionary):
+    res = dict()
+    queue = [(dictionary, "")]
+    while queue:
+        curr_dict, key_head = queue.pop(0)
+        for k, v in curr_dict.items():
+            if key_head and k: k = "." + k
+            if type(v) == dict:
+                queue.append((v, key_head + k))
+            else:
+                res[key_head + k] = v
+    return res
+
+
 dic = {"Key1": "1", "Key2": {"a": "2", "b": "3", "c": {"d": "3", "e": "1"}}}
 test = flatten_dictionary(dic)
-print(test)
+print(test == {
+    'Key1': '1',
+    'Key2.a': '2',
+    'Key2.b': '3',
+    'Key2.c.d': '3',
+    'Key2.c.e': '1'
+})
