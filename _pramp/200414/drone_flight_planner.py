@@ -62,9 +62,20 @@ our balance is zero and we then need more energy to climb from the starting alti
 """
 
 
+# Time O(n)
+# Space O(1)
+def calc_drone_min_energy(route):
+    needed = acc = 0
+    for i in range(1, len(route)):
+        acc += route[i - 1][2] - route[i][2]
+        if acc < needed:
+            needed = acc
+    return -1 * needed
+
+
 # more Elegant
 # Anyway go up more => before down(store) will be consumed
-# Time O(N)
+# Time O(n)
 # Space O(1)
 def calc_drone_min_energy(route):
     max_height = route[0][2]
@@ -74,18 +85,37 @@ def calc_drone_min_energy(route):
     return max_height - route[0][2]
 
 
+# Time complexity: O(n)
+# Space complexity: O(1)
 def calc_drone_min_energy(route):
-    max_height = route[0][2]
+    start = max_height = route[0][2]
     for i in range(1, len(route)):
         max_height = max(max_height, route[i][2])
-    return max_height - route[0][2]
+    return max_height - start
 
 
 # Time complexity: O(n)
 # Space complexity: O(1)
 def calc_drone_min_energy(route):
-    if len(route) <= 1:
-        return 0
+    the_highest = start = route[0][2]
+    for x, y, z in route:
+        the_highest = max(the_highest, z)
+    return the_highest - start
+
+
+# Time complexity: O(n)
+# Space complexity: O(1)
+def calc_drone_min_energy(route):
     start = route[0][2]
     max_height = max([z for x, y, z in route])
     return max_height - start
+
+
+route = [[0, 2, 10],
+         [3, 5, 0],
+         [9, 20, 6],
+         [10, 12, 15],
+         [10, 10, 8]]
+
+test = calc_drone_min_energy(route)
+print('test passed?', test == 5)
