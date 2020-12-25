@@ -61,7 +61,7 @@ def bracket_match(text):
 
 # Time complexity: O(n)
 # Space complexity: O(1)
-# Making list does not neccessary.
+# Making list does not necessary.
 def bracket_match(text):
     open_b = 0
     result = 0
