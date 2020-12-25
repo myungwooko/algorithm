@@ -111,11 +111,7 @@ def calc_drone_min_energy(route):
     return max_height - start
 
 
-route = [[0, 2, 10],
-         [3, 5, 0],
-         [9, 20, 6],
-         [10, 12, 15],
-         [10, 10, 8]]
+route = [[0, 2, 10], [3, 5, 0], [9, 20, 6], [10, 12, 15], [10, 10, 8]]
 
 test = calc_drone_min_energy(route)
 print('test passed?', test == 5)
